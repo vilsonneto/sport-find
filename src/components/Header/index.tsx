@@ -6,9 +6,9 @@ import { useHistory } from "react-router";
 interface IPropHeader {
   avatarImg?: string;
 }
-const Header = ({ avatarImg = "" }: IPropHeader) => {
+const Header = ({ avatarImg }: IPropHeader) => {
   const history = useHistory();
-
+  const handleClick = () => {};
   return (
     <header>
       <nav>
@@ -18,9 +18,13 @@ const Header = ({ avatarImg = "" }: IPropHeader) => {
             <img src={logo} alt="" onClick={() => history.push("/dashboard")} />
           </li>
 
-          {!!avatarImg && (
+          {!avatarImg ? (
             <li>
-              <img src={perfilEditor} alt="" />
+              <img src={perfilEditor} alt="" onClick={handleClick} />
+            </li>
+          ) : (
+            <li>
+              <img src={avatarImg} alt="" onClick={handleClick} />;
             </li>
           )}
         </Ul>
