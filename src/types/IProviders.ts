@@ -11,6 +11,15 @@ export interface IDecode {
   iat?: number;
 }
 
+export interface IUser {
+  username: string;
+  email: string;
+  password: string;
+  state: string;
+  subscribed_groups: [];
+  subscribed_events: [];
+}
+
 export interface IGroupData {
   name: string;
   description: string;

@@ -1,6 +1,8 @@
 import { useState, useEffect, createContext, useMemo } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
+import { useAuth } from "../Auth";
+
 import {
   IProvidersProps,
   IGroupData,
@@ -27,9 +29,9 @@ export const GroupsContext = createContext<IGroupsProviderData>(
 );
 
 export const GroupsProvider = ({ children }: IProvidersProps) => {
+  const { token } = useAuth();
   const [allGroups, setAllGroups] = useState<IGroup[]>([]);
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBnbWFpbC5jb20iLCJpYXQiOjE2MzEyMTU5MDgsImV4cCI6MTYzMTIxOTUwOCwic3ViIjoiMSJ9.dmfr0PX0I3iiOCzVFc1s9vLnokPT57zYCyrqj2hIcSE";
+
   const decode: IDecode = jwt_decode(token);
 
   const createGroup = (username: string, groupData: IGroupData) => {
@@ -37,10 +39,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       creator: Number(decode.sub),
       ...groupData,
       groupEvents: [],
-      members: [
-        { name: username, id: Number(decode.sub) },
-        { name: "Carvalho", id: 88 },
-      ],
+      members: [{ name: username, id: Number(decode.sub) }],
       banned: [],
     };
 
@@ -180,7 +179,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
         })
         .catch((err) => console.log(err));
     }
-  }, []);
+  }, [token]);
 
   const ownedGroups = useMemo(() => {
     const result = allGroups.filter(
