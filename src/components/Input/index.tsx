@@ -1,5 +1,4 @@
 import { Container, InputContainer } from "./styles";
-
 import { IconType } from "react-icons";
 import { UseFormRegister, FieldValues } from "react-hook-form";
 
@@ -10,7 +9,7 @@ interface IInputProps {
   name: string;
   error: string;
   type?: string;
-  placerolder?: string;
+  placeholder?: string;
 }
 
 const Input = ({
@@ -20,7 +19,7 @@ const Input = ({
   name,
   error,
   type,
-  placerolder,
+  placeholder,
 }: IInputProps) => {
   return (
     <Container>
@@ -29,7 +28,7 @@ const Input = ({
       </div>
       <InputContainer isErrored={!!error}>
         {Icon && <Icon size={20} />}
-        <input type={type} placeholder={placerolder} {...register(name)} />
+        <input type={type} placeholder={placeholder} {...register(name)} />
       </InputContainer>
     </Container>
   );
