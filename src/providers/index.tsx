@@ -5,7 +5,7 @@ interface IProvidersProps {
 }
 
 const Providers = ({ children }: IProvidersProps) => {
-  return <h1>aaaa</h1>;
+  return <>{children}</>;
 };
 
 export default Providers;
