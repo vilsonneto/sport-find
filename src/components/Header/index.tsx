@@ -6,9 +6,12 @@ import { useHistory } from "react-router";
 interface IPropHeader {
   avatarImg?: string;
 }
+
 const Header = ({ avatarImg }: IPropHeader) => {
   const history = useHistory();
+
   const handleClick = () => {};
+
   return (
     <header>
       <nav>
