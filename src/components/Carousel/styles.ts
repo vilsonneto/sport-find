@@ -39,6 +39,7 @@ export const ItemsConteiner = styled.div`
       height: 74%;
       border-radius: 100%;
       object-fit: cover;
+      pointer-events: fill;
 
       @media (min-width: 768px) {
         width: 38%;
@@ -48,6 +49,9 @@ export const ItemsConteiner = styled.div`
       @media (min-width: 1440px) {
         width: 30%;
       }
+    }
+    p {
+      pointer-events: fill;
     }
   }
 `;
