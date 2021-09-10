@@ -1,13 +1,14 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import { H1, Container } from "./styles";
 import { useHistory } from "react-router";
+import { useAuth } from "../../providers/Auth";
+
 const NotFound = () => {
   const history = useHistory();
-  // Alterar o nome do item pego pelo local storage
+  const { token } = useAuth();
+
   const handleClick = () => {
-    !!localStorage.getItem("token")
-      ? history.push("/dashboard")
-      : history.push("/");
+    !!token ? history.push("/dashboard") : history.push("/");
   };
   return (
     <Container>
