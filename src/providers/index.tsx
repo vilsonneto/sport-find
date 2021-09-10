@@ -9,7 +9,6 @@ const Providers = ({ children }: IProvidersProps) => {
       <GroupsProvider>
         <EventsProvider>{children}</EventsProvider>
       </GroupsProvider>
-      ;
     </AuthProvider>
   );
 };
