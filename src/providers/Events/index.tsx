@@ -57,7 +57,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           });
 
           setAllGroups(newListGroup);
-        });
+        })
+        .catch((err) => console.log(err));
     }
   };
 
@@ -82,7 +83,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           });
 
           setAllGroups(newListGroup);
-        });
+        })
+        .catch((err) => console.log(err));
     }
   };
 
@@ -118,7 +120,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           });
 
           setAllGroups(newListGroup);
-        });
+        })
+        .catch((err) => console.log(err));
     }
   };
 
@@ -154,7 +157,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         });
 
         setAllGroups(newListGroup);
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   const leaveEvent = (event: IEvents) => {
@@ -191,7 +195,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         });
 
         setAllGroups(newListGroup);
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
