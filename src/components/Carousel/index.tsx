@@ -1,12 +1,12 @@
-import { ReactNode } from "react";
+import { ReactNode, WheelEvent } from "react";
 import { Conteiner, ItemsConteiner } from "./styles";
-import GlobalStyle from "../../styles/global";
 
 interface ICarouselProp {
   children: ReactNode;
 }
 
 function eventScroll(event: any) {
+  console.log(event);
   if (event.deltaY > 0) {
     event.target.scrollBy(300, 0);
   } else {
@@ -17,9 +17,10 @@ function eventScroll(event: any) {
 const Carousel = ({ children }: ICarouselProp) => {
   return (
     <>
-      <GlobalStyle />
       <Conteiner>
-        <ItemsConteiner onWheel={(e) => eventScroll(e)}>
+        <ItemsConteiner
+          onWheel={(e: WheelEvent<HTMLDivElement>) => eventScroll(e)}
+        >
           {children}
         </ItemsConteiner>
       </Conteiner>
