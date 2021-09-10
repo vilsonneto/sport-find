@@ -2,6 +2,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { H1, Container } from "./styles";
 import { useHistory } from "react-router";
 import { useAuth } from "../../providers/Auth";
+import Button from "../../components/Button";
 
 const NotFound = () => {
   const history = useHistory();
@@ -30,7 +31,7 @@ const NotFound = () => {
       </main>
 
       <footer>
-        <button onClick={handleClick}>Página inicial</button>
+        <Button onClick={handleClick}>Página inicial</Button>
       </footer>
     </Container>
   );

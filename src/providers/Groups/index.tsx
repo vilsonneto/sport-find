@@ -1,6 +1,5 @@
 import { useState, useEffect, createContext, useMemo } from "react";
 import api from "../../services/api";
-import jwt_decode from "jwt-decode";
 import { useAuth } from "../Auth";
 
 import {
@@ -9,7 +8,6 @@ import {
   IMembers,
   IBanneds,
   IGroup,
-  IDecode,
 } from "../../types/IProviders";
 
 interface IGroupsProviderData {
@@ -29,17 +27,15 @@ export const GroupsContext = createContext<IGroupsProviderData>(
 );
 
 export const GroupsProvider = ({ children }: IProvidersProps) => {
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const [allGroups, setAllGroups] = useState<IGroup[]>([]);
-
-  const decode: IDecode = jwt_decode(token);
 
   const createGroup = (username: string, groupData: IGroupData) => {
     const data = {
-      creator: Number(decode.sub),
+      creator: user.id,
       ...groupData,
       groupEvents: [],
-      members: [{ name: username, id: Number(decode.sub) }],
+      members: [{ name: username, id: user.id }],
       banned: [],
     };
 
@@ -106,8 +102,8 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
   };
 
   const banMember = (group: IGroup, bannedUser_id: IBanneds["id"]) => {
-    if (bannedUser_id !== Number(decode.sub)) {
-      if (group.creator === Number(decode.sub)) {
+    if (bannedUser_id !== user.id) {
+      if (group.creator === user.id) {
         const newmembersList = group["members"].filter(
           (item) => item.id !== bannedUser_id
         );
@@ -141,7 +137,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
   };
 
   const updateDescription = (group: IGroup, newDescription: string) => {
-    if (group.creator === decode.sub) {
+    if (group.creator === user.id) {
       const newGroupList = allGroups.map((item) => {
         if (item.id === group.id) {
           item.description = newDescription;
@@ -182,19 +178,17 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
   }, [token]);
 
   const ownedGroups = useMemo(() => {
-    const result = allGroups.filter(
-      (item) => item.creator === Number(decode.sub)
-    );
+    const result = allGroups.filter((item) => item.creator === user.id);
     return result;
-  }, [allGroups, decode.sub]);
+  }, [allGroups, user.id]);
 
   const subscribedGroups = useMemo(() => {
     const result = allGroups.filter((item) => {
-      return item["members"].some((elem) => elem.id === Number(decode.sub));
+      return item["members"].some((elem) => elem.id === user.id);
     });
 
     return result;
-  }, [allGroups, decode.sub]);
+  }, [allGroups, user.id]);
 
   return (
     <GroupsContext.Provider
