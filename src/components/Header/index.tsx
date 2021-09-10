@@ -9,8 +9,9 @@ interface IHeaderProps {
 
 const Header = ({ avatarImg }: IHeaderProps) => {
   const history = useHistory();
-  const handleClick = () => {};
 
+  const handleClick = () => {};
+  // Se a váriavel for passsada ela coloca o avatar img no src
   return (
     <header>
       <nav>
