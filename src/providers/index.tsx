@@ -5,7 +5,7 @@ import { AuthProvider } from "./Auth";
 const Providers = ({ children }: IProvidersProps) => {
   return (
     <AuthProvider>
-      <GroupsProvider>{children}</GroupsProvider>;
+      <GroupsProvider>{children}</GroupsProvider>
     </AuthProvider>
   );
 };
