@@ -6,6 +6,7 @@ import { useHistory } from "react-router";
 interface IHeaderProps {
   avatarImg?: string;
 }
+
 const Header = ({ avatarImg }: IHeaderProps) => {
   const history = useHistory();
 
@@ -25,7 +26,7 @@ const Header = ({ avatarImg }: IHeaderProps) => {
             </li>
           ) : (
             <li>
-              <img src={avatarImg} alt="" onClick={handleClick} />;
+              <img src={avatarImg} alt="" onClick={handleClick} />
             </li>
           )}
         </Ul>
