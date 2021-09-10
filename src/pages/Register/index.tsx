@@ -1,0 +1,124 @@
+import { Player } from "@lottiefiles/react-lottie-player";
+import { Article, Header, SVG } from "../Register/styles";
+import logo from "../../assets/logo.jpeg";
+import { useAuth } from "../../providers/Auth";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { IoMdPerson } from "react-icons/io";
+import { AiOutlineMail, AiFillLock, AiFillFlag } from "react-icons/ai";
+import { Link, useHistory } from "react-router-dom";
+
+interface UserDataForm {
+  username: string;
+  email: string;
+  password: string;
+  verifyPassword: string;
+  state: string;
+}
+
+const Register = () => {
+  const { registerUser } = useAuth();
+  const variantGreen = true;
+  const history = useHistory();
+
+  const schema = yup.object().shape({
+    username: yup.string().required("Campo obrigatório"),
+    email: yup.string().required("Campo obrigatório").email("Email inválido"),
+    password: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(6, "Minimo 6 caractéres")
+      .matches(
+        /^((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+        "Requer: letra maiúscula, minúscula, número, caracter especial"
+      ),
+    verifyPassword: yup
+      .string()
+      .required("Campo obrigatório")
+      .oneOf([yup.ref("password")], "As Senhas não correspondem"),
+    state: yup.string().required("Campo obrigatório"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserDataForm>({ resolver: yupResolver(schema) });
+
+  const handleForm = ({ username, email, password, state }: UserDataForm) => {
+    const data = { username, email, password, state };
+    console.log(data);
+    registerUser(data, history);
+  };
+
+  return (
+    <>
+      <Header>
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
+      </Header>
+      <Article>
+        <SVG>
+          <Player
+            src="https://assets2.lottiefiles.com/packages/lf20_dqzlxqtl.json"
+            style={{ width: "400px", height: "400px" }}
+            loop
+            autoplay
+          ></Player>
+        </SVG>
+        <form onSubmit={handleSubmit(handleForm)}>
+          <h1>Cadastro</h1>
+          <Input
+            error={errors.username?.message}
+            name="username"
+            label="Nome"
+            icon={IoMdPerson}
+            register={register}
+          />
+          <Input
+            error={errors.email?.message}
+            name="email"
+            label="E-mail"
+            icon={AiOutlineMail}
+            register={register}
+          />
+          <Input
+            error={errors.password?.message}
+            name="password"
+            label="Senha"
+            type="password"
+            icon={AiFillLock}
+            register={register}
+          />
+          <Input
+            error={errors.verifyPassword?.message}
+            name="verifyPassword"
+            label="Senha"
+            type="password"
+            icon={AiFillLock}
+            register={register}
+          />
+          <Input
+            error={errors.state?.message}
+            name="state"
+            label="Estado"
+            icon={AiFillFlag}
+            register={register}
+          />
+          <Button type="submit" variantGreen={variantGreen}>
+            Enviar
+          </Button>
+          <span>
+            Já tem conta? Faça login <Link to="/login"> Aqui </Link>
+          </span>
+        </form>
+      </Article>
+    </>
+  );
+};
+
+export default Register;

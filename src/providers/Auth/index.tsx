@@ -1,27 +1,21 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { History } from "history";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
-import { IDecode, IProvidersProps, IUser } from "../../types/IProviders";
-
-interface ILoginData {
-  email: string;
-  password: string;
-}
-
-interface IRegisterData {
-  username: string;
-  email: string;
-  password: string;
-  state: string;
-}
+import {
+  IDecode,
+  IProvidersProps,
+  IUser,
+  ILoginData,
+  IRegisterData,
+} from "../../types/IProviders";
 
 interface IAuthProviderData {
   token: string;
   user: IUser;
-  loginUser: (userData: ILoginData) => void;
-  registerUser: (userData: IRegisterData) => void;
+  loginUser: (userData: ILoginData, history: History) => void;
+  registerUser: (userData: IRegisterData, history: History) => void;
   logoutUser: () => void;
   getUser: () => void;
 }
@@ -33,7 +27,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
   const [auth, setAuth] = useState<string>(token);
   const [user, setUser] = useState<IUser>({} as IUser);
 
-  const history = useHistory();
+  // const history = useHistory();
   const decode = jwt_decode;
 
   const getUser = () => {
@@ -46,7 +40,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
       );
   };
 
-  const loginUser = (userData: ILoginData) => {
+  const loginUser = (userData: ILoginData, history: History) => {
     api
       .post("/login", userData)
       .then((response) => {
@@ -63,7 +57,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         //     progress: undefined,
         //   }
         getUser();
-        history.push("/dashboard");
+        // history.push("/dashboard");
       })
       .catch((err) => {
         toast.error("Algo deu errado!");
@@ -79,7 +73,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
       });
   };
 
-  const registerUser = (userData: IRegisterData) => {
+  const registerUser = (userData: IRegisterData, history: History) => {
     const newData = {
       ...userData,
       subscribed_groups: [],
@@ -98,10 +92,12 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         //     draggable: true,
         //     progress: undefined,
         //   }
+        console.log("history");
         history.push("/login");
       })
       .catch(() => {
         toast.error("Algo deu errado!");
+        console.log("erro");
         // , {
         //     position: "top-right",
         //     autoClose: 5000,

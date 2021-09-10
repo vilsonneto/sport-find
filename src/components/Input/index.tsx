@@ -7,7 +7,7 @@ interface IInputProps {
   icon?: IconType;
   register: UseFormRegister<FieldValues>;
   name: string;
-  error: string;
+  error?: string;
   type?: string;
   placeholder?: string;
 }

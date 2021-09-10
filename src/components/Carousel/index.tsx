@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { Conteiner, ItemsConteiner } from "./styles";
-import GlobalStyle from "../../styles/global";
 
 interface ICarouselProp {
   children: ReactNode;
@@ -17,7 +16,6 @@ function eventScroll(event: any) {
 const Carousel = ({ children }: ICarouselProp) => {
   return (
     <>
-      <GlobalStyle />
       <Conteiner>
         <ItemsConteiner onWheel={(e) => eventScroll(e)}>
           {children}
