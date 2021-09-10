@@ -6,6 +6,7 @@ export const H1 = styled.h1`
   font-family: "roboto";
   margin-left: 10%;
   font-size: 1.7rem;
+
   @media (min-width: 768px) {
     margin-left: 25%;
     width: 622px;
@@ -25,6 +26,7 @@ export const Container = styled.div`
     border-radius: 30px;
     width: 189px;
     height: 56px;
+
     @media (min-width: 768px) {
       width: 267px;
       height: 80px;

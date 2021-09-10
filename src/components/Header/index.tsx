@@ -3,11 +3,10 @@ import perfilEditor from "../../assets/perfilEditor.jpg";
 import { Ul } from "./style";
 import { useHistory } from "react-router";
 
-interface IPropHeader {
+interface IHeaderProps {
   avatarImg?: string;
 }
-
-const Header = ({ avatarImg }: IPropHeader) => {
+const Header = ({ avatarImg }: IHeaderProps) => {
   const history = useHistory();
 
   const handleClick = () => {};
@@ -17,7 +16,6 @@ const Header = ({ avatarImg }: IPropHeader) => {
       <nav>
         <Ul>
           <li>
-            {" "}
             <img src={logo} alt="" onClick={() => history.push("/dashboard")} />
           </li>
 

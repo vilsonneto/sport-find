@@ -1,12 +1,13 @@
-// import { ReactNode } from "react";
+import { IProvidersProps } from "../types/IProviders";
+import { GroupsProvider } from "./Groups";
+import { AuthProvider } from "./Auth";
 
-// interface IProvidersProps {
-//   children: ReactNode;
-// }
+const Providers = ({ children }: IProvidersProps) => {
+  return (
+    <AuthProvider>
+      <GroupsProvider>{children}</GroupsProvider>;
+    </AuthProvider>
+  );
+};
 
-// const Providers = ({ children }: IProvidersProps) => {
-//   return <h1>aaaa</h1>;
-// };
-
-// export default Providers;
-export {};
+export default Providers;
