@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@lottiefiles/react-lottie-player": "^3.4.1",
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.14"
   }
