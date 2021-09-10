@@ -27,7 +27,6 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
   const [auth, setAuth] = useState<string>(token);
   const [user, setUser] = useState<IUser>({} as IUser);
 
-  // const history = useHistory();
   const decode = jwt_decode;
 
   const getUser = () => {
@@ -92,12 +91,12 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         //     draggable: true,
         //     progress: undefined,
         //   }
-        console.log("history");
+
         history.push("/login");
       })
       .catch(() => {
         toast.error("Algo deu errado!");
-        console.log("erro");
+
         // , {
         //     position: "top-right",
         //     autoClose: 5000,

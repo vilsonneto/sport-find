@@ -3,7 +3,6 @@ import GlobalStyle from "./styles/global";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Routes from "./routes";
-import CategoryItem from "./components/CategoryItem";
 
 const App = () => {
   return (

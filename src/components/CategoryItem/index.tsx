@@ -5,10 +5,10 @@ import volei from "../../assets/category/volei.jpg";
 import Carousel from "../Carousel";
 
 interface ICategoryprop {
-  filtro: (category: string) => void;
+  filterCategory: (category: string) => void;
 }
 
-const CategoryItem = ({ filtro }: ICategoryprop) => {
+const CategoryItem = ({ filterCategory }: ICategoryprop) => {
   const categoryArr = [
     { image: ciclismo, text: "Ciclismo" },
     { image: volei, text: "Vôlei" },
@@ -20,7 +20,7 @@ const CategoryItem = ({ filtro }: ICategoryprop) => {
   return (
     <Carousel>
       {categoryArr.map((item) => (
-        <div className="item" onClick={() => filtro(item.text)}>
+        <div className="item" onClick={() => filterCategory(item.text)}>
           <img src={item.image} alt="imagem" />
           <p>{item.text} </p>
         </div>

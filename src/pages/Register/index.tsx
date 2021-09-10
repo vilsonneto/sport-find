@@ -32,7 +32,7 @@ const Register = () => {
       .required("Campo obrigatório")
       .min(6, "Minimo 6 caractéres")
       .matches(
-        /^((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+        /^.*((?=.*[!@#$%^&*]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
         "Requer: letra maiúscula, minúscula, número, caracter especial"
       ),
     verifyPassword: yup
@@ -50,7 +50,6 @@ const Register = () => {
 
   const handleForm = ({ username, email, password, state }: UserDataForm) => {
     const data = { username, email, password, state };
-    console.log(data);
     registerUser(data, history);
   };
 
