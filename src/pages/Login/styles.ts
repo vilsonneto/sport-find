@@ -1,104 +1,110 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "roboto";
-  width: 90vw;
+export const Background = styled.div`
+  display: none;
 
-  a {
-    color: blue;
-    cursor: pointer;
-  }
+  @media only screen and (min-width: 1024px) {
+    display: block;
 
-  input {
-    width: 200px;
-  }
+    width: 100vw;
+    height: 300vh;
 
-  span {
-    margin-top: 10px;
-    font-size: 0.75rem;
-  }
-  h1 {
-    margin-top: 10%;
-    margin-bottom: 2%;
-  }
-  button {
-    width: 80vw;
-    margin-top: 2%;
-  }
+    background-color: var(--blue);
+    box-shadow: 5px 0px 100px 25px rgba(0, 0, 0, 0.5);
 
-  @media (min-width: 1024px) {
-    margin-top: 10%;
-    margin-left: 5vw;
-    width: 500px;
-    height: 368px;
-    max-width: 1280px;
+    transform: rotate(-20deg);
 
-    button {
-      width: 400px;
-    }
-
-    span {
-      font-size: 1.2rem;
-    }
+    position: absolute;
+    top: -100%;
+    left: 54%;
+    z-index: -1;
   }
 `;
 
 export const Header = styled.header`
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  top: 25px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
   img {
-    width: 200px;
+    width: 100px;
   }
 
-  @media (min-width: 1024px) {
+  @media only screen and (min-width: 1024px) {
     max-width: 1280px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 2%;
+    width: 100%;
+
+    padding: 0 50px;
+
+    display: flex;
+    justify-self: flex-start;
   }
 `;
-export const Article = styled.article`
+
+export const Container = styled.main`
+  height: 100vh;
+
+  padding: 0 20px;
+
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  @media (min-width: 1024px) {
+  position: relative;
+  overflow: hidden;
+`;
+
+export const Content = styled.article`
+  max-width: 400px;
+  width: 100%;
+
+  text-align: center;
+
+  @media only screen and (min-width: 1024px) {
+    max-width: 1280px;
+
+    display: flex;
     justify-content: space-around;
-    margin: 0 auto;
-    margin-top: 10vw;
-    max-width: 1280px;
+    align-items: center;
   }
 `;
 
-export const SVG = styled.section`
+export const ContainerForm = styled.section`
+  form {
+    h1 {
+      margin-bottom: 20px;
+
+      font-size: 2rem;
+    }
+
+    ul {
+      li:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+          width: 70%;
+
+          margin: 20px 0 5px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: 35%;
+  }
+`;
+
+export const ContainerImage = styled.section`
   display: none;
-  @media (min-width: 1024px) {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: block;
-  }
-`;
-export const Retangle = styled.div`
-  @media (min-width: 1024px) {
-    width: 100vw;
-    height: 1602px;
-    z-index: -1;
-    background-color: #0d17ff;
-    position: absolute;
-    left: 1000px;
-    top: -260px;
-    transform: rotate(-20deg);
-    box-shadow: 5px 50px 100px 10px rgba(0, 0, 0, 0.5);
-  }
-`;
 
-// export const Container = styled.div`
-//   position: relative;
-//   overflow: hidden;
-//   width: 100vw;
-//   height: 100vh;
-//   margin: 0;
-// `;
+  @media only screen and (min-width: 1024px) {
+    display: block;
+
+    width: 35%;
+  }
+`;

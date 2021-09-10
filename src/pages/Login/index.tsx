@@ -1,20 +1,33 @@
-import * as yup from "yup";
+import {
+  Background,
+  Container,
+  Header,
+  Content,
+  ContainerForm,
+  ContainerImage,
+} from "./styles";
+
+import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
+
+import logo from "../../assets/logo.jpeg";
+
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+
+import { useAuth } from "../../providers/Auth";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAuth } from "../../providers/Auth";
-import Input from "../../components/Input";
-import { AiOutlineMail, AiFillLock } from "react-icons/ai";
-import Button from "../../components/Button";
+import * as yup from "yup";
+
 import { Link } from "react-router-dom";
-import { Form, Header, Article, SVG, Retangle } from "./styles";
-import logo from "../../assets/logo.jpeg";
 import { Player } from "@lottiefiles/react-lottie-player";
 
 const Login = () => {
   const { loginUser } = useAuth();
 
   const formSchema = yup.object().shape({
-    email: yup.string().required("Campo obrigatório").email("email inválido"),
+    email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
     password: yup.string().required("Campo obrigatório"),
   });
 
@@ -28,50 +41,55 @@ const Login = () => {
     <>
       <Header>
         <Link to="/">
-          <img src={logo} alt="" />
+          <img src={logo} alt="image_logo" />
         </Link>
       </Header>
-      <main>
-        <Article>
-          <section>
-            <Form onSubmit={handleSubmit(loginUser)}>
+      <Container>
+        <Background />
+        <Content>
+          <ContainerForm>
+            <form onSubmit={handleSubmit(loginUser)}>
               <h1>Entrar</h1>
-              <Input
-                error={errors.email?.message}
-                label={"E-mail"}
-                name={"email"}
-                register={register}
-                icon={AiOutlineMail}
-              />
-              <Input
-                error={errors.password?.message}
-                label={"Senha"}
-                name={"password"}
-                register={register}
-                icon={AiFillLock}
-              />
-              <Button type="submit" variantGreen>
-                Enviar
-              </Button>
-              <span>
-                Não tem conta? Registre-se <Link to="/register">aqui</Link>
-              </span>
-            </Form>
-          </section>
-          <SVG>
+              <ul>
+                <li>
+                  <Input
+                    label="E-mail"
+                    name="email"
+                    icon={AiOutlineMail}
+                    register={register}
+                    error={errors.email?.message}
+                  />
+                </li>
+                <li>
+                  <Input
+                    label="Senha"
+                    name="password"
+                    icon={AiOutlineLock}
+                    type="password"
+                    register={register}
+                    error={errors.password?.message}
+                  />
+                </li>
+                <li>
+                  <Button variantGreen type="submit">
+                    Enviar
+                  </Button>
+                  <span>
+                    Não tem conta? Registre-se <Link to="/register">Aqui</Link>
+                  </span>
+                </li>
+              </ul>
+            </form>
+          </ContainerForm>
+          <ContainerImage>
             <Player
-              src="https://assets9.lottiefiles.com/packages/lf20_aim1cylt.json"
-              style={{
-                height: "400px",
-                width: "400px ",
-              }}
               autoplay
               loop
+              src="https://assets9.lottiefiles.com/packages/lf20_aim1cylt.json"
             />
-          </SVG>
-          {/* <Retangle></Retangle> */}
-        </Article>
-      </main>
+          </ContainerImage>
+        </Content>
+      </Container>
     </>
   );
 };
