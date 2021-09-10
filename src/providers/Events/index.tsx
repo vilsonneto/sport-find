@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { IProvidersProps, IEvents } from "../../types/IProviders";
 import api from "../../services/api";
 import { useAuth } from "../Auth";
-import { GroupsContext } from "../Groups";
+import { useGroups } from "../Groups";
 
 interface IEventData {
   name: string;
@@ -37,7 +37,7 @@ const EventsContext = createContext<IEventsProviderData>(
 
 export const EventsProvider = ({ children }: IProvidersProps) => {
   const [allEvents, setAllEvents] = useState<IEvents[]>([]);
-  const { allGroups, setAllGroups } = useContext(GroupsContext);
+  const { allGroups, setAllGroups } = useGroups();
   const { token, user } = useAuth();
 
   const createEvent = (eventData: IEventData) => {
