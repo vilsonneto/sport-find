@@ -16,7 +16,6 @@ const CategoryItem = ({ filterCategory }: ICategoryProps) => {
     { image: futebol, text: "Futebol" },
   ];
 
-  // Adicionar o onclick na div para criar o filtro da categoria.
   return (
     <Carousel>
       {categoryArr.map((item, index) => (

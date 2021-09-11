@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Conteiner = styled.div`
   width: 70%;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 16px auto;
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
   }
@@ -11,10 +11,15 @@ export const Conteiner = styled.div`
 
 export const ItemsConteiner = styled.div`
   display: flex;
+
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-start;
+  }
 
   // a classe item deve estar dentro da div que será passada como children.
   .item {
@@ -44,6 +49,11 @@ export const ItemsConteiner = styled.div`
       pointer-events: fill;
 
       @media (min-width: 1024px) {
+        width: 60px;
+        height: 60px;
+      }
+
+      @media (min-width: 1440px) {
         width: 70px;
         height: 70px;
       }
