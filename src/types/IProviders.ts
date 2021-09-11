@@ -32,7 +32,17 @@ export interface IMembers {
   id: number;
 }
 
-export interface IEvents {}
+export interface IEvents {
+  name: string;
+  group_Id: number;
+  local: string;
+  data: string;
+  categoria: string;
+  description: string;
+  users: number[];
+  creator: number;
+  id: number;
+}
 
 export interface IBanneds {
   id: number;

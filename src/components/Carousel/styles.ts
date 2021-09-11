@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Conteiner = styled.div`
   width: 100vw;
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+  }
 `;
 
 export const ItemsConteiner = styled.div`

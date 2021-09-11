@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useMemo } from "react";
+import { useState, useEffect, createContext, useMemo, useContext } from "react";
 import api from "../../services/api";
 import { useAuth } from "../Auth";
 
@@ -22,7 +22,7 @@ interface IGroupsProviderData {
   subscribedGroups: IGroup[];
 }
 
-export const GroupsContext = createContext<IGroupsProviderData>(
+const GroupsContext = createContext<IGroupsProviderData>(
   {} as IGroupsProviderData
 );
 
@@ -208,3 +208,5 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
     </GroupsContext.Provider>
   );
 };
+
+export const useGroups = () => useContext(GroupsContext);

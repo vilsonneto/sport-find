@@ -11,23 +11,22 @@ const NotFound = () => {
   const handleClick = () => {
     !!token ? history.push("/dashboard") : history.push("/");
   };
+
   return (
     <Container>
       <header>
         <H1>Página não encontrada</H1>
       </header>
       <main>
-        <section>
-          <Player
-            src="https://assets7.lottiefiles.com/private_files/lf30_bdec2jzh.json"
-            style={{
-              height: "80%",
-              width: "80%",
-            }}
-            autoplay
-            loop
-          ></Player>
-        </section>
+        <Player
+          src="https://assets7.lottiefiles.com/private_files/lf30_bdec2jzh.json"
+          style={{
+            height: "80%",
+            width: "80%",
+          }}
+          autoplay
+          loop
+        ></Player>
       </main>
 
       <footer>
@@ -36,4 +35,5 @@ const NotFound = () => {
     </Container>
   );
 };
+
 export default NotFound;

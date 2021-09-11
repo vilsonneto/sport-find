@@ -7,6 +7,8 @@ import {
   IDecode,
   IProvidersProps,
   IUser,
+  IEvents,
+  IGroup,
   ILoginData,
   IRegisterData,
 } from "../../types/IProviders";
@@ -18,6 +20,11 @@ interface IAuthProviderData {
   registerUser: (userData: IRegisterData, history: History) => void;
   logoutUser: () => void;
   getUser: () => void;
+  addUserListGroup: (group: IGroup) => void;
+  removeUserListGroup: (group: IGroup) => void;
+  addUserListEvent: (event: IEvents) => void;
+  removeUserListEvent: (event: IEvents) => void;
+  editUser: (username: string, state: string) => void;
 }
 
 const AuthContext = createContext<IAuthProviderData>({} as IAuthProviderData);
@@ -124,6 +131,83 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
     //   }
   };
 
+  const addUserListGroup = (group: IGroup) => {
+    const newListSubscribeGroups = [...user.subscribed_groups, group];
+
+    api
+      .patch(
+        `/user/${user.id}`,
+        { subscribed_groups: newListSubscribeGroups },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => setUser(response.data))
+      .catch((err) => console.log(err));
+  };
+
+  const removeUserListGroup = (group: IGroup) => {
+    const newListSubscribeGroups = user.subscribed_groups.filter(
+      (item: IGroup) => item.id !== group.id
+    );
+
+    api
+      .patch(
+        `/user/${user.id}`,
+        { subscribed_groups: newListSubscribeGroups },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => setUser(response.data))
+      .catch((err) => console.log(err));
+  };
+
+  const addUserListEvent = (event: IEvents) => {
+    const newListSubscribeEvents = [...user.subscribed_events, event];
+
+    api
+      .patch(
+        `/user/${user.id}`,
+        { subscribed_events: newListSubscribeEvents },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => setUser(response.data))
+      .catch((err) => console.log(err));
+  };
+
+  const removeUserListEvent = (event: IEvents) => {
+    const newListSubscribeEvents = user.subscribed_events.filter(
+      (item: IEvents) => item.id !== event.id
+    );
+
+    api
+      .patch(
+        `/user/${user.id}`,
+        { subscribed_events: newListSubscribeEvents },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => setUser(response.data))
+      .catch((err) => console.log(err));
+  };
+
+  const editUser = (username: string, state: string) => {
+    api
+      .patch(
+        `/user/${user.id}`,
+        { username: username, state: state },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => setUser(response.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -133,6 +217,11 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         logoutUser,
         registerUser,
         loginUser,
+        addUserListGroup,
+        removeUserListGroup,
+        addUserListEvent,
+        removeUserListEvent,
+        editUser,
       }}
     >
       {children}
