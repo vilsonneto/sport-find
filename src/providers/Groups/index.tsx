@@ -27,7 +27,7 @@ const GroupsContext = createContext<IGroupsProviderData>(
 );
 
 export const GroupsProvider = ({ children }: IProvidersProps) => {
-  const { token, user } = useAuth();
+  const { token, user, addUserListGroup, removeUserListGroup } = useAuth();
   const [allGroups, setAllGroups] = useState<IGroup[]>([]);
 
   const createGroup = (username: string, groupData: IGroupData) => {
@@ -45,6 +45,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       })
       .then((response) => {
         setAllGroups([...allGroups, response.data]);
+        addUserListGroup(response.data);
       })
       .catch((err) => console.log(err));
   };
@@ -70,6 +71,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       .then((response) => {
         console.log(response);
         setAllGroups(newGroupList);
+        addUserListGroup(group);
       })
       .catch((err) => console.log(err));
   };
@@ -97,6 +99,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       .then((response) => {
         console.log(response);
         setAllGroups(newGroupList);
+        removeUserListGroup(group);
       })
       .catch((err) => console.log(err));
   };
