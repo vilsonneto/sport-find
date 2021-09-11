@@ -4,11 +4,11 @@ import futebol from "../../assets/category/futebol.jpg";
 import volei from "../../assets/category/volei.jpg";
 import Carousel from "../Carousel";
 
-interface ICategoryprop {
+interface ICategoryProps {
   filterCategory: (category: string) => void;
 }
 
-const CategoryItem = ({ filterCategory }: ICategoryprop) => {
+const CategoryItem = ({ filterCategory }: ICategoryProps) => {
   const categoryArr = [
     { image: ciclismo, text: "Ciclismo" },
     { image: volei, text: "Vôlei" },
