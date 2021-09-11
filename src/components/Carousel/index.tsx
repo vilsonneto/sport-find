@@ -5,11 +5,14 @@ interface ICarouselProp {
   children: ReactNode;
 }
 
-function eventScroll(event: any) {
+function eventScroll(event: React.WheelEvent<HTMLDivElement>) {
+  // conversão explicita de EventTarget para HTMLDivElement para acessar o scrollBy
+  let target = event.target as HTMLDivElement;
+
   if (event.deltaY > 0) {
-    event.target.scrollBy(300, 0);
+    target.scrollBy(300, 0);
   } else {
-    event.target.scrollBy(-300, 0);
+    target.scrollBy(-300, 0);
   }
 }
 
@@ -17,7 +20,9 @@ const Carousel = ({ children }: ICarouselProp) => {
   return (
     <>
       <Conteiner>
-        <ItemsConteiner onWheel={(e) => eventScroll(e)}>
+        <ItemsConteiner
+          onWheel={(e: React.WheelEvent<HTMLDivElement>) => eventScroll(e)}
+        >
           {children}
         </ItemsConteiner>
       </Conteiner>
