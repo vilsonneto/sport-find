@@ -1,5 +1,12 @@
 import { Player } from "@lottiefiles/react-lottie-player";
-import { Article, Header, SVG } from "../Register/styles";
+import {
+  Background,
+  Container,
+  Header,
+  Content,
+  ContainerForm,
+  ContainerImage,
+} from "../Register/styles";
 import logo from "../../assets/logo.jpeg";
 import { useAuth } from "../../providers/Auth";
 import Input from "../../components/Input";
@@ -57,65 +64,84 @@ const Register = () => {
     <>
       <Header>
         <Link to="/">
-          <img src={logo} alt="" />
+          <img src={logo} alt="image_logo" />
         </Link>
       </Header>
-      <Article>
-        <SVG>
-          <Player
-            src="https://assets2.lottiefiles.com/packages/lf20_dqzlxqtl.json"
-            style={{ width: "400px", height: "400px" }}
-            loop
-            autoplay
-          ></Player>
-        </SVG>
-        <form onSubmit={handleSubmit(handleForm)}>
-          <h1>Cadastro</h1>
-          <Input
-            error={errors.username?.message}
-            name="username"
-            label="Nome"
-            icon={IoMdPerson}
-            register={register}
-          />
-          <Input
-            error={errors.email?.message}
-            name="email"
-            label="E-mail"
-            icon={AiOutlineMail}
-            register={register}
-          />
-          <Input
-            error={errors.password?.message}
-            name="password"
-            label="Senha"
-            type="password"
-            icon={AiFillLock}
-            register={register}
-          />
-          <Input
-            error={errors.verifyPassword?.message}
-            name="verifyPassword"
-            label="Senha"
-            type="password"
-            icon={AiFillLock}
-            register={register}
-          />
-          <Input
-            error={errors.state?.message}
-            name="state"
-            label="Estado"
-            icon={AiFillFlag}
-            register={register}
-          />
-          <Button type="submit" variantGreen={variantGreen}>
-            Enviar
-          </Button>
-          <span>
-            Já tem conta? Faça login <Link to="/login"> Aqui </Link>
-          </span>
-        </form>
-      </Article>
+      <Container>
+        <Background />
+        <Content>
+          <ContainerImage>
+            <Player
+              src="https://assets2.lottiefiles.com/packages/lf20_dqzlxqtl.json"
+              style={{ width: "400px", height: "400px" }}
+              loop
+              autoplay
+            ></Player>
+          </ContainerImage>
+          <ContainerForm>
+            <form onSubmit={handleSubmit(handleForm)}>
+              <h1>Cadastro</h1>
+              <ul>
+                <li>
+                  <Input
+                    error={errors.username?.message}
+                    name="username"
+                    label="Nome"
+                    icon={IoMdPerson}
+                    register={register}
+                  />
+                </li>
+                <li>
+                  <Input
+                    error={errors.email?.message}
+                    name="email"
+                    label="E-mail"
+                    icon={AiOutlineMail}
+                    register={register}
+                  />
+                </li>
+                <li>
+                  <Input
+                    error={errors.password?.message}
+                    name="password"
+                    label="Senha"
+                    type="password"
+                    icon={AiFillLock}
+                    register={register}
+                  />
+                </li>
+                <li>
+                  <Input
+                    error={errors.verifyPassword?.message}
+                    name="verifyPassword"
+                    label="Senha"
+                    type="password"
+                    icon={AiFillLock}
+                    register={register}
+                  />
+                </li>
+                <li>
+                  <Input
+                    error={errors.state?.message}
+                    name="state"
+                    label="Estado"
+                    icon={AiFillFlag}
+                    register={register}
+                  />
+                </li>
+                <li>
+                  <Button type="submit" variantGreen={variantGreen}>
+                    Enviar
+                  </Button>
+                  <span>
+                    Já tem conta? Faça login <Link to="/login"> Aqui </Link>
+                  </span>
+                </li>
+              </ul>
+            </form>
+          </ContainerForm>
+        </Content>
+      </Container>
     </>
   );
 };
