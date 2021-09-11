@@ -35,5 +35,13 @@ export const Container = styled.div`
   }
 
   @media (min-width: 768px) {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+
+  @media (min-width: 1260px) {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 24px;
   }
 `;

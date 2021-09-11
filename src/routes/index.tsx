@@ -4,7 +4,6 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Groups from "../pages/Groups";
 import Group from "../pages/Group";
-//import Test from "../testeslocais/testando";
 
 const Routes = () => {
   return (
