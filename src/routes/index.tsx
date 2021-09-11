@@ -1,18 +1,27 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
-
+import Route from "./routes";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/" exact>
+      <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/login">
+      <Route exact path="/login">
         <Login />
       </Route>
-      <Route path="/notfound">
+      <Route exact path="/notfound">
+        <NotFound />
+      </Route>
+      <Route exact path="/register">
+        {}
+      </Route>
+      <Route exact path="/dashboard" isPrivate>
+        {}
+      </Route>
+      <Route exact path="*">
         <NotFound />
       </Route>
     </Switch>
