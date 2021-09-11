@@ -19,8 +19,12 @@ const CategoryItem = ({ filterCategory }: ICategoryProps) => {
   // Adicionar o onclick na div para criar o filtro da categoria.
   return (
     <Carousel>
-      {categoryArr.map((item) => (
-        <div className="item" onClick={() => filterCategory(item.text)}>
+      {categoryArr.map((item, index) => (
+        <div
+          key={index}
+          className="item"
+          onClick={() => filterCategory(item.text)}
+        >
           <img src={item.image} alt="imagem" />
           <p>{item.text} </p>
         </div>

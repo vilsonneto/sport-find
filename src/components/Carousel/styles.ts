@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Conteiner = styled.div`
-  width: 100vw;
+  width: 70%;
+  max-width: 1280px;
+  margin: 0 auto;
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
   }
@@ -35,19 +37,15 @@ export const ItemsConteiner = styled.div`
     }
 
     img {
-      width: 75%;
-      height: 74%;
-      border-radius: 100%;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
       object-fit: cover;
       pointer-events: fill;
 
-      @media (min-width: 768px) {
-        width: 38%;
-        height: 75%;
-      }
-
-      @media (min-width: 1440px) {
-        width: 30%;
+      @media (min-width: 1024px) {
+        width: 70px;
+        height: 70px;
       }
     }
     p {
