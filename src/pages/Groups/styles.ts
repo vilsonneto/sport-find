@@ -1,5 +1,37 @@
 import styled from "styled-components";
 
+export const Container = styled.section`
+  .cabecalho {
+    margin: 16px auto;
+    width: 90%;
+    max-width: 1280px;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      margin: 32px auto;
+
+      h1 {
+        display: block;
+        font-family: Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        margin-left: 30px;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      h1 {
+        margin-left: 120px;
+      }
+    }
+  }
+`;
+
 export const GroupsContainer = styled.div`
   margin: 0 auto;
   margin-top: 16px;

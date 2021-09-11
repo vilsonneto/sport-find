@@ -1,15 +1,24 @@
 import styled from "styled-components";
 
-export const Conteiner = styled.div`
+export const Container = styled.div`
   width: 70%;
   max-width: 1280px;
-  margin: 16px auto;
+  margin: 24px auto;
+
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
   }
+
+  @media (min-width: 1024px) {
+    margin: 40px auto;
+  }
+
+  @media (min-width: 1440px) {
+    margin: 60px auto;
+  }
 `;
 
-export const ItemsConteiner = styled.div`
+export const ItemsContainer = styled.div`
   display: flex;
 
   overflow-x: auto;

@@ -44,4 +44,19 @@ export const Container = styled.div`
     margin-left: 20px;
     margin-bottom: 24px;
   }
+
+  @media (min-width: 2560px) {
+    width: 380px;
+    height: 200px;
+
+    div {
+      h2 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 30px;
+      }
+    }
+  }
 `;

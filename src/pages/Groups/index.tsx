@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import GroupCard from "../../components/GroupCard";
-import { GroupsContainer } from "./styles";
+import { Container, GroupsContainer } from "./styles";
 import ArrowLeft from "../../components/ArrowLeft";
 
 import { grupos } from "../../testeslocais/mocks";
@@ -12,16 +12,19 @@ const Groups = () => {
   };
 
   return (
-    <section>
+    <Container>
       <Header />
-      <ArrowLeft />
+      <div className="cabecalho">
+        <ArrowLeft />
+        <h1>Grupos</h1>
+      </div>
       <CategoryItem filterCategory={categoryFilter} />
       <GroupsContainer>
         {grupos.map((group, index) => (
           <GroupCard key={index} group={group} />
         ))}
       </GroupsContainer>
-    </section>
+    </Container>
   );
 };
 export default Groups;
