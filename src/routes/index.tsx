@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import Groups from "../pages/Groups";
 import Group from "../pages/Group";
 import Events from "../pages/Events";
+import Event from "../pages/Event";
 
 const Routes = () => {
   return (
@@ -22,7 +23,7 @@ const Routes = () => {
         <Events />
       </Route>
       <Route path="/events/:id">
-        <Groups />
+        <Event />
       </Route>
       <Route path="/login">
         <Login />
