@@ -10,11 +10,11 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1024px) {
-    margin: 40px auto;
+    margin: 32px auto;
   }
 
   @media (min-width: 1440px) {
-    margin: 60px auto;
+    margin: 40px auto;
   }
 `;
 
@@ -28,6 +28,8 @@ export const ItemsContainer = styled.div`
 
   @media (min-width: 1024px) {
     justify-content: flex-start;
+    height: 120px;
+    //align-items: center;
   }
 
   // a classe item deve estar dentro da div que será passada como children.

@@ -5,10 +5,20 @@ import ArrowLeft from "../../components/ArrowLeft";
 
 import { grupos } from "../../testeslocais/mocks";
 import CategoryItem from "../../components/CategoryItem";
+import { useState } from "react";
 
 const Groups = () => {
-  const categoryFilter = (x: string) => {
-    console.log(x);
+  const [groupList, setGroupList] = useState(grupos);
+
+  const categoryFilter = (chosenCategory: string) => {
+    if (chosenCategory === "AllGroups") {
+      setGroupList(grupos);
+    } else {
+      let filteredGroups = grupos.filter(
+        (group) => group.category === chosenCategory
+      );
+      setGroupList(filteredGroups);
+    }
   };
 
   return (
@@ -16,11 +26,11 @@ const Groups = () => {
       <Header />
       <div className="cabecalho">
         <ArrowLeft />
-        <h1>Grupos</h1>
+        <h1 onClick={() => categoryFilter("AllGroups")}>Grupos</h1>
       </div>
       <CategoryItem filterCategory={categoryFilter} />
       <GroupsContainer>
-        {grupos.map((group, index) => (
+        {groupList.map((group, index) => (
           <GroupCard key={index} group={group} />
         ))}
       </GroupsContainer>

@@ -11,7 +11,6 @@ const GroupCard = ({ group }: IGroupProp) => {
 
   const handleClick = () => {
     history.push(`/groups/${group.id}`);
-    //console.log("clicou no card");
   };
 
   return (
