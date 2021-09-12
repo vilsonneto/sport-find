@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Groups from "../pages/Groups";
 import Group from "../pages/Group";
+import Events from "../pages/Events";
 
 const Routes = () => {
   return (
@@ -17,10 +18,16 @@ const Routes = () => {
       <Route path="/groups/:id">
         <Group />
       </Route>
+      <Route path="/events" exact>
+        <Events />
+      </Route>
+      <Route path="/events/:id">
+        <Groups />
+      </Route>
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/notfound">
+      <Route path="*">
         <NotFound />
       </Route>
     </Switch>
