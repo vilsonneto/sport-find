@@ -1,32 +1,16 @@
 import styled from "styled-components";
 
-export const ContainerNav = styled.nav`
+export const Header = styled.header`
   padding-top: 25px;
 
-  div {
+  text-align: center;
+
+  a {
     width: 100%;
 
-    text-align: center;
-
-    h1 {
-      font-size: 2rem;
+    img {
+      width: 100px;
     }
-
-    ul {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-
-      li {
-        a {
-          color: var(--black);
-        }
-      }
-    }
-  }
-
-  div + div {
-    margin-top: 20px;
   }
 
   @media only screen and (min-width: 1024px) {
@@ -35,27 +19,44 @@ export const ContainerNav = styled.nav`
     margin: 0 auto;
     padding: 25px 50px 0;
 
+    text-align: left;
+
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
 
-    div {
-      text-align: left;
+export const ContainerNav = styled.nav`
+  margin-top: 10px;
 
-      ul {
-        justify-content: flex-end;
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
-        li + li {
-          margin-left: 30%;
-        }
+    li {
+      a {
+        color: var(--black);
       }
     }
+  }
 
-    div + div {
-      margin: 0;
+  @media only screen and (min-width: 1024px) {
+    margin-top: 0;
+    width: 100%;
+
+    ul {
+      justify-content: flex-end;
+
+      li + li {
+        margin-left: 30%;
+      }
     }
   }
 `;
 
-export const ContainerAbout = styled.section`
+export const ContainerAbout = styled.article`
   margin-top: 20px;
 
   display: flex;
@@ -74,7 +75,7 @@ export const ContainerAbout = styled.section`
   }
 `;
 
-export const Typography = styled.div`
+export const Typography = styled.section`
   width: 70%;
 
   margin-top: 20px;
@@ -102,7 +103,7 @@ export const Typography = styled.div`
   }
 `;
 
-export const Image = styled.div`
+export const Image = styled.section`
   width: 70%;
 
   @media only screen and (min-width: 768px) {
@@ -111,7 +112,7 @@ export const Image = styled.div`
   }
 `;
 
-export const ContainerFeatures = styled.section`
+export const ContainerFeatures = styled.article`
   margin-top: 50px;
   padding: 20px 0;
 
@@ -127,7 +128,7 @@ export const ContainerFeatures = styled.section`
     font-size: 1.8rem;
   }
 
-  div {
+  section {
     div + div {
       margin-top: 20px;
     }
@@ -141,7 +142,7 @@ export const ContainerFeatures = styled.section`
       margin-bottom: 50px;
     }
 
-    > div {
+    > section {
       display: flex;
 
       div:nth-child(2) {
@@ -231,7 +232,7 @@ export const ContainerFooter = styled.footer`
         width: 70%;
       }
 
-      div {
+      nav {
         display: flex;
         flex-direction: column;
 
