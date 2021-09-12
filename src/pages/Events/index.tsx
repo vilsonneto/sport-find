@@ -11,7 +11,7 @@ const Events = () => {
   const [eventList, setEventList] = useState(eventos);
 
   const categoryFilter = (chosenCategory: string) => {
-    if (chosenCategory === "AllEvents") {
+    if (chosenCategory === "Todos") {
       setEventList(eventos);
     } else {
       let filteredEvents = eventos.filter(
@@ -26,12 +26,12 @@ const Events = () => {
       <Header />
       <div className="cabecalho">
         <ArrowLeft />
-        <h1 onClick={() => categoryFilter("AllEvents")}>Eventos</h1>
+        <h1>Eventos</h1>
       </div>
       <CategoryItem filterCategory={categoryFilter} />
       <EventsContainer>
-        {eventList.map((event) => (
-          <CardEvent event={event} />
+        {eventList.map((event, index) => (
+          <CardEvent key={index} event={event} />
         ))}
       </EventsContainer>
     </Container>
