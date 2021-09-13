@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         //     progress: undefined,
         //   }
         getUser();
-        // history.push("/dashboard");
+        history.push("/dashboard");
       })
       .catch((err) => {
         toast.error("Algo deu errado!");
