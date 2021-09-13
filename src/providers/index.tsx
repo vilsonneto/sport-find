@@ -1,4 +1,5 @@
 import { IProvidersProps } from "../types/IProviders";
+
 import { GroupsProvider } from "./Groups";
 import { AuthProvider } from "./Auth";
 import { EventsProvider } from "./Events";

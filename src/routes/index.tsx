@@ -15,6 +15,12 @@ const Routes = () => {
       <Route path="/" exact>
         <Home />
       </Route>
+      <Route path="/register">
+        <Register />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
       <Route path="/groups" exact>
         <Groups />
       </Route>
@@ -27,14 +33,8 @@ const Routes = () => {
       <Route path="/events/:id">
         <Event />
       </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
       <Route path="/aboutus">
         <AboutUs />
-      </Route>
-      <Route path="/register">
-        <Register />
       </Route>
       <Route>
         <NotFound />

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-interface IInputStyledProps {
+interface IInputSelectStyledProps {
   isErrored: boolean;
 }
 
@@ -16,7 +16,7 @@ export const Container = styled.div`
   }
 `;
 
-export const InputContainer = styled.div<IInputStyledProps>`
+export const InputContainer = styled.div<IInputSelectStyledProps>`
   width: 100%;
   padding: 10px;
 
@@ -31,7 +31,7 @@ export const InputContainer = styled.div<IInputStyledProps>`
     margin-right: 10px;
   }
 
-  input {
+  select {
     background: transparent;
     border: none;
 
