@@ -9,6 +9,7 @@ interface IInputProps {
   error?: string;
   type?: string;
   placeholder?: string;
+  defaultValue?: string;
 }
 
 const Input = ({
@@ -19,6 +20,7 @@ const Input = ({
   error,
   type,
   placeholder,
+  defaultValue,
 }: IInputProps) => {
   return (
     <Container>
@@ -27,7 +29,12 @@ const Input = ({
       </div>
       <InputContainer isErrored={!!error}>
         {Icon && <Icon size={20} />}
-        <input type={type} placeholder={placeholder} {...register(name)} />
+        <input
+          type={type}
+          placeholder={placeholder}
+          {...register(name)}
+          defaultValue={defaultValue}
+        />
       </InputContainer>
     </Container>
   );
