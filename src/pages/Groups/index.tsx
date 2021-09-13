@@ -22,19 +22,21 @@ const Groups = () => {
   };
 
   return (
-    <Container>
+    <>
       <Header />
-      <div className="cabecalho">
-        <ArrowLeft />
-        <h1 onClick={() => categoryFilter("AllGroups")}>Grupos</h1>
-      </div>
-      <CategoryItem filterCategory={categoryFilter} />
-      <GroupsContainer>
-        {groupList.map((group, index) => (
-          <GroupCard key={index} group={group} />
-        ))}
-      </GroupsContainer>
-    </Container>
+      <Container>
+        <div className="cabecalho">
+          <ArrowLeft />
+          <h1 onClick={() => categoryFilter("AllGroups")}>Grupos</h1>
+        </div>
+        <CategoryItem filterCategory={categoryFilter} />
+        <GroupsContainer>
+          {groupList.map((group, index) => (
+            <GroupCard key={index} group={group} />
+          ))}
+        </GroupsContainer>
+      </Container>
+    </>
   );
 };
 export default Groups;
