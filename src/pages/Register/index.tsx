@@ -28,7 +28,6 @@ interface IRegisterUserData {
 
 const Register = () => {
   const { registerUser } = useAuth();
-  const variantGreen = true;
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -135,7 +134,7 @@ const Register = () => {
                   />
                 </li>
                 <li>
-                  <Button type="submit" variantGreen={variantGreen}>
+                  <Button type="submit" variantGreen>
                     Enviar
                   </Button>
                   <span>
