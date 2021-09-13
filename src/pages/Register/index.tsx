@@ -18,7 +18,7 @@ import { IoMdPerson } from "react-icons/io";
 import { AiOutlineMail, AiFillLock, AiFillFlag } from "react-icons/ai";
 import { Link, useHistory } from "react-router-dom";
 
-interface UserDataForm {
+interface IRegisterUserData {
   username: string;
   email: string;
   password: string;
@@ -31,7 +31,7 @@ const Register = () => {
   const variantGreen = true;
   const history = useHistory();
 
-  const schema = yup.object().shape({
+  const formSchema = yup.object().shape({
     username: yup.string().required("Campo obrigatório"),
     email: yup.string().required("Campo obrigatório").email("Email inválido"),
     password: yup
@@ -53,9 +53,14 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserDataForm>({ resolver: yupResolver(schema) });
+  } = useForm<IRegisterUserData>({ resolver: yupResolver(formSchema) });
 
-  const handleForm = ({ username, email, password, state }: UserDataForm) => {
+  const handleForm = ({
+    username,
+    email,
+    password,
+    state,
+  }: IRegisterUserData) => {
     const data = { username, email, password, state };
     registerUser(data, history);
   };
