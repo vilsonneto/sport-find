@@ -1,12 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+interface IInputSelectStyledProps {
+  isErrored: boolean;
+}
 
 export const Container = styled.div`
   width: 100%;
 
   text-align: left;
+
+  div {
+    span {
+      color: var(--red);
+    }
+  }
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<IInputSelectStyledProps>`
   width: 100%;
   padding: 10px;
 
@@ -28,4 +38,14 @@ export const InputContainer = styled.div`
     align-items: center;
     flex: 1;
   }
+
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border: 2px solid var(--red);
+
+      svg {
+        color: var(--red);
+      }
+    `}
 `;
