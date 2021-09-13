@@ -25,6 +25,7 @@ export const Header = styled.header`
   position: absolute;
   top: 25px;
   left: 50%;
+  z-index: 1;
 
   transform: translateX(-50%);
 
