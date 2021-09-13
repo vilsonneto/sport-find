@@ -22,19 +22,21 @@ const Events = () => {
   };
 
   return (
-    <Container>
+    <>
       <Header />
-      <div className="cabecalho">
-        <ArrowLeft />
-        <h1>Eventos</h1>
-      </div>
-      <CategoryItem filterCategory={categoryFilter} />
-      <EventsContainer>
-        {eventList.map((event, index) => (
-          <CardEvent key={index} event={event} />
-        ))}
-      </EventsContainer>
-    </Container>
+      <Container>
+        <div className="cabecalho">
+          <ArrowLeft />
+          <h1>Eventos</h1>
+        </div>
+        <CategoryItem filterCategory={categoryFilter} />
+        <EventsContainer>
+          {eventList.map((event, index) => (
+            <CardEvent key={index} event={event} />
+          ))}
+        </EventsContainer>
+      </Container>
+    </>
   );
 };
 export default Events;

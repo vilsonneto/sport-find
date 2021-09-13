@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const Container = styled.main`
   .cabecalho {
     margin: 16px auto;
     width: 90%;
@@ -32,7 +32,7 @@ export const Container = styled.section`
   }
 `;
 
-export const EventsContainer = styled.div`
+export const EventsContainer = styled.article`
   margin: 0 auto;
   margin-top: 16px;
   display: flex;
