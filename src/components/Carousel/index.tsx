@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Conteiner, ItemsConteiner } from "./styles";
+import { Container, ItemsContainer } from "./styles";
 
 interface ICarouselProp {
   children: ReactNode;
@@ -18,15 +18,13 @@ function eventScroll(event: React.WheelEvent<HTMLDivElement>) {
 
 const Carousel = ({ children }: ICarouselProp) => {
   return (
-    <>
-      <Conteiner>
-        <ItemsConteiner
-          onWheel={(e: React.WheelEvent<HTMLDivElement>) => eventScroll(e)}
-        >
-          {children}
-        </ItemsConteiner>
-      </Conteiner>
-    </>
+    <Container>
+      <ItemsContainer
+        onWheel={(e: React.WheelEvent<HTMLDivElement>) => eventScroll(e)}
+      >
+        {children}
+      </ItemsContainer>
+    </Container>
   );
 };
 
