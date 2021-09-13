@@ -12,7 +12,7 @@ describe("Testando o component Input", () => {
         label="Teste"
         name="Teste"
         register={register}
-      ></Input>
+      />
     );
 
     expect(screen.getByText(/erro/)).toBeVisible();
