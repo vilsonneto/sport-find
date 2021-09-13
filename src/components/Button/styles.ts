@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface IButtonStyledProps {
   isVariantGreen: boolean;
@@ -8,14 +8,14 @@ interface IButtonStyledProps {
 export const Container = styled.button<IButtonStyledProps>`
   padding: 10px 20px;
 
-  color: #ffffff;
-  color: ${(props) => props.isVariantGreen && "#000000"};
-  color: ${(props) => props.isVariantRed && "#FFFFFF"};
+  color: var(--white);
+  color: ${(props) => props.isVariantGreen && css`var(--black)`};
+  color: ${(props) => props.isVariantRed && css`var(--white)`};
   font-size: 1rem;
 
-  background-color: #000000;
-  background-color: ${(props) => props.isVariantGreen && "#0DFFE6"};
-  background-color: ${(props) => props.isVariantRed && "#FF0000"};
+  background-color: var(--black);
+  background-color: ${(props) => props.isVariantGreen && css`var(--blue-baby)`};
+  background-color: ${(props) => props.isVariantRed && css`var(--red)`};
   border: none;
   border-radius: 20px;
 `;
