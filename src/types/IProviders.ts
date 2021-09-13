@@ -37,7 +37,7 @@ export interface IEvents {
   group_Id: number;
   local: string;
   data: string;
-  categoria: string;
+  category: string;
   description: string;
   users: number[];
   creator: number;
@@ -57,4 +57,16 @@ export interface IGroup {
   groupEvents: IEvents[];
   members: IMembers[];
   banned: IBanneds[];
+}
+
+export interface ILoginData {
+  email: string;
+  password: string;
+}
+
+export interface IRegisterData {
+  username: string;
+  email: string;
+  password: string;
+  state: string;
 }

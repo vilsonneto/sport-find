@@ -14,17 +14,19 @@ import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
+import { useAuth } from "../../providers/Auth";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { useAuth } from "../../providers/Auth";
-
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { ILoginData } from "../../types/IProviders";
 
 const Login = () => {
   const { loginUser } = useAuth();
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
@@ -37,6 +39,10 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
+  const handleLogin = (data: ILoginData) => {
+    loginUser(data, history);
+  };
+
   return (
     <>
       <Header>
@@ -48,7 +54,7 @@ const Login = () => {
         <Background />
         <Content>
           <ContainerForm>
-            <form onSubmit={handleSubmit(loginUser)}>
+            <form onSubmit={handleSubmit(handleLogin)}>
               <h1>Entrar</h1>
               <ul>
                 <li>

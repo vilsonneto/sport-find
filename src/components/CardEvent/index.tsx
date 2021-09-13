@@ -28,7 +28,7 @@ export const CardEvent = ({ event }: ICardEventProps) => {
       </div>
       <div className="card-details">
         <div className="container-category">
-          <p>{event.categoria}</p>
+          <p>{event.category}</p>
         </div>
         <div className="container-progress">
           <p></p>
