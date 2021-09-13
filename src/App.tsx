@@ -40,7 +40,7 @@ const App = () => {
         pauseOnHover
       />
       <Routes />
-      <ModalEvent closeModal={setTeste} edit={testeEditar2} />
+      <ModalEvent closeModal={setTeste} create={testeCriar1} />
     </>
   );
 };

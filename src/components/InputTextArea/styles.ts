@@ -18,10 +18,9 @@ export const Container = styled.div`
 
 export const InputContainer = styled.div<IInputStyledProps>`
   width: 100%;
-  padding: 10px;
 
   background-color: var(--white);
-  border: 2px solid var(--black);
+
   border-radius: 5px;
   display: flex;
   margin-bottom: 15px;
@@ -31,9 +30,9 @@ export const InputContainer = styled.div<IInputStyledProps>`
     margin-right: 10px;
   }
 
-  input {
+  textarea {
     background: transparent;
-    border: none;
+    border: 2px solid var(--black);
 
     align-items: center;
     flex: 1;

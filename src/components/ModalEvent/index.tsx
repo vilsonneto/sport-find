@@ -1,11 +1,13 @@
 import { Modal } from "../Modal";
 import { useEvents } from "../../providers/Events";
+import { Form } from "./styles";
 import Input from "../Input";
 import Button from "../Button";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IEvents } from "../../types/IProviders";
+import InputTexteArea from "../InputTextArea";
 
 interface ICreateEvent {
   group_Id: number;
@@ -49,6 +51,7 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
       const eventCreate = { ...create, users: [], ...data };
       createEvent(eventCreate);
     } else if (edit) {
+      console.log(data);
       editEvent(edit, data);
     }
   };
@@ -62,52 +65,68 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
 
   return (
     <Modal closeModal={closeModal}>
-      <form onSubmit={handleSubmit(handleEvent)}>
+      <Form onSubmit={handleSubmit(handleEvent)}>
         {edit ? <h1>Editar Evento</h1> : <h1>Novo Evento</h1>}
-        <Input
-          error={errors.name?.message}
-          name="name"
-          label="Nome"
-          register={register}
-          defaultValue={edit?.name}
-        />
-        <Input
-          error={errors.local?.message}
-          name="local"
-          label="Local"
-          register={register}
-          defaultValue={edit?.local}
-        />
-        <Input
-          error={errors.data?.message}
-          name="data"
-          label="Data"
-          type="date"
-          register={register}
-          defaultValue={edit?.data}
-        />
-        <Input
-          error={errors.description?.message}
-          name="description"
-          label="Descrição"
-          register={register}
-          defaultValue={edit?.description}
-        />
-        {!edit ? (
-          <Button type="submit" variantGreen={variantGreen}>
-            Criar
-          </Button>
-        ) : (
-          <div>
-            <Button type="submit" variantGreen={variantGreen}>
-              Editar
-            </Button>
-            <Button onClick={handleDelet} variantRed={variantRed}>
-              Deletar
-            </Button>
-          </div>
-        )}
-      </form>
+        <ul>
+          <li>
+            <Input
+              error={errors.name?.message}
+              name="name"
+              label="Nome"
+              register={register}
+              defaultValue={edit?.name}
+            />
+          </li>
+          <li>
+            <Input
+              error={errors.local?.message}
+              name="local"
+              label="Local"
+              register={register}
+              defaultValue={edit?.local}
+            />
+          </li>
+          <li>
+            <Input
+              error={errors.data?.message}
+              name="data"
+              label="Data"
+              type="date"
+              register={register}
+              defaultValue={edit?.data}
+            />
+          </li>
+          <li className="textarea">
+            <InputTexteArea
+              error={errors.description?.message}
+              name="description"
+              label="Descrição"
+              cols={30}
+              rows={5}
+              register={register}
+              defaultValue={edit?.description}
+            />
+          </li>
+          <li>
+            {!edit ? (
+              <div className="buttom-create">
+                <Button type="submit" variantGreen={variantGreen}>
+                  Criar
+                </Button>
+              </div>
+            ) : (
+              <div className="button-edit">
+                <Button type="submit" variantGreen={variantGreen}>
+                  Editar
+                </Button>
+                <Button onClick={handleDelet} variantRed={variantRed}>
+                  Deletar
+                </Button>
+              </div>
+            )}
+          </li>
+        </ul>
+      </Form>
     </Modal>
   );
 };
