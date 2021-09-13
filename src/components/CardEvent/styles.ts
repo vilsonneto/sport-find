@@ -10,6 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   border-radius: 8px;
+  margin: 5px 15px;
 
   .card-header {
     display: flex;
@@ -57,6 +58,7 @@ export const Container = styled.div`
 
   @media (min-width: 1200px) {
     max-width: 500px;
+    margin: 20px;
 
     .card-header {
       .container-title {
