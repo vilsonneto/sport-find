@@ -17,7 +17,7 @@ export default createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
-    list-style-type:none;
+    list-style-type: none;
   }
 
   a {
