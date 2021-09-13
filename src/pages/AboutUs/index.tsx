@@ -1,4 +1,4 @@
-import Avatar, { genConfig } from "react-nice-avatar";
+//import Avatar, { genConfig } from "react-nice-avatar";
 import logogitlab1 from "../../assets/logo/logogitlab1.png";
 import logolinkedin1 from "../../assets/logo/logolinkedin1.png";
 import { AboutContainer } from "../AboutUs/styles";

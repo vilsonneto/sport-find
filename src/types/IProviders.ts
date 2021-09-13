@@ -37,7 +37,7 @@ export interface IEvents {
   group_Id: number;
   local: string;
   data: string;
-  categoria: string;
+  category: string;
   description: string;
   users: number[];
   creator: number;
