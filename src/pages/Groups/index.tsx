@@ -2,19 +2,19 @@ import Header from "../../components/Header";
 import GroupCard from "../../components/GroupCard";
 import { Container, GroupsContainer } from "./styles";
 import ArrowLeft from "../../components/ArrowLeft";
-
-import { grupos } from "../../testeslocais/mocks";
+import { useGroups } from "../../providers/Groups";
 import CategoryItem from "../../components/CategoryItem";
 import { useState } from "react";
 
 const Groups = () => {
-  const [groupList, setGroupList] = useState(grupos);
+  const { allGroups } = useGroups();
+  const [groupList, setGroupList] = useState(allGroups);
 
   const categoryFilter = (chosenCategory: string) => {
     if (chosenCategory === "AllGroups") {
-      setGroupList(grupos);
+      setGroupList(allGroups);
     } else {
-      let filteredGroups = grupos.filter(
+      let filteredGroups = allGroups.filter(
         (group) => group.category === chosenCategory
       );
       setGroupList(filteredGroups);
