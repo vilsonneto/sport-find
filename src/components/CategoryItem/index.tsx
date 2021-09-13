@@ -1,5 +1,5 @@
 import Carousel from "../Carousel";
-import { categoryArr } from "../CategoryArr";
+import { categoryArr } from "../../utils/CategoryArr";
 
 interface ICategoryProps {
   filterCategory: (category: string) => void;
