@@ -2,19 +2,24 @@ import Header from "../../components/Header";
 import { CardEvent } from "../../components/CardEvent";
 import { Container, EventsContainer } from "./styles";
 import ArrowLeft from "../../components/ArrowLeft";
-
-import { eventos } from "../../testeslocais/mocks";
+import { useEvents } from "../../providers/Events";
 import CategoryItem from "../../components/CategoryItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { IEvents } from "../../types/IProviders";
 
 const Events = () => {
-  const [eventList, setEventList] = useState(eventos);
+  const { allEvents } = useEvents();
+  const [eventList, setEventList] = useState<IEvents[]>([]);
+
+  useEffect(() => {
+    setEventList(allEvents);
+  }, [allEvents]);
 
   const categoryFilter = (chosenCategory: string) => {
     if (chosenCategory === "Todos") {
-      setEventList(eventos);
+      setEventList(allEvents);
     } else {
-      let filteredEvents = eventos.filter(
+      let filteredEvents = allEvents.filter(
         (event) => event.category === chosenCategory
       );
       setEventList(filteredEvents);

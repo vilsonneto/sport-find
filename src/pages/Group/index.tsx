@@ -14,7 +14,7 @@ const Group = () => {
 
   const group = useMemo(() => {
     return allGroups.find((item) => item.id === Number(params.id));
-  }, [params]);
+  }, [params, allGroups]);
 
   if (!group) {
     console.log("O grupo não foi encontrado");

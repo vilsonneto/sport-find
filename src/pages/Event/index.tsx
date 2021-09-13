@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useParams, useHistory } from "react-router-dom";
-//import { eventos } from "../../testeslocais/mocks";
 import { useEvents } from "../../providers/Events";
 
 interface IParams {
@@ -14,7 +13,7 @@ const Event = () => {
 
   const event = useMemo(() => {
     return allEvents.find((item) => item.id === Number(params.id));
-  }, [params]);
+  }, [params, allEvents]);
 
   if (!event) {
     console.log("O evento não foi encontrado");
