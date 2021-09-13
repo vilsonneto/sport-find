@@ -4,6 +4,8 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Groups from "../pages/Groups";
 import Group from "../pages/Group";
+import AboutUs from "../pages/AboutUs";
+import Register from "../pages/Register";
 
 const Routes = () => {
   return (
@@ -20,7 +22,13 @@ const Routes = () => {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/notfound">
+      <Route path="/aboutus">
+        <AboutUs />
+      </Route>
+      <Route path="/register">
+        <Register />
+      </Route>
+      <Route>
         <NotFound />
       </Route>
     </Switch>

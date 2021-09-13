@@ -1,17 +1,19 @@
 import { useMemo } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { grupos } from "../../testeslocais/mocks";
+//import { grupos } from "../../testeslocais/mocks";
+import { useGroups } from "../../providers/Groups";
 
 interface IParams {
   id: string;
 }
 
 const Group = () => {
+  const { allGroups } = useGroups();
   const params = useParams<IParams>();
   const history = useHistory();
 
   const group = useMemo(() => {
-    return grupos.find((item) => item.id === Number(params.id));
+    return allGroups.find((item) => item.id === Number(params.id));
   }, [params]);
 
   if (!group) {
@@ -20,7 +22,7 @@ const Group = () => {
   }
 
   return (
-    <div>
+    <section>
       <p>Página individual do grupo {Number(params.id)}</p>
       <div>
         <p>Id: {group?.id}</p>
@@ -39,7 +41,7 @@ const Group = () => {
       </div>
       <button onClick={() => console.log(params)}>clique</button>
       <button onClick={() => history.push("/groups")}>voltar</button>
-    </div>
+    </section>
   );
 };
 export default Group;

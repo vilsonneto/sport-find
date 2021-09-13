@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-  .cabecalho {
+  header {
     margin: 16px auto;
     width: 90%;
     max-width: 1280px;
