@@ -4,27 +4,23 @@ import { IconType } from "react-icons";
 
 import { UseFormRegister, FieldValues } from "react-hook-form";
 
-interface IInputProps {
+interface IInputSelectProps {
   label: string;
   icon?: IconType;
-  register: UseFormRegister<FieldValues>;
   name: string;
-  error?: string;
-  type?: string;
-  placeholder?: string;
-  defaultValue?: string;
+  options: string[];
+  register: UseFormRegister<FieldValues>;
+  error: string;
 }
 
-const Input = ({
+const InputSelect = ({
   label,
   icon: Icon,
-  register,
   name,
+  options,
+  register,
   error,
-  type,
-  placeholder,
-  defaultValue,
-}: IInputProps) => {
+}: IInputSelectProps) => {
   return (
     <Container>
       <div>
@@ -32,15 +28,17 @@ const Input = ({
       </div>
       <InputContainer isErrored={!!error}>
         {Icon && <Icon size={20} />}
-        <input
-          type={type}
-          placeholder={placeholder}
-          {...register(name)}
-          defaultValue={defaultValue}
-        />
+        <select {...register(name)}>
+          <option value="" />
+          {options.map((item, index) => (
+            <option key={index} value={item.toLowerCase()}>
+              {item}
+            </option>
+          ))}
+        </select>
       </InputContainer>
     </Container>
   );
 };
 
-export default Input;
+export default InputSelect;

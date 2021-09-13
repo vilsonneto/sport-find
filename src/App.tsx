@@ -1,6 +1,8 @@
 import GlobalStyle from "./styles/global";
+
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+
 import Routes from "./routes";
 import ModalEvent from "./components/ModalEvent";
 import { useState } from "react";

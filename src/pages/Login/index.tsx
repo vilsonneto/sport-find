@@ -7,9 +7,9 @@ import {
   ContainerImage,
 } from "./styles";
 
-import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
-
 import logo from "../../assets/logo.jpeg";
+
+import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
