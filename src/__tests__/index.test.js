@@ -5,6 +5,7 @@ import Input from "../components/Input";
 describe("Testando o component Input", () => {
   test("Testando input com erro", () => {
     const register = jest.fn();
+
     render(
       <Input
         error="erro"
