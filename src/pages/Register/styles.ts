@@ -9,14 +9,14 @@ export const Background = styled.div`
     width: 100vw;
     height: 300vh;
 
-    background-color: var(--blue);
+    background-color: var(--orange);
     box-shadow: 5px 0px 100px 25px rgba(0, 0, 0, 0.5);
 
     transform: rotate(-20deg);
 
     position: absolute;
     top: -100%;
-    left: 54%;
+    right: 54%;
     z-index: -1;
   }
 `;
@@ -25,6 +25,7 @@ export const Header = styled.header`
   position: absolute;
   top: 25px;
   left: 50%;
+
   z-index: 1;
 
   transform: translateX(-50%);
@@ -34,13 +35,13 @@ export const Header = styled.header`
   }
 
   @media only screen and (min-width: 1024px) {
-    max-width: 1280px;
-    width: 100%;
-
-    padding: 0 50px;
-
+    left: 90%;
     display: flex;
-    justify-self: flex-start;
+    justify-self: flex-end;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    max-width: 1280px;
   }
 `;
 
@@ -81,7 +82,7 @@ export const ContainerForm = styled.section`
     }
 
     ul {
-      li:nth-child(3) {
+      li:nth-child(6) {
         display: flex;
         flex-direction: column;
         align-items: center;

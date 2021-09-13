@@ -2,19 +2,23 @@ import Header from "../../components/Header";
 import GroupCard from "../../components/GroupCard";
 import { Container, GroupsContainer } from "./styles";
 import ArrowLeft from "../../components/ArrowLeft";
-
-import { grupos } from "../../testeslocais/mocks";
+import { useGroups } from "../../providers/Groups";
 import CategoryItem from "../../components/CategoryItem";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Groups = () => {
-  const [groupList, setGroupList] = useState(grupos);
+  const { allGroups } = useGroups();
+  const [groupList, setGroupList] = useState(allGroups);
+
+  useEffect(() => {
+    setGroupList(allGroups);
+  }, [allGroups]);
 
   const categoryFilter = (chosenCategory: string) => {
     if (chosenCategory === "Todos") {
-      setGroupList(grupos);
+      setGroupList(allGroups);
     } else {
-      let filteredGroups = grupos.filter(
+      let filteredGroups = allGroups.filter(
         (group) => group.category === chosenCategory
       );
       setGroupList(filteredGroups);
@@ -25,10 +29,10 @@ const Groups = () => {
     <>
       <Header />
       <Container>
-        <div className="cabecalho">
+        <header>
           <ArrowLeft />
-          <h1 onClick={() => categoryFilter("AllGroups")}>Grupos</h1>
-        </div>
+          <h1>Grupos</h1>
+        </header>
         <CategoryItem filterCategory={categoryFilter} />
         <GroupsContainer>
           {groupList.map((group, index) => (
