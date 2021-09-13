@@ -1,7 +1,8 @@
 import { Switch, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import NotFound from "../pages/NotFound";
+
+import Home from "./../pages/Home";
+import Login from "./../pages/Login";
+import NotFound from "./../pages/NotFound";
 
 const Routes = () => {
   return (
@@ -12,7 +13,7 @@ const Routes = () => {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/notfound">
+      <Route>
         <NotFound />
       </Route>
     </Switch>

@@ -1,6 +1,9 @@
 import { Container, InputContainer } from "./styles";
+
 import { IconType } from "react-icons";
+
 import { UseFormRegister, FieldValues } from "react-hook-form";
+
 interface IInputProps {
   label: string;
   icon?: IconType;
