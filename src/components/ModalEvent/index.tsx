@@ -11,7 +11,7 @@ import InputTexteArea from "../InputTextArea";
 
 interface ICreateEvent {
   group_Id: number;
-  categoria: string;
+  category: string;
   creator: number;
 }
 
