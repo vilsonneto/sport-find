@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useParams, useHistory } from "react-router-dom";
-//import { grupos } from "../../testeslocais/mocks";
 import { useGroups } from "../../providers/Groups";
 
 interface IParams {
@@ -14,7 +13,7 @@ const Group = () => {
 
   const group = useMemo(() => {
     return allGroups.find((item) => item.id === Number(params.id));
-  }, [params]);
+  }, [params, allGroups]);
 
   if (!group) {
     console.log("O grupo não foi encontrado");
