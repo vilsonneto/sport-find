@@ -13,6 +13,7 @@ interface ICreateEvent {
   group_Id: number;
   category: string;
   creator: number;
+  state: string;
 }
 
 interface IModalEventsProps {
@@ -30,10 +31,8 @@ interface IEventForm {
 
 const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
   const { createEvent, cancelEvent, editEvent } = useEvents();
-  const variantGreen = true;
-  const variantRed = true;
 
-  const schema = yup.object().shape({
+  const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     local: yup.string().required("Campo obrigatório"),
     data: yup.string().required("Campo obrigatório"),
@@ -44,21 +43,19 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IEventForm>({ resolver: yupResolver(schema) });
+  } = useForm<IEventForm>({ resolver: yupResolver(formSchema) });
 
   const handleEvent = (data: IEventForm) => {
     if (create) {
       const eventCreate = { ...create, users: [], ...data };
       createEvent(eventCreate);
     } else if (edit) {
-      console.log(data);
       editEvent(edit, data);
     }
   };
 
   const handleDelet = () => {
     if (edit) {
-      console.log(edit);
       cancelEvent(edit);
     }
   };
@@ -110,16 +107,16 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
           <li>
             {!edit ? (
               <div className="buttom-create">
-                <Button type="submit" variantGreen={variantGreen}>
+                <Button type="submit" variantGreen>
                   Criar
                 </Button>
               </div>
             ) : (
               <div className="button-edit">
-                <Button type="submit" variantGreen={variantGreen}>
+                <Button type="submit" variantGreen>
                   Editar
                 </Button>
-                <Button onClick={handleDelet} variantRed={variantRed}>
+                <Button onClick={handleDelet} variantRed>
                   Deletar
                 </Button>
               </div>

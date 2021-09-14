@@ -13,6 +13,18 @@ export const CardEvent = ({ event }: ICardEventProps) => {
     return date.split("-").reverse().join("/");
   };
 
+  const wasClosed = (date: string) => {
+    const eventDate: string[] = date.split("-");
+    const formatEventDate = `${eventDate[0]}-${eventDate[1]}-${
+      Number(eventDate[2]) + 1
+    }`;
+    const myDate = new Date();
+
+    return new Date(formatEventDate) < myDate;
+  };
+
+  console.log(wasClosed(event.data));
+
   return (
     <Container
       key={event.id}
@@ -31,7 +43,7 @@ export const CardEvent = ({ event }: ICardEventProps) => {
           <p>{event.category}</p>
         </div>
         <div className="container-progress">
-          <p></p>
+          {wasClosed(event.data) && <p>Encerrado</p>}
         </div>
       </div>
     </Container>

@@ -38,8 +38,11 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
 
   const getUser = () => {
     const decodeToken: IDecode = decode(auth);
+    console.log(decodeToken);
     api
-      .get(`/users/${decodeToken.sub}`)
+      .get(`/users/${decodeToken.sub}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => setUser(response.data))
       .catch((err) =>
         console.log("Não foi possível pegar informações do usuário.", err)
