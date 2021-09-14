@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useParams, useHistory } from "react-router-dom";
-//import { grupos } from "../../testeslocais/mocks";
 import { useGroups } from "../../providers/Groups";
 
 interface IParams {
