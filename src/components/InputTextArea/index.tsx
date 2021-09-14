@@ -1,27 +1,26 @@
 import { Container, InputContainer } from "./styles";
 
-import { IconType } from "react-icons";
-
 import { UseFormRegister, FieldValues } from "react-hook-form";
 
 interface IInputProps {
   label: string;
-  icon?: IconType;
   register: UseFormRegister<FieldValues>;
   name: string;
   error?: string;
-  type?: string;
+  rows: number;
+  cols: number;
   placeholder?: string;
   defaultValue?: string;
 }
 
-const Input = ({
+const InputTexteArea = ({
   label,
-  icon: Icon,
+  rows,
+  cols,
   register,
   name,
   error,
-  type,
+
   placeholder,
   defaultValue,
 }: IInputProps) => {
@@ -31,9 +30,9 @@ const Input = ({
         {label} {!!error && <span> - {error}</span>}
       </div>
       <InputContainer isErrored={!!error}>
-        {Icon && <Icon size={20} />}
-        <input
-          type={type}
+        <textarea
+          rows={rows}
+          cols={cols}
           placeholder={placeholder}
           {...register(name)}
           defaultValue={defaultValue}
@@ -43,4 +42,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default InputTexteArea;

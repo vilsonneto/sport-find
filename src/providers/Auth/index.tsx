@@ -47,6 +47,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
   };
 
   const loginUser = (userData: ILoginData, history: History) => {
+    // console.log(userData);
     api
       .post("/login", userData)
       .then((response) => {
@@ -62,8 +63,8 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         //     draggable: true,
         //     progress: undefined,
         //   }
-        getUser();
         history.push("/dashboard");
+        getUser();
       })
       .catch((err) => {
         toast.error("Algo deu errado!");
