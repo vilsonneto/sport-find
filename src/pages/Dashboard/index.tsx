@@ -36,11 +36,15 @@ export const Dashboard = () => {
         </nav>
         <main>
           {!!userEvents ? (
-            userEvents.map((event) => (
-              <CardEvent key={event.id} event={event} />
-            ))
+            userEvents.length > 0 ? (
+              userEvents.map((event) => (
+                <CardEvent key={event.id} event={event} />
+              ))
+            ) : (
+              <p>Você não está inscrito em nenhum evento!</p>
+            )
           ) : (
-            <p>Você não está inscrito em nenhum evento!</p>
+            <p>Carregando...</p>
           )}
         </main>
       </Container>
