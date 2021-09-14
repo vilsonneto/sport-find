@@ -4,6 +4,7 @@ import { MdGroup, MdGroupAdd, MdDirectionsBike } from "react-icons/md";
 import { CardEvent } from "../../components/CardEvent";
 import { useEffect, useState } from "react";
 import { IEvents } from "../../types/IProviders";
+import { Container } from "./styles";
 
 export const Dashboard = () => {
   const { user } = useAuth();
@@ -16,29 +17,33 @@ export const Dashboard = () => {
   return (
     <>
       <Header />
-      <nav>
-        <ul>
-          <li>
-            <MdGroup />
-            <span>Grupos</span>
-          </li>
-          <li>
-            <MdDirectionsBike />
-            <span>Eventos</span>
-          </li>
-          <li>
-            <MdGroupAdd />
-            <span>Criar Grupo</span>
-          </li>
-        </ul>
-      </nav>
-      <main>
-        {!!userEvents ? (
-          userEvents.map((event) => <CardEvent key={event.id} event={event} />)
-        ) : (
-          <p>Você não está inscrito em nenhum evento!</p>
-        )}
-      </main>
+      <Container>
+        <nav>
+          <ul>
+            <li>
+              <MdGroup />
+              <span>Grupos</span>
+            </li>
+            <li>
+              <MdDirectionsBike />
+              <span>Eventos</span>
+            </li>
+            <li>
+              <MdGroupAdd />
+              <span>Criar Grupo</span>
+            </li>
+          </ul>
+        </nav>
+        <main>
+          {!!userEvents ? (
+            userEvents.map((event) => (
+              <CardEvent key={event.id} event={event} />
+            ))
+          ) : (
+            <p>Você não está inscrito em nenhum evento!</p>
+          )}
+        </main>
+      </Container>
     </>
   );
 };
