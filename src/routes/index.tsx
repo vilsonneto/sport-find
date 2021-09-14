@@ -8,6 +8,7 @@ import Events from "../pages/Events";
 import Event from "../pages/Event";
 import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
+import { Dashboard } from "../pages/Dashboard";
 
 const Routes = () => {
   return (
@@ -20,6 +21,9 @@ const Routes = () => {
       </Route>
       <Route path="/login">
         <Login />
+      </Route>
+      <Route path="/dashboard">
+        <Dashboard />
       </Route>
       <Route path="/groups" exact>
         <Groups />
