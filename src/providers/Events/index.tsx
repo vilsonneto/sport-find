@@ -7,6 +7,7 @@ import { useGroups } from "../Groups";
 interface IEventData {
   name: string;
   group_Id: number;
+  state: string;
   local: string;
   data: string;
   category: string;
