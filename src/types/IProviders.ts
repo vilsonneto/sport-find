@@ -35,6 +35,7 @@ export interface IMembers {
 export interface IEvents {
   name: string;
   group_Id: number;
+  state: string;
   local: string;
   data: string;
   category: string;
