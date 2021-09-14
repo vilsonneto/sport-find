@@ -5,10 +5,13 @@ import { CardEvent } from "../../components/CardEvent";
 import { useEffect, useState } from "react";
 import { IEvents } from "../../types/IProviders";
 import { Container } from "./styles";
+import ModalGroup from "../../components/ModalGroup";
+import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
   const { user } = useAuth();
   const [userEvents, setUserEvents] = useState<IEvents[]>([]);
+  const [modal, setModal] = useState<boolean>(false);
 
   useEffect(() => {
     setUserEvents(user.subscribed_events);
@@ -20,15 +23,19 @@ export const Dashboard = () => {
       <Container>
         <nav>
           <ul>
-            <li>
-              <MdGroup />
-              <span>Grupos</span>
-            </li>
-            <li>
-              <MdDirectionsBike />
-              <span>Eventos</span>
-            </li>
-            <li>
+            <Link to="/groups">
+              <li>
+                <MdGroup />
+                <span>Grupos</span>
+              </li>
+            </Link>
+            <Link to="/events">
+              <li>
+                <MdDirectionsBike />
+                <span>Eventos</span>
+              </li>
+            </Link>
+            <li onClick={() => setModal(true)}>
               <MdGroupAdd />
               <span>Criar Grupo</span>
             </li>
@@ -47,6 +54,7 @@ export const Dashboard = () => {
             <p>Carregando...</p>
           )}
         </main>
+        {modal && <ModalGroup closeModal={setModal} />}
       </Container>
     </>
   );
