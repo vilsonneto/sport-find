@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useMemo } from "react";
 import { IProvidersProps, IEvents } from "../../types/IProviders";
 import api from "../../services/api";
 import { useAuth } from "../Auth";
@@ -30,6 +30,8 @@ interface IEventsProviderData {
   editEvent: (event: IEvents, data: IEditEventData) => void;
   subscribeEvent: (event: IEvents) => void;
   leaveEvent: (event: IEvents) => void;
+  ownedEvents: IEvents[];
+  subscribedEvents: IEvents[];
 }
 
 const EventsContext = createContext<IEventsProviderData>(
@@ -56,6 +58,14 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
             }
             return group;
           });
+
+          // api.patch(
+          //   `/groups/${response.data.group_Id}`,
+          //   { groupEvents: [...groupEvents, response.data] },
+          //   {
+          //     headers: { Authorization: `Bearer ${token}` },
+          //   }
+          // );
 
           setAllGroups(newListGroup);
           addUserListEvent(response.data);
@@ -218,6 +228,18 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
     }
   }, [token]);
 
+  const ownedEvents = useMemo(() => {
+    const result = allEvents.filter((item) => item.creator === user.id);
+    return result;
+  }, [allEvents, user.id]);
+
+  const subscribedEvents = useMemo(() => {
+    const result = allEvents.filter((item) => {
+      return item["users"].some((id) => id === user.id);
+    });
+    return result;
+  }, [allEvents, user.id]);
+
   return (
     <EventsContext.Provider
       value={{
@@ -227,6 +249,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         editEvent,
         subscribeEvent,
         leaveEvent,
+        ownedEvents,
+        subscribedEvents,
       }}
     >
       {children}
