@@ -47,7 +47,6 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
   };
 
   const loginUser = (userData: ILoginData, history: History) => {
-    // console.log(userData);
     api
       .post("/login", userData)
       .then((response) => {
