@@ -5,10 +5,4 @@ export const ArrowSvg = styled.div`
     cursor: pointer;
     font-size: 30px;
   }
-
-  @media (min-width: 1440px) {
-    svg {
-      font-size: 40px;
-    }
-  }
 `;
