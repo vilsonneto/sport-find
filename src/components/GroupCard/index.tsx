@@ -17,7 +17,8 @@ const GroupCard = ({ group }: IGroupProp) => {
     <Container onClick={handleClick}>
       <div>
         <h2>{group.name}</h2>
-        <p>{group.category}</p>
+        <p className="category">{group.category}</p>
+        <p>{group.state}</p>
       </div>
     </Container>
   );

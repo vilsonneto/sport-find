@@ -53,6 +53,7 @@ export interface IBanneds {
 export interface IGroup {
   id: number;
   name: string;
+  state: string;
   description: string;
   category: string;
   creator: number;

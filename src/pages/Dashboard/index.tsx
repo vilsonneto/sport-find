@@ -2,12 +2,15 @@ import Header from "../../components/Header";
 import { useAuth } from "../../providers/Auth";
 import { MdGroup, MdGroupAdd, MdDirectionsBike } from "react-icons/md";
 import { CardEvent } from "../../components/CardEvent";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { IEvents } from "../../types/IProviders";
 
 export const Dashboard = () => {
-  const { user, token, getUser } = useAuth();
+  const { user } = useAuth();
+  const [userEvents, setUserEvents] = useState<IEvents[]>([]);
+
   useEffect(() => {
-    console.log("Usuário ", user);
+    setUserEvents(user.subscribed_events);
   }, [user]);
 
   return (
@@ -30,9 +33,11 @@ export const Dashboard = () => {
         </ul>
       </nav>
       <main>
-        {/* {userData.subscribed_events.map((event) => (
-          <CardEvent key={event.id} event={event} />
-        ))} */}
+        {!!userEvents ? (
+          userEvents.map((event) => <CardEvent key={event.id} event={event} />)
+        ) : (
+          <p>Você não está inscrito em nenhum evento!</p>
+        )}
       </main>
     </>
   );

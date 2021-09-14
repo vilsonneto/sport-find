@@ -15,7 +15,7 @@ const Groups = () => {
   }, [allGroups]);
 
   const categoryFilter = (chosenCategory: string) => {
-    if (chosenCategory === "AllGroups") {
+    if (chosenCategory === "Todos") {
       setGroupList(allGroups);
     } else {
       let filteredGroups = allGroups.filter(
@@ -31,7 +31,7 @@ const Groups = () => {
       <Container>
         <header>
           <ArrowLeft />
-          <h1 onClick={() => categoryFilter("AllGroups")}>Grupos</h1>
+          <h1>Grupos</h1>
         </header>
         <CategoryItem filterCategory={categoryFilter} />
         <GroupsContainer>
