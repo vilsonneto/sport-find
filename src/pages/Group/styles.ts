@@ -1,10 +1,23 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
-  max-width: 1280px;
+interface IStylesProps {
+  showMembers: boolean;
+}
 
-  margin: 0 auto;
-  padding: 15px;
+export const Container = styled.div`
+  .containerHeader {
+    display: none;
+    @media only screen and (min-width: 1024px) {
+      display: block;
+    }
+  }
+
+  .containerArrow {
+    max-width: 1280px;
+
+    margin: 0 auto;
+    padding: 15px;
+  }
 `;
 
 export const ContainerStyle = styled.div`
@@ -13,7 +26,7 @@ export const ContainerStyle = styled.div`
   margin: 0 auto;
 
   @media only screen and (min-width: 1024px) {
-    height: calc(100vh - 65px);
+    height: calc(100vh - 65px - 110px);
 
     padding-bottom: 15px;
 
@@ -22,7 +35,7 @@ export const ContainerStyle = styled.div`
   }
 `;
 
-export const Container = styled.main`
+export const ContainerMain = styled.main`
   > div {
     margin-bottom: 10px;
 
@@ -63,6 +76,8 @@ export const Container = styled.main`
     padding: 0 15px;
 
     section:nth-child(2) {
+      height: 68px;
+
       margin-top: 10px;
 
       h3 {
@@ -71,7 +86,22 @@ export const Container = styled.main`
 
         svg {
           margin-left: 10px;
+
+          cursor: pointer;
         }
+      }
+
+      textarea {
+        width: 100%;
+        height: 62px;
+
+        resize: none;
+      }
+
+      p {
+        width: 100%;
+
+        word-wrap: break-word;
       }
     }
   }
@@ -84,48 +114,52 @@ export const Container = styled.main`
     }
 
     section {
-      height: calc(100vh - (65px + 128px + 128px + 27px + 70px));
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      height: calc(100vh - (65px + 128px + 138px + 27px + 70px + 109px));
 
       overflow-y: auto;
 
       > div {
-        max-width: 360px;
         width: 100%;
-        min-height: 100px;
-        height: 100px;
 
-        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        div {
-          height: 20px;
-        }
-      }
+        > div {
+          max-width: 360px;
+          width: 100%;
+          min-height: 100px;
+          height: 100px;
 
-      div + div {
-        margin-top: 5px;
-      }
+          margin: 0;
 
-      @media only screen and (min-width: 768px) {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-
-        div {
-          margin-bottom: 5px;
+          div {
+            height: 20px;
+          }
         }
 
         div + div {
-          margin-top: 0;
+          margin-top: 5px;
+        }
+
+        @media only screen and (min-width: 768px) {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: flex-start;
+
+          div {
+            margin-bottom: 5px;
+          }
+
+          div + div {
+            margin-top: 0;
+          }
         }
       }
 
       @media only screen and (min-width: 1024px) {
-        height: calc(100vh - (65px + 100px + 110px + 27px + 15px));
+        height: calc(100vh - (65px + 100px + 138px + 27px + 15px + 109px));
       }
     }
 
@@ -139,7 +173,7 @@ export const Container = styled.main`
   }
 `;
 
-export const Footer = styled.footer`
+export const Footer = styled.footer<IStylesProps>`
   width: 100%;
 
   padding: 10px 20px;
@@ -164,6 +198,10 @@ export const Footer = styled.footer`
     }
 
     svg {
+      transition: 0.3s;
+
+      transform: ${(props) => props.showMembers && "rotate(180deg)"};
+
       cursor: pointer;
     }
   }
@@ -173,7 +211,9 @@ export const Footer = styled.footer`
   }
 `;
 
-export const ContainerMembers = styled.aside`
+export const ContainerMembers = styled.aside<IStylesProps>`
+  display: ${(props) => props.showMembers === false && "none"};
+
   width: 100%;
   height: calc(100% - 65px);
 
@@ -198,6 +238,10 @@ export const ContainerMembers = styled.aside`
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        svg {
+          cursor: pointer;
+        }
       }
 
       div + div {
@@ -218,6 +262,8 @@ export const ContainerMembers = styled.aside`
   }
 
   @media only screen and (min-width: 1024px) {
+    display: block;
+
     max-width: 200px;
     width: 100%;
     height: auto;

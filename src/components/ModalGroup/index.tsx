@@ -76,6 +76,7 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
               cols={30}
               rows={5}
               register={register}
+              maxLength={120}
             />
           </li>
           <li buttom-create>
