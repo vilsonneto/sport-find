@@ -39,7 +39,7 @@ const EventsContext = createContext<IEventsProviderData>(
 export const EventsProvider = ({ children }: IProvidersProps) => {
   const [allEvents, setAllEvents] = useState<IEvents[]>([]);
   const { allGroups, setAllGroups } = useGroups();
-  const { token, user } = useAuth();
+  const { token, user, addUserListEvent, removeUserListEvent } = useAuth();
 
   const createEvent = (eventData: IEventData) => {
     if (eventData.creator === user.id) {
@@ -58,6 +58,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           });
 
           setAllGroups(newListGroup);
+          addUserListEvent(response.data);
         })
         .catch((err) => console.log(err));
     }
@@ -84,6 +85,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           });
 
           setAllGroups(newListGroup);
+          removeUserListEvent(event);
         })
         .catch((err) => console.log(err));
     }
@@ -158,6 +160,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         });
 
         setAllGroups(newListGroup);
+        addUserListEvent(event);
       })
       .catch((err) => console.log(err));
   };
@@ -196,6 +199,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         });
 
         setAllGroups(newListGroup);
+        removeUserListEvent(event);
       })
       .catch((err) => console.log(err));
   };
