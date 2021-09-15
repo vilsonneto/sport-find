@@ -107,7 +107,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
       .then((response) => {
         setAllEvents(newListEvents);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response));
   };
 
   const leaveEvent = (event: IEvents) => {
