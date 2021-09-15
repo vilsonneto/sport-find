@@ -4,10 +4,14 @@ import { MdGroup, MdGroupAdd, MdDirectionsBike } from "react-icons/md";
 import { CardEvent } from "../../components/CardEvent";
 import { useEffect, useState } from "react";
 import { IEvents } from "../../types/IProviders";
+import { Container } from "./styles";
+import ModalGroup from "../../components/ModalGroup";
+import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
   const { user } = useAuth();
   const [userEvents, setUserEvents] = useState<IEvents[]>([]);
+  const [modal, setModal] = useState<boolean>(false);
 
   useEffect(() => {
     setUserEvents(user.subscribed_events);
@@ -16,29 +20,42 @@ export const Dashboard = () => {
   return (
     <>
       <Header />
-      <nav>
-        <ul>
-          <li>
-            <MdGroup />
-            <span>Grupos</span>
-          </li>
-          <li>
-            <MdDirectionsBike />
-            <span>Eventos</span>
-          </li>
-          <li>
-            <MdGroupAdd />
-            <span>Criar Grupo</span>
-          </li>
-        </ul>
-      </nav>
-      <main>
-        {!!userEvents ? (
-          userEvents.map((event) => <CardEvent key={event.id} event={event} />)
-        ) : (
-          <p>Você não está inscrito em nenhum evento!</p>
-        )}
-      </main>
+      <Container>
+        <nav>
+          <ul>
+            <Link to="/groups">
+              <li>
+                <MdGroup />
+                <span>Grupos</span>
+              </li>
+            </Link>
+            <Link to="/events">
+              <li>
+                <MdDirectionsBike />
+                <span>Eventos</span>
+              </li>
+            </Link>
+            <li onClick={() => setModal(true)}>
+              <MdGroupAdd />
+              <span>Criar Grupo</span>
+            </li>
+          </ul>
+        </nav>
+        <main>
+          {!!userEvents ? (
+            userEvents.length > 0 ? (
+              userEvents.map((event) => (
+                <CardEvent key={event.id} event={event} />
+              ))
+            ) : (
+              <p>Você não está inscrito em nenhum evento!</p>
+            )
+          ) : (
+            <p>Carregando...</p>
+          )}
+        </main>
+        {modal && <ModalGroup closeModal={setModal} />}
+      </Container>
     </>
   );
 };
