@@ -17,7 +17,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IoMdPerson } from "react-icons/io";
 import { AiOutlineMail, AiFillLock, AiFillFlag } from "react-icons/ai";
 import { Link, useHistory } from "react-router-dom";
-
+import InputSelect from "../../components/InputSelect";
+import { StateArr } from "../../utils/StateArr";
 interface IRegisterUserData {
   username: string;
   email: string;
@@ -125,12 +126,13 @@ const Register = () => {
                   />
                 </li>
                 <li>
-                  <Input
+                  <InputSelect
                     error={errors.state?.message}
                     name="state"
                     label="Estado"
                     icon={AiFillFlag}
                     register={register}
+                    options={StateArr}
                   />
                 </li>
                 <li>

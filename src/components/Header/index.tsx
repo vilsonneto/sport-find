@@ -15,7 +15,7 @@ const Header = () => {
   const { user, logoutUser, editUser } = useAuth();
   const [username, setUserName] = useState<string>(user.username);
   const [state, setState] = useState<string>(user.state);
-
+  console.log(user.username);
   return (
     <header>
       <nav>
