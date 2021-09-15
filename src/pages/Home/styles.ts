@@ -123,6 +123,8 @@ export const ContainerFeatures = styled.article`
   align-items: center;
 
   h1 {
+    color: var(--orange);
+    text-shadow: 3px 3px 2px var(--blue);
     margin-bottom: 20px;
 
     font-size: 1.8rem;
