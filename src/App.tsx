@@ -5,10 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 import Routes from "./routes";
 
-import ModalGroup from "./components/ModalGroup";
-import { useState } from "react";
 const App = () => {
-  const [closeModal, setcloseModal] = useState(true);
   return (
     <>
       <GlobalStyle />
@@ -24,7 +21,6 @@ const App = () => {
         pauseOnHover
       />
       <Routes />
-      {/* <ModalGroup closeModal={setcloseModal} /> */}
     </>
   );
 };
