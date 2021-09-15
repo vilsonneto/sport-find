@@ -23,8 +23,6 @@ export const CardEvent = ({ event }: ICardEventProps) => {
     return new Date(formatEventDate) < myDate;
   };
 
-  console.log(wasClosed(event.data));
-
   return (
     <Container
       key={event.id}
