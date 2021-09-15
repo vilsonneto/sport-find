@@ -6,14 +6,13 @@ import { Modal } from "../Modal";
 import { useState } from "react";
 import Button from "../Button";
 import { useAuth } from "../../providers/Auth";
-interface IHeaderProps {
-  avatarImg?: string;
-}
-const Header = ({ avatarImg }: IHeaderProps) => {
+import { StateArr } from "../../utils/StateArr";
+
+const Header = () => {
   const history = useHistory();
   const [open, setOpening] = useState<boolean>(false);
 
-  const { user, logoutUser } = useAuth();
+  const { user, logoutUser, editUser } = useAuth();
   const [username, setUserName] = useState<string>(user.username);
   const [state, setState] = useState<string>(user.state);
 
@@ -42,14 +41,21 @@ const Header = ({ avatarImg }: IHeaderProps) => {
                         </div>{" "}
                         <div>
                           {" "}
-                          <input
+                          <select
                             value={state}
                             onChange={(e) => setState(e.target.value)}
-                          ></input>
+                          >
+                            {StateArr.map((item) => (
+                              <option value={item}>{item}</option>
+                            ))}
+                          </select>
                         </div>
                       </li>
                       <li>
-                        <Button variantGreen onClick={() => {}}>
+                        <Button
+                          variantGreen
+                          onClick={() => editUser(username, state)}
+                        >
                           Salvar
                         </Button>
                       </li>

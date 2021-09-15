@@ -33,6 +33,13 @@ export const User = styled.ul`
     font-size: 1rem;
     margin-top: 10px;
   }
+  select {
+    padding: 10px;
+    border: none;
+    background-color: var(--white);
+    font-size: 1rem;
+    margin-top: 10px;
+  }
 `;
 export const Container = styled.div`
   display: flex;
