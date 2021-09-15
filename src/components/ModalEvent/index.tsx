@@ -52,6 +52,7 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
     } else if (edit) {
       editEvent(edit, data);
     }
+    closeModal(false);
   };
 
   const handleDelet = () => {

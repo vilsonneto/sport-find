@@ -47,6 +47,7 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
 
   const handleModalGroups = (data: IGroupData) => {
     createGroup(username, data);
+    closeModal(false);
   };
 
   return (

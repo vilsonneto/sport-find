@@ -35,6 +35,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 70px;
   }
 
   @media (min-width: 769px) {

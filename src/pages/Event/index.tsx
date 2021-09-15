@@ -28,7 +28,7 @@ const Event = () => {
 
   if (!event) {
     console.log("O evento não foi encontrado");
-    history.push("/event");
+    history.push("/events");
   }
 
   const dateAjustRender = (date: string) => {
