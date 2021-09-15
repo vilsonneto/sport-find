@@ -10,6 +10,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Form } from "./styles";
+import { StateArr } from "../../utils/StateArr";
 
 interface IModalGoupProps {
   closeModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,35 +31,7 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
     "Skate",
     "Surf",
   ];
-  const state = [
-    "AC",
-    "AL",
-    "AP",
-    "AM",
-    "BA",
-    "CE",
-    "DF",
-    "ES",
-    "GO",
-    "MA",
-    "MT",
-    "MS",
-    "MG",
-    "PA",
-    "PB",
-    "PR",
-    "PE",
-    "PI",
-    "RJ",
-    "RN",
-    "RS",
-    "RO",
-    "RR",
-    "SC",
-    "SP",
-    "SE",
-    "TO",
-  ];
+
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     category: yup.string().required("Campo obrigatório"),
@@ -102,7 +75,7 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
           <li>
             <InputSelect
               error={errors.state?.message}
-              options={state}
+              options={StateArr}
               name="state"
               label="Estado"
               register={register}
