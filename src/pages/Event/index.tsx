@@ -52,8 +52,8 @@ const Event = () => {
       <Header />
       <Conteiner>
         <ArrowLeft path={"/events"} />
-        <div className="content">
-          <div className="title">
+        <main className="content">
+          <header className="title">
             <h1>{event?.name}</h1>
             {id === event?.creator ? (
               <Button variantGreen onClick={handleEdit}>
@@ -68,9 +68,9 @@ const Event = () => {
                 Participar
               </Button>
             )}
-          </div>
-          <div className="cart">
-            <div className="text">
+          </header>
+          <article className="cart">
+            <section className="text">
               <p>
                 Categoria: <span>{event?.category}</span>
               </p>
@@ -90,7 +90,7 @@ const Event = () => {
                   <Link to={`/groups/${event?.group_Id}`}> Clique Aqui!</Link>
                 </p>
               )}
-            </div>
+            </section>
             <div>
               {categoryArr.map((item, index) =>
                 item.text === event?.category ? (
@@ -98,8 +98,8 @@ const Event = () => {
                 ) : null
               )}
             </div>
-          </div>
-        </div>
+          </article>
+        </main>
         {showModal && <ModalEvent closeModal={setShowModal} edit={event} />}
       </Conteiner>
     </>
