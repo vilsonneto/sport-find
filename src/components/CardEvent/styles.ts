@@ -10,7 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   border-radius: 8px;
-  margin: 5px 15px;
+  margin: 5px 3px;
 
   .card-header {
     display: flex;
