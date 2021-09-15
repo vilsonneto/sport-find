@@ -16,13 +16,14 @@ import ArrowLeft from "./../../components/ArrowLeft";
 import { CardEvent } from "./../../components/CardEvent";
 import ModalEvent from "./../../components/ModalEvent";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
 import { useAuth } from "./../../providers/Auth";
 import { useGroups } from "./../../providers/Groups";
 import Header from "../../components/Header";
+import { useEvents } from "../../providers/Events";
 
 interface IParams {
   id: string;
@@ -31,14 +32,20 @@ interface IParams {
 const Group = () => {
   const params = useParams<IParams>();
 
+  const { allEvents } = useEvents();
   const { allGroups, updateDescription, banMember, subscribeGroup, exitGroup } =
     useGroups();
 
   const group = allGroups.find((item) => item.id === Number(params.id));
 
+  const groupEvents = useMemo(() => {
+    const result = allEvents.filter((event) => event.group_Id === group?.id);
+    return result;
+  }, [allEvents, group]);
+
   const { user } = useAuth();
   const adm = user.id === group?.creator;
-  const member = !!group?.members.find((item) => item.name === user.username);
+  const member = !!group?.members.find((item) => item.id === user.id);
 
   const [showMembers, setshowMembers] = useState<boolean>(false);
 
@@ -80,7 +87,7 @@ const Group = () => {
               {group?.members.map((item, index) => (
                 <div key={index}>
                   <span>{item.name}</span>
-                  {adm && item.name !== user.username && (
+                  {adm && item.id !== user.id && (
                     <FaBan onClick={() => banMember(group, item.id)} />
                   )}
                 </div>
@@ -152,7 +159,7 @@ const Group = () => {
             <h3>Próximos eventos:</h3>
             <section>
               <div>
-                {group?.groupEvents.map((item, index) => (
+                {groupEvents.map((item, index) => (
                   <CardEvent key={index} event={item} />
                 ))}
               </div>
