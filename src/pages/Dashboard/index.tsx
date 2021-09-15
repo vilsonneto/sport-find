@@ -23,38 +23,42 @@ export const Dashboard = () => {
     <>
       <Header />
       <Container>
-        <nav>
-          <ul>
-            <Link to="/groups">
-              <li>
-                <MdGroup />
-                <span>Grupos</span>
+        <aside>
+          <nav>
+            <ul>
+              <Link to="/groups">
+                <li>
+                  <MdGroup />
+                  <span>Grupos</span>
+                </li>
+              </Link>
+              <Link to="/events">
+                <li>
+                  <MdDirectionsBike />
+                  <span>Eventos</span>
+                </li>
+              </Link>
+              <li onClick={() => setModal(true)}>
+                <MdGroupAdd />
+                <span>Criar Grupo</span>
               </li>
-            </Link>
-            <Link to="/events">
-              <li>
-                <MdDirectionsBike />
-                <span>Eventos</span>
-              </li>
-            </Link>
-            <li onClick={() => setModal(true)}>
-              <MdGroupAdd />
-              <span>Criar Grupo</span>
-            </li>
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        </aside>
         <main>
-          {!!userEvents ? (
-            userEvents.length > 0 ? (
-              userEvents.map((event) => (
-                <CardEvent key={event.id} event={event} />
-              ))
+          <ul>
+            {!!userEvents ? (
+              userEvents.length > 0 ? (
+                userEvents.map((event) => (
+                  <CardEvent key={event.id} event={event} />
+                ))
+              ) : (
+                <p>Você não está inscrito em nenhum evento!</p>
+              )
             ) : (
-              <p>Você não está inscrito em nenhum evento!</p>
-            )
-          ) : (
-            <p>Carregando...</p>
-          )}
+              <p>Carregando...</p>
+            )}
+          </ul>
         </main>
         {modal && <ModalGroup closeModal={setModal} />}
       </Container>

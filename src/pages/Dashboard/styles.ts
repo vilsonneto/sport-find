@@ -32,10 +32,13 @@ export const Container = styled.div`
   }
 
   main {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 70px;
+    width: 100%;
+    ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 70px;
+    }
   }
 
   @media (min-width: 769px) {
@@ -78,6 +81,10 @@ export const Container = styled.div`
     }
     main {
       width: 100%;
+
+      ul {
+        width: 100%;
+      }
     }
   }
 `;

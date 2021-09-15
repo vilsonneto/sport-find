@@ -44,9 +44,13 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
   const createEvent = (eventData: IEventData) => {
     if (eventData.creator === user.id) {
       api
-        .post("/events", eventData, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .post(
+          "/events",
+          { ...eventData, users: [eventData.creator] },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((response) => setAllEvents([...allEvents, response.data]))
         .catch((err) => console.log(err));
     }
