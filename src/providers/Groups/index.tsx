@@ -11,7 +11,6 @@ import {
 } from "../../types/IProviders";
 
 interface IGroupsProviderData {
-  setAllGroups: React.Dispatch<React.SetStateAction<IGroup[]>>;
   createGroup: (username: string, groupData: IGroupData) => void;
   banMember: (group: IGroup, bannedUser_id: number) => void;
   updateDescription: (group: IGroup, newDescription: string) => void;
@@ -34,7 +33,6 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
     const data = {
       creator: user.id,
       ...groupData,
-      groupEvents: [],
       members: [{ name: username, id: user.id }],
       banned: [],
     };
@@ -185,7 +183,6 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       value={{
         createGroup,
         allGroups,
-        setAllGroups,
         ownedGroups,
         subscribedGroups,
         banMember,

@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect, useMemo } from "react";
 import { IProvidersProps, IEvents } from "../../types/IProviders";
 import api from "../../services/api";
 import { useAuth } from "../Auth";
-import { useGroups } from "../Groups";
 
 interface IEventData {
   name: string;
@@ -40,7 +39,6 @@ const EventsContext = createContext<IEventsProviderData>(
 
 export const EventsProvider = ({ children }: IProvidersProps) => {
   const [allEvents, setAllEvents] = useState<IEvents[]>([]);
-  const { allGroups, setAllGroups } = useGroups();
   const { token, user } = useAuth();
 
   const createEvent = (eventData: IEventData) => {
@@ -49,26 +47,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         .post("/events", eventData, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((response) => {
-          setAllEvents([...allEvents, response.data]);
-
-          const newListGroup = allGroups.map((group) => {
-            if (eventData.group_Id === group.id) {
-              group.groupEvents = [...group.groupEvents, response.data];
-            }
-            return group;
-          });
-
-          // api.patch(
-          //   `/groups/${response.data.group_Id}`,
-          //   { groupEvents: [...groupEvents, response.data] },
-          //   {
-          //     headers: { Authorization: `Bearer ${token}` },
-          //   }
-          // );
-
-          setAllGroups(newListGroup);
-        })
+        .then((response) => setAllEvents([...allEvents, response.data]))
         .catch((err) => console.log(err));
     }
   };
@@ -81,20 +60,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         .delete(`/events/${event.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then(() => {
-          setAllEvents(newListEvents);
-
-          const newListGroup = allGroups.map((group) => {
-            if (event.group_Id === group.id) {
-              group.groupEvents = group.groupEvents.filter(
-                (item) => item.id !== event.id
-              );
-            }
-            return group;
-          });
-
-          setAllGroups(newListGroup);
-        })
+        .then(() => setAllEvents(newListEvents))
         .catch((err) => console.log(err));
     }
   };
@@ -115,22 +81,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         .patch(`/events/${event.id}`, data, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((response) => {
+        .then(() => {
           setAllEvents(newListEvents);
-
-          const newListGroup = allGroups.map((group) => {
-            if (event.group_Id === group.id) {
-              group.groupEvents = group.groupEvents.map((item) => {
-                if (item.id === event.id) {
-                  item = response.data;
-                }
-                return item;
-              });
-            }
-            return group;
-          });
-
-          setAllGroups(newListGroup);
         })
         .catch((err) => console.log(err));
     }
@@ -154,20 +106,6 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
       )
       .then((response) => {
         setAllEvents(newListEvents);
-
-        const newListGroup = allGroups.map((group) => {
-          if (event.group_Id === group.id) {
-            group.groupEvents = group.groupEvents.map((item) => {
-              if (item.id === event.id) {
-                item = response.data;
-              }
-              return item;
-            });
-          }
-          return group;
-        });
-
-        setAllGroups(newListGroup);
       })
       .catch((err) => console.log(err));
   };
@@ -190,22 +128,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => {
+      .then(() => {
         setAllEvents(newListEvents);
-
-        const newListGroup = allGroups.map((group) => {
-          if (event.group_Id === group.id) {
-            group.groupEvents = group.groupEvents.map((item) => {
-              if (item.id === event.id) {
-                item = response.data;
-              }
-              return item;
-            });
-          }
-          return group;
-        });
-
-        setAllGroups(newListGroup);
       })
       .catch((err) => console.log(err));
   };

@@ -55,7 +55,6 @@ export interface IGroup {
   description: string;
   category: string;
   creator: number;
-  groupEvents: IEvents[];
   members: IMembers[];
   banned: IBanneds[];
 }
