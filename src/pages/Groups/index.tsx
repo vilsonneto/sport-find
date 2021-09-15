@@ -34,11 +34,13 @@ const Groups = () => {
           <h1>Grupos</h1>
         </header>
         <CategoryItem filterCategory={categoryFilter} />
-        <GroupsContainer>
-          {groupList.map((group, index) => (
-            <GroupCard key={index} group={group} />
-          ))}
-        </GroupsContainer>
+        <article>
+          <GroupsContainer>
+            {groupList.map((group, index) => (
+              <GroupCard key={index} group={group} />
+            ))}
+          </GroupsContainer>
+        </article>
       </Container>
     </>
   );

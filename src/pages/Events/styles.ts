@@ -32,7 +32,7 @@ export const Container = styled.main`
   }
 `;
 
-export const EventsContainer = styled.article`
+export const EventsContainer = styled.ul`
   margin: 0 auto;
   margin-top: 16px;
   display: flex;

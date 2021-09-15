@@ -30,16 +30,20 @@ const Events = () => {
     <>
       <Header />
       <Container>
-        <div className="cabecalho">
+        <header className="cabecalho">
           <ArrowLeft />
           <h1>Eventos</h1>
-        </div>
+        </header>
         <CategoryItem filterCategory={categoryFilter} />
-        <EventsContainer>
-          {eventList.map((event, index) => (
-            <CardEvent key={index} event={event} />
-          ))}
-        </EventsContainer>
+        <article>
+          <section>
+            <EventsContainer>
+              {eventList.map((event, index) => (
+                <CardEvent key={index} event={event} />
+              ))}
+            </EventsContainer>
+          </section>
+        </article>
       </Container>
     </>
   );

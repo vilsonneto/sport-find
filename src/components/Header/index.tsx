@@ -28,36 +28,38 @@ const Header = ({ avatarImg }: IHeaderProps) => {
           <li>
             <img src={perfilEditor} alt="" onClick={() => setOpening(true)} />
             {open && (
-              <Modal inRight closeModal={setOpening}>
-                <Container>
-                  <User>
-                    <li>Avatar</li>
-                    <li>
-                      <div>
-                        <input
-                          value={username}
-                          onChange={(e) => setUserName(e.target.value)}
-                        ></input>
-                      </div>{" "}
-                      <div>
-                        {" "}
-                        <input
-                          value={state}
-                          onChange={(e) => setState(e.target.value)}
-                        ></input>
-                      </div>
-                    </li>
-                    <li>
-                      <Button variantGreen onClick={() => {}}>
-                        Salvar
-                      </Button>
-                    </li>
-                  </User>
-                  <Button variantRed onClick={logoutUser}>
-                    Logout
-                  </Button>
-                </Container>
-              </Modal>
+              <aside>
+                <Modal inRight closeModal={setOpening}>
+                  <Container>
+                    <User>
+                      <li>Avatar</li>
+                      <li>
+                        <div>
+                          <input
+                            value={username}
+                            onChange={(e) => setUserName(e.target.value)}
+                          ></input>
+                        </div>{" "}
+                        <div>
+                          {" "}
+                          <input
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                          ></input>
+                        </div>
+                      </li>
+                      <li>
+                        <Button variantGreen onClick={() => {}}>
+                          Salvar
+                        </Button>
+                      </li>
+                    </User>
+                    <Button variantRed onClick={logoutUser}>
+                      Logout
+                    </Button>
+                  </Container>
+                </Modal>
+              </aside>
             )}
           </li>
         </Ul>

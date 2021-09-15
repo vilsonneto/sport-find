@@ -32,7 +32,7 @@ export const Container = styled.main`
   }
 `;
 
-export const GroupsContainer = styled.article`
+export const GroupsContainer = styled.ul`
   margin: 0 auto;
   margin-top: 16px;
   display: flex;

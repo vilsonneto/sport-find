@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.li`
   height: 148px;
   width: 97%;
   max-width: 398px;

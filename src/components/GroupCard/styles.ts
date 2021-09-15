@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.li`
   cursor: pointer;
   width: 280px;
   height: 150px;
