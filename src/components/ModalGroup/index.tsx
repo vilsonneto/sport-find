@@ -30,9 +30,39 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
     "Skate",
     "Surf",
   ];
+  const state = [
+    "AC",
+    "AL",
+    "AP",
+    "AM",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MT",
+    "MS",
+    "MG",
+    "PA",
+    "PB",
+    "PR",
+    "PE",
+    "PI",
+    "RJ",
+    "RN",
+    "RS",
+    "RO",
+    "RR",
+    "SC",
+    "SP",
+    "SE",
+    "TO",
+  ];
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     category: yup.string().required("Campo obrigatório"),
+    state: yup.string().required("Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
   });
 
@@ -69,6 +99,15 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
             />
           </li>
           <li>
+            <InputSelect
+              error={errors.state?.message}
+              options={state}
+              name="state"
+              label="Estado"
+              register={register}
+            />
+          </li>
+          <li>
             <InputTexteArea
               error={errors.description?.message}
               name="description"
@@ -76,6 +115,7 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
               cols={30}
               rows={5}
               register={register}
+              maxLength={120}
             />
           </li>
           <li buttom-create>

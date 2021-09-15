@@ -1,47 +1,192 @@
-import { useMemo } from "react";
-import { useParams, useHistory } from "react-router-dom";
-//import { grupos } from "../../testeslocais/mocks";
-import { useGroups } from "../../providers/Groups";
+import {
+  Container,
+  ContainerStyle,
+  ContainerMain,
+  Footer,
+  ContainerMembers,
+  ContainerChat,
+} from "./styles";
+
+import { FaPencilAlt, FaBan } from "react-icons/fa";
+import { IoIosArrowUp } from "react-icons/io";
+import { HiUserGroup } from "react-icons/hi";
+
+import Button from "./../../components/Button";
+import ArrowLeft from "./../../components/ArrowLeft";
+import { CardEvent } from "./../../components/CardEvent";
+import ModalEvent from "./../../components/ModalEvent";
+
+import React, { useEffect, useState } from "react";
+
+import { useParams } from "react-router-dom";
+
+import { useAuth } from "./../../providers/Auth";
+import { useGroups } from "./../../providers/Groups";
+import Header from "../../components/Header";
 
 interface IParams {
   id: string;
 }
 
 const Group = () => {
-  const { allGroups } = useGroups();
   const params = useParams<IParams>();
-  const history = useHistory();
 
-  const group = useMemo(() => {
-    return allGroups.find((item) => item.id === Number(params.id));
-  }, [params]);
+  const { allGroups, updateDescription, banMember, subscribeGroup, exitGroup } =
+    useGroups();
 
-  if (!group) {
-    console.log("O grupo não foi encontrado");
-    history.push("/groups");
-  }
+  const group = allGroups.find((item) => item.id === Number(params.id));
+
+  const { user } = useAuth();
+  const adm = user.id === group?.creator;
+  const member = !!group?.members.find((item) => item.name === user.username);
+
+  const [showMembers, setshowMembers] = useState<boolean>(false);
+
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const [enableInput, setEnableInput] = useState<boolean>(false);
+
+  const [userInput, setUserInput] = useState<string>(group?.description || "");
+
+  useEffect(() => {
+    group && setUserInput(group?.description);
+  }, [group]);
+
+  const handleChange = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (!!group) {
+      if (event.key === "Enter") {
+        updateDescription(group, userInput);
+
+        setEnableInput(false);
+      }
+    }
+  };
 
   return (
-    <section>
-      <p>Página individual do grupo {Number(params.id)}</p>
-      <div>
-        <p>Id: {group?.id}</p>
-        <p>Nome do grupo: {group?.name}</p>
-        <p>Categoria: {group?.category}</p>
-        <p>Descrição: {group?.description}</p>
-        <p>Criador: {group?.creator}</p>
-        <ul>
-          Membros:
-          {group?.members.map((elem, index) => (
-            <li key={index}>
-              - Nome: {elem.name} id: {elem.id}
-            </li>
-          ))}
-        </ul>
+    <Container>
+      <div className="containerHeader">
+        <Header />
       </div>
-      <button onClick={() => console.log(params)}>clique</button>
-      <button onClick={() => history.push("/groups")}>voltar</button>
-    </section>
+      <div className="containerArrow">
+        <ArrowLeft path="/groups" />
+      </div>
+      <ContainerStyle>
+        <ContainerMembers showMembers={showMembers}>
+          <div>
+            <h3>
+              <HiUserGroup /> Membros
+            </h3>
+            <div>
+              {group?.members.map((item, index) => (
+                <div key={index}>
+                  <span>{item.name}</span>
+                  {adm && item.name !== user.username && (
+                    <FaBan onClick={() => banMember(group, item.id)} />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </ContainerMembers>
+        <ContainerMain>
+          <div>
+            <header>
+              <h1>{group?.name}</h1>
+              <span>{group?.category}</span>
+            </header>
+            {adm ? (
+              <Button variantGreen onClick={() => setShowModal(!showModal)}>
+                Criar evento
+              </Button>
+            ) : member ? (
+              group && (
+                <Button
+                  variantGreen
+                  onClick={() =>
+                    exitGroup(group, { name: user.username, id: user.id })
+                  }
+                >
+                  Sair
+                </Button>
+              )
+            ) : (
+              group && (
+                <Button
+                  variantGreen
+                  onClick={() =>
+                    subscribeGroup(group, { name: user.username, id: user.id })
+                  }
+                >
+                  Entrar
+                </Button>
+              )
+            )}
+          </div>
+          <article>
+            <section>
+              <h3>Localização:</h3>
+              <p>{group?.state}</p>
+            </section>
+            <section>
+              <h3>
+                Descrição:
+                {adm && (
+                  <FaPencilAlt onClick={() => setEnableInput(!enableInput)} />
+                )}
+              </h3>
+              {enableInput ? (
+                <textarea
+                  maxLength={120}
+                  value={userInput}
+                  onChange={(event) => setUserInput(event.target.value)}
+                  onKeyPress={(event) => handleChange(event)}
+                />
+              ) : (
+                <div>
+                  <p>{group?.description}</p>
+                </div>
+              )}
+            </section>
+          </article>
+          <article>
+            <h3>Próximos eventos:</h3>
+            <section>
+              <div>
+                {group?.groupEvents.map((item, index) => (
+                  <CardEvent key={index} event={item} />
+                ))}
+              </div>
+            </section>
+          </article>
+        </ContainerMain>
+        <ContainerChat>
+          <Button>Chat</Button>
+        </ContainerChat>
+        <Footer showMembers={showMembers}>
+          <div>
+            <IoIosArrowUp
+              size={35}
+              onClick={() => setshowMembers(!showMembers)}
+            />
+          </div>
+          <div>
+            <Button>Chat</Button>
+          </div>
+        </Footer>
+      </ContainerStyle>
+      {showModal && group && (
+        <ModalEvent
+          closeModal={setShowModal}
+          create={{
+            group_Id: group?.id,
+            category: group?.category,
+            creator: group?.creator,
+            state: group?.state,
+          }}
+        />
+      )}
+    </Container>
   );
 };
+
 export default Group;

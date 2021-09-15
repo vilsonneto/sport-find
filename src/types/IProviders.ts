@@ -23,8 +23,9 @@ export interface IUser {
 
 export interface IGroupData {
   name: string;
-  description: string;
   category: string;
+  state: string;
+  description: string;
 }
 
 export interface IMembers {
@@ -52,6 +53,7 @@ export interface IBanneds {
 export interface IGroup {
   id: number;
   name: string;
+  state: string;
   description: string;
   category: string;
   creator: number;

@@ -4,6 +4,8 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Groups from "../pages/Groups";
 import Group from "../pages/Group";
+import Events from "../pages/Events";
+import Event from "../pages/Event";
 import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
 import { Dashboard } from "../pages/Dashboard";
@@ -28,6 +30,12 @@ const Routes = () => {
       </Route>
       <Route path="/groups/:id">
         <Group />
+      </Route>
+      <Route path="/events" exact>
+        <Events />
+      </Route>
+      <Route path="/events/:id">
+        <Event />
       </Route>
       <Route path="/aboutus">
         <AboutUs />

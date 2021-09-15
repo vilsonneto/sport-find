@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { History } from "history";
 import api from "../../services/api";
@@ -66,7 +66,6 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         //     progress: undefined,
         //   }
         history.push("/dashboard");
-        getUser();
       })
       .catch((err) => {
         toast.error("Algo deu errado!");
@@ -210,6 +209,12 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
       .then((response) => setUser(response.data))
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    if (!!auth) {
+      getUser();
+    }
+  }, [auth]);
 
   return (
     <AuthContext.Provider

@@ -11,6 +11,7 @@ interface IInputProps {
   cols: number;
   placeholder?: string;
   defaultValue?: string;
+  maxLength?: number;
 }
 
 const InputTexteArea = ({
@@ -20,7 +21,7 @@ const InputTexteArea = ({
   register,
   name,
   error,
-
+  maxLength,
   placeholder,
   defaultValue,
 }: IInputProps) => {
@@ -36,6 +37,7 @@ const InputTexteArea = ({
           placeholder={placeholder}
           {...register(name)}
           defaultValue={defaultValue}
+          maxLength={maxLength}
         />
       </InputContainer>
     </Container>
