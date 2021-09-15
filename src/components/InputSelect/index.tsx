@@ -31,7 +31,7 @@ const InputSelect = ({
         <select {...register(name)}>
           <option value="" />
           {options.map((item, index) => (
-            <option key={index} value={item.toLowerCase()}>
+            <option key={index} value={item}>
               {item}
             </option>
           ))}

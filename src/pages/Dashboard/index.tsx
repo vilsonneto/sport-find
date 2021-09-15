@@ -7,15 +7,17 @@ import { IEvents } from "../../types/IProviders";
 import { Container } from "./styles";
 import ModalGroup from "../../components/ModalGroup";
 import { Link } from "react-router-dom";
+import { useEvents } from "../../providers/Events";
 
 export const Dashboard = () => {
   const { user } = useAuth();
+  const { subscribedEvents } = useEvents();
   const [userEvents, setUserEvents] = useState<IEvents[]>([]);
   const [modal, setModal] = useState<boolean>(false);
 
   useEffect(() => {
-    setUserEvents(user.subscribed_events);
-  }, [user]);
+    setUserEvents(subscribedEvents);
+  }, [subscribedEvents, user]);
 
   return (
     <>

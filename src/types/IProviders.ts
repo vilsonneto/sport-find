@@ -17,8 +17,6 @@ export interface IUser {
   email: string;
   password: string;
   state: string;
-  subscribed_groups: IGroup[];
-  subscribed_events: IEvents[];
 }
 
 export interface IGroupData {
@@ -57,7 +55,6 @@ export interface IGroup {
   description: string;
   category: string;
   creator: number;
-  groupEvents: IEvents[];
   members: IMembers[];
   banned: IBanneds[];
 }
