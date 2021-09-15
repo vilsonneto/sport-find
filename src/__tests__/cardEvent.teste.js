@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CardEvent } from "../components/CardEvent";
 
-describe("testando component carevent", () => {
+describe("testando component cardEvent", () => {
   test("render carts react", () => {
     const eventCategory = {
       name: "Nati",
