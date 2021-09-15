@@ -200,7 +200,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
   const editUser = (username: string, state: string) => {
     api
       .patch(
-        `/user/${user.id}`,
+        `/users/${user.id}`,
         { username: username, state: state },
         {
           headers: { Authorization: `Bearer ${token}` },

@@ -1,17 +1,22 @@
 import logo from "../../assets/logo.jpeg";
 import perfilEditor from "../../assets/perfilEditor.jpg";
-import { Ul } from "./style";
+import { Ul, User, Container } from "./style";
 import { useHistory } from "react-router";
-
+import { Modal } from "../Modal";
+import { useState } from "react";
+import Button from "../Button";
+import { useAuth } from "../../providers/Auth";
 interface IHeaderProps {
   avatarImg?: string;
 }
-
 const Header = ({ avatarImg }: IHeaderProps) => {
   const history = useHistory();
+  const [open, setOpening] = useState<boolean>(false);
 
-  const handleClick = () => {};
-  // Se a váriavel for passsada ela coloca o avatar img no src
+  const { user, logoutUser } = useAuth();
+  const [username, setUserName] = useState<string>(user.username);
+  const [state, setState] = useState<string>(user.state);
+
   return (
     <header>
       <nav>
@@ -20,15 +25,41 @@ const Header = ({ avatarImg }: IHeaderProps) => {
             <img src={logo} alt="" onClick={() => history.push("/dashboard")} />
           </li>
 
-          {!avatarImg ? (
-            <li>
-              <img src={perfilEditor} alt="" onClick={handleClick} />
-            </li>
-          ) : (
-            <li>
-              <img src={avatarImg} alt="" onClick={handleClick} />
-            </li>
-          )}
+          <li>
+            <img src={perfilEditor} alt="" onClick={() => setOpening(true)} />
+            {open && (
+              <Modal inRight closeModal={setOpening}>
+                <Container>
+                  <User>
+                    <li>Avatar</li>
+                    <li>
+                      <div>
+                        <input
+                          value={username}
+                          onChange={(e) => setUserName(e.target.value)}
+                        ></input>
+                      </div>{" "}
+                      <div>
+                        {" "}
+                        <input
+                          value={state}
+                          onChange={(e) => setState(e.target.value)}
+                        ></input>
+                      </div>
+                    </li>
+                    <li>
+                      <Button variantGreen onClick={() => {}}>
+                        Salvar
+                      </Button>
+                    </li>
+                  </User>
+                  <Button variantRed onClick={logoutUser}>
+                    Logout
+                  </Button>
+                </Container>
+              </Modal>
+            )}
+          </li>
         </Ul>
       </nav>
     </header>
