@@ -27,7 +27,7 @@ const GroupsContext = createContext<IGroupsProviderData>(
 );
 
 export const GroupsProvider = ({ children }: IProvidersProps) => {
-  const { token, user, addUserListGroup, removeUserListGroup } = useAuth();
+  const { token, user } = useAuth();
   const [allGroups, setAllGroups] = useState<IGroup[]>([]);
 
   const createGroup = (username: string, groupData: IGroupData) => {
@@ -45,7 +45,6 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       })
       .then((response) => {
         setAllGroups([...allGroups, response.data]);
-        addUserListGroup(response.data);
       })
       .catch((err) => console.log(err));
   };
@@ -68,11 +67,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => {
-        console.log(response);
-        setAllGroups(newGroupList);
-        addUserListGroup(group);
-      })
+      .then(() => setAllGroups(newGroupList))
       .catch((err) => console.log(err));
   };
 
@@ -96,11 +91,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => {
-        console.log(response);
-        setAllGroups(newGroupList);
-        removeUserListGroup(group);
-      })
+      .then((response) => setAllGroups(newGroupList))
       .catch((err) => console.log(err));
   };
 
@@ -129,7 +120,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
               headers: { Authorization: `Bearer ${token}` },
             }
           )
-          .then((response) => setAllGroups(updatedGroupsList))
+          .then(() => setAllGroups(updatedGroupsList))
           .catch((err) => console.log(err));
       } else {
         console.log("apenas o criador do grupo pode banir");
@@ -156,10 +147,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
             headers: { Authorization: `Bearer ${token}` },
           }
         )
-        .then((response) => {
-          console.log(response);
-          setAllGroups(newGroupList);
-        })
+        .then(() => setAllGroups(newGroupList))
         .catch((err) => console.log(err));
     } else {
       console.log("apenas o criador do grupo pode alterar a descrição");
