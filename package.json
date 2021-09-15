@@ -18,6 +18,7 @@
     "react-hook-form": "^7.15.1",
     "react-icons": "^4.2.0",
     "react-lottie": "^1.2.3",
+    "react-nice-avatar": "^1.2.4",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.0.2",
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@lottiefiles/react-lottie-player": "^3.4.1",
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.14"
   }
