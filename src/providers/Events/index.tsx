@@ -160,9 +160,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         });
 
         setAllGroups(newListGroup);
-        addUserListEvent(event);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response));
   };
 
   const leaveEvent = (event: IEvents) => {
@@ -199,7 +198,6 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         });
 
         setAllGroups(newListGroup);
-        removeUserListEvent(event);
       })
       .catch((err) => console.log(err));
   };
