@@ -173,7 +173,6 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          console.log(response.data);
           setAllGroups(response.data);
         })
         .catch((err) => console.log(err));

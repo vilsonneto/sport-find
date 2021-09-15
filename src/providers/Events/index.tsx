@@ -221,7 +221,6 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          console.log(response.data);
           setAllEvents(response.data);
         })
         .catch((err) => console.log(err));

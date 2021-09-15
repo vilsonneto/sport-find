@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
 
   const getUser = () => {
     const decodeToken: IDecode = decode(auth);
-    console.log(decodeToken);
+
     api
       .get(`/users/${decodeToken.sub}`, {
         headers: { Authorization: `Bearer ${token}` },
