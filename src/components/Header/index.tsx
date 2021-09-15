@@ -38,9 +38,8 @@ const Header = () => {
                             value={username}
                             onChange={(e) => setUserName(e.target.value)}
                           ></input>
-                        </div>{" "}
+                        </div>
                         <div>
-                          {" "}
                           <select
                             value={state}
                             onChange={(e) => setState(e.target.value)}
