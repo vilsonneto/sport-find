@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   div {
     span {
-      color: #ff0000;
+      color: var(--red);
     }
   }
 `;
@@ -20,8 +20,8 @@ export const InputContainer = styled.div<IInputStyledProps>`
   width: 100%;
   padding: 10px;
 
-  background-color: #ffffff;
-  border: 2px solid #000000;
+  background-color: var(--white);
+  border: 2px solid var(--black);
   border-radius: 5px;
   display: flex;
   margin-bottom: 15px;
@@ -42,10 +42,10 @@ export const InputContainer = styled.div<IInputStyledProps>`
   ${(props) =>
     props.isErrored &&
     css`
-      border: 2px solid #ff0000;
+      border: 2px solid var(--red);
 
       svg {
-        color: #ff0000;
+        color: var(--red);
       }
     `}
 `;

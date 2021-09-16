@@ -19,7 +19,6 @@ const Header = ({ avatarImg }: IHeaderProps) => {
           <li>
             <img src={logo} alt="" onClick={() => history.push("/dashboard")} />
           </li>
-
           {!avatarImg ? (
             <li>
               <img src={perfilEditor} alt="" onClick={handleClick} />
@@ -29,6 +28,7 @@ const Header = ({ avatarImg }: IHeaderProps) => {
               <img src={avatarImg} alt="" onClick={handleClick} />
             </li>
           )}
+          g{" "}
         </Ul>
       </nav>
     </header>

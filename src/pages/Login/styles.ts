@@ -25,6 +25,7 @@ export const Header = styled.header`
   position: absolute;
   top: 25px;
   left: 50%;
+  z-index: 1;
 
   transform: translateX(-50%);
 
@@ -45,6 +46,7 @@ export const Header = styled.header`
 
 export const Container = styled.main`
   height: 100vh;
+  min-height: 530px;
 
   padding: 0 20px;
 

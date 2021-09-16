@@ -11,7 +11,6 @@ import {
 } from "../../types/IProviders";
 
 interface IGroupsProviderData {
-  setAllGroups: React.Dispatch<React.SetStateAction<IGroup[]>>;
   createGroup: (username: string, groupData: IGroupData) => void;
   banMember: (group: IGroup, bannedUser_id: number) => void;
   updateDescription: (group: IGroup, newDescription: string) => void;
@@ -34,7 +33,6 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
     const data = {
       creator: user.id,
       ...groupData,
-      groupEvents: [],
       members: [{ name: username, id: user.id }],
       banned: [],
     };
@@ -67,10 +65,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => {
-        console.log(response);
-        setAllGroups(newGroupList);
-      })
+      .then(() => setAllGroups(newGroupList))
       .catch((err) => console.log(err));
   };
 
@@ -94,10 +89,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => {
-        console.log(response);
-        setAllGroups(newGroupList);
-      })
+      .then((response) => setAllGroups(newGroupList))
       .catch((err) => console.log(err));
   };
 
@@ -126,7 +118,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
               headers: { Authorization: `Bearer ${token}` },
             }
           )
-          .then((response) => setAllGroups(updatedGroupsList))
+          .then(() => setAllGroups(updatedGroupsList))
           .catch((err) => console.log(err));
       } else {
         console.log("apenas o criador do grupo pode banir");
@@ -153,10 +145,7 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
             headers: { Authorization: `Bearer ${token}` },
           }
         )
-        .then((response) => {
-          console.log(response);
-          setAllGroups(newGroupList);
-        })
+        .then(() => setAllGroups(newGroupList))
         .catch((err) => console.log(err));
     } else {
       console.log("apenas o criador do grupo pode alterar a descrição");
@@ -170,7 +159,6 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          console.log(response.data);
           setAllGroups(response.data);
         })
         .catch((err) => console.log(err));
@@ -195,7 +183,6 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       value={{
         createGroup,
         allGroups,
-        setAllGroups,
         ownedGroups,
         subscribedGroups,
         banMember,

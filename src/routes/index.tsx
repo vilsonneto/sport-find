@@ -2,6 +2,13 @@ import { Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
+import Groups from "../pages/Groups";
+import Group from "../pages/Group";
+import Events from "../pages/Events";
+import Event from "../pages/Event";
+import AboutUs from "../pages/AboutUs";
+import Register from "../pages/Register";
+import { Dashboard } from "../pages/Dashboard";
 import Route from "./routes";
 const Routes = () => {
   return (
@@ -9,19 +16,31 @@ const Routes = () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/login">
+      <Route path="/register">
+        <Register />
+      </Route>
+      <Route path="/login">
         <Login />
       </Route>
-      <Route exact path="/notfound">
-        <NotFound />
+      <Route path="/dashboard">
+        <Dashboard />
       </Route>
-      <Route exact path="/register">
-        {}
+      <Route path="/groups" exact>
+        <Groups />
       </Route>
-      <Route exact path="/dashboard" isPrivate>
-        {}
+      <Route path="/groups/:id">
+        <Group />
       </Route>
-      <Route exact path="*">
+      <Route path="/events" exact>
+        <Events />
+      </Route>
+      <Route path="/events/:id">
+        <Event />
+      </Route>
+      <Route path="/aboutus">
+        <AboutUs />
+      </Route>
+      <Route>
         <NotFound />
       </Route>
     </Switch>

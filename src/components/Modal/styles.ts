@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface IModalStyledProps {
+  inRight: boolean;
+}
+
+export const Container = styled.div<IModalStyledProps>`
   position: fixed;
   bottom: 0;
   top: 0;
@@ -10,10 +14,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: ${(props) => props.inRight && `flex-end`};
 
   .modal {
     width: 100%;
     min-height: 568px;
+    min-height: ${(props) => props.inRight && `100%`};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -39,9 +45,17 @@ export const Container = styled.div`
     }
   }
 
+  @media (min-width: 360px) {
+    .modal {
+      width: ${(props) => props.inRight && `360px`};
+      border-radius: ${(props) => props.inRight && `8px 0 0 8px`};
+    }
+  }
+
   @media (min-width: 600px) {
     .modal {
       border-radius: 8px;
+      border-radius: ${(props) => props.inRight && `8px 0 0 8px`};
     }
   }
 

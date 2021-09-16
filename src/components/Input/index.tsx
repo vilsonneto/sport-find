@@ -1,14 +1,18 @@
 import { Container, InputContainer } from "./styles";
+
 import { IconType } from "react-icons";
+
 import { UseFormRegister, FieldValues } from "react-hook-form";
+
 interface IInputProps {
   label: string;
   icon?: IconType;
   register: UseFormRegister<FieldValues>;
   name: string;
-  error: string;
+  error?: string;
   type?: string;
   placeholder?: string;
+  defaultValue?: string;
 }
 
 const Input = ({
@@ -19,6 +23,7 @@ const Input = ({
   error,
   type,
   placeholder,
+  defaultValue,
 }: IInputProps) => {
   return (
     <Container>
@@ -27,7 +32,12 @@ const Input = ({
       </div>
       <InputContainer isErrored={!!error}>
         {Icon && <Icon size={20} />}
-        <input type={type} placeholder={placeholder} {...register(name)} />
+        <input
+          type={type}
+          placeholder={placeholder}
+          {...register(name)}
+          defaultValue={defaultValue}
+        />
       </InputContainer>
     </Container>
   );

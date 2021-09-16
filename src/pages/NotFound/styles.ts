@@ -1,35 +1,32 @@
 import styled from "styled-components";
 
-export const H1 = styled.h1`
-  width: 200px;
-  height: 98px;
-  font-family: "roboto";
-  margin-left: 10%;
-  font-size: 1.7rem;
-
-  @media (min-width: 768px) {
-    margin-left: 25%;
-    width: 622px;
-  }
-`;
-
 export const Container = styled.div`
+  max-width: 1280px;
+  height: 100vh;
+
+  margin: 0 auto;
+  padding: 50px 20px;
+
+  text-align: center;
+
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 3%;
-  justify-content: center;
 
-  button {
-    background-color: #000000;
-    color: #ffffff;
-    border-radius: 30px;
-    width: 189px;
-    height: 56px;
+  @media only screen and (min-width: 1024px) {
+    header {
+      font-size: 1.2rem;
+    }
 
-    @media (min-width: 768px) {
-      width: 267px;
-      height: 80px;
+    footer {
+      button {
+        padding: 10px 35px;
+
+        font-size: 1.5rem;
+
+        border-radius: 50px;
+      }
     }
   }
 `;

@@ -17,14 +17,13 @@ export interface IUser {
   email: string;
   password: string;
   state: string;
-  subscribed_groups: [];
-  subscribed_events: [];
 }
 
 export interface IGroupData {
   name: string;
-  description: string;
   category: string;
+  state: string;
+  description: string;
 }
 
 export interface IMembers {
@@ -35,9 +34,10 @@ export interface IMembers {
 export interface IEvents {
   name: string;
   group_Id: number;
+  state: string;
   local: string;
   data: string;
-  categoria: string;
+  category: string;
   description: string;
   users: number[];
   creator: number;
@@ -51,10 +51,22 @@ export interface IBanneds {
 export interface IGroup {
   id: number;
   name: string;
+  state: string;
   description: string;
   category: string;
   creator: number;
-  groupEvents: IEvents[];
   members: IMembers[];
   banned: IBanneds[];
+}
+
+export interface ILoginData {
+  email: string;
+  password: string;
+}
+
+export interface IRegisterData {
+  username: string;
+  email: string;
+  password: string;
+  state: string;
 }

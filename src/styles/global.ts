@@ -13,12 +13,13 @@ export default createGlobalStyle`
   }
 
   * {
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     outline: none;
     box-sizing: border-box;
+    list-style-type: none;
   }
-
 
   a {
     text-decoration: none;
