@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.li`
   height: 148px;
   width: 97%;
   max-width: 398px;
@@ -16,7 +16,7 @@ export const Container = styled.div`
     display: flex;
 
     .container-title {
-      width: 70%;
+      width: 68%;
 
       h3 {
         font-size: 20px;
@@ -48,8 +48,17 @@ export const Container = styled.div`
     }
     .container-progress {
       width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      svg {
+        font-size: 25px;
+        margin-bottom: 2px;
+      }
 
       p {
+        color: var(--orange);
         font-size: 15px;
         font-weight: bold;
       }

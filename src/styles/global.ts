@@ -13,6 +13,7 @@ export default createGlobalStyle`
   }
 
   * {
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     outline: none;
@@ -21,7 +22,9 @@ export default createGlobalStyle`
   }
 
   a {
+    color: var(--black);
     text-decoration: none;
+
     cursor: pointer;
   }
 

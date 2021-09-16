@@ -10,6 +10,7 @@ import {
   ILoginData,
   IRegisterData,
 } from "../../types/IProviders";
+import { AvatarFullConfig } from "react-nice-avatar";
 
 interface IAuthProviderData {
   token: string;
@@ -17,7 +18,7 @@ interface IAuthProviderData {
   loginUser: (userData: ILoginData, history: History) => void;
   registerUser: (userData: IRegisterData, history: History) => void;
   logoutUser: () => void;
-  editUser: (username: string, state: string) => void;
+  editUser: (username: string, state: string, avatar: AvatarFullConfig) => void;
 }
 
 const AuthContext = createContext<IAuthProviderData>({} as IAuthProviderData);
@@ -39,6 +40,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         history.push("/dashboard");
       })
       .catch((err) => {
+        console.log(err);
         toast.error("Algo deu errado!");
       });
   };
@@ -51,10 +53,10 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
       .post("/register", newData)
       .then(() => {
         toast.success("Cadastro realizado com sucesso!");
-
         history.push("/login");
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         toast.error("Algo deu errado!");
       });
   };
@@ -65,17 +67,31 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
     toast.success("Volte sempre!");
   };
 
-  const editUser = (username: string, state: string) => {
+  const editUser = (
+    username: string,
+    state: string,
+    avatar: AvatarFullConfig
+  ) => {
+    if (username.length === 0) {
+      toast.error("Usuário invalido");
+      return;
+    }
     api
       .patch(
         `/users/${user.id}`,
-        { username: username, state: state },
+        { username: username, state: state, avatar: avatar },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => setUser(response.data))
-      .catch((err) => console.log(err));
+      .then((response) => {
+        toast.success("Usuário editado com sucesso!");
+        setUser(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Algo deu errado!");
+      });
   };
 
   useEffect(() => {
@@ -87,9 +103,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${auth}` },
         })
         .then((response) => setUser(response.data))
-        .catch((err) =>
-          console.log("Não foi possível pegar informações do usuário.", err)
-        );
+        .catch((err) => console.log(err));
     }
   }, [auth, decode]);
 

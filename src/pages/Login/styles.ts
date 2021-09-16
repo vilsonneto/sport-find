@@ -38,14 +38,12 @@ export const Header = styled.header`
     width: 100%;
 
     padding: 0 50px;
-
-    display: flex;
-    justify-self: flex-start;
   }
 `;
 
 export const Container = styled.main`
   height: 100vh;
+  min-height: 530px;
 
   padding: 0 20px;
 

@@ -17,6 +17,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IoMdPerson } from "react-icons/io";
 import { AiOutlineMail, AiFillLock, AiFillFlag } from "react-icons/ai";
 import { Link, useHistory } from "react-router-dom";
+import { StateArr } from "../../utils/StateArr";
+import InputSelect from "../../components/InputSelect";
 
 interface IRegisterUserData {
   username: string;
@@ -77,10 +79,9 @@ const Register = () => {
           <ContainerImage>
             <Player
               src="https://assets2.lottiefiles.com/packages/lf20_dqzlxqtl.json"
-              style={{ width: "400px", height: "400px" }}
               loop
               autoplay
-            ></Player>
+            />
           </ContainerImage>
           <ContainerForm>
             <form onSubmit={handleSubmit(handleForm)}>
@@ -118,19 +119,20 @@ const Register = () => {
                   <Input
                     error={errors.verifyPassword?.message}
                     name="verifyPassword"
-                    label="Senha"
+                    label="Confirmar senha"
                     type="password"
                     icon={AiFillLock}
                     register={register}
                   />
                 </li>
                 <li>
-                  <Input
+                  <InputSelect
                     error={errors.state?.message}
                     name="state"
                     label="Estado"
                     icon={AiFillFlag}
                     register={register}
+                    options={StateArr}
                   />
                 </li>
                 <li>

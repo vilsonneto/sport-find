@@ -17,7 +17,6 @@ export const Container = styled.main`
 
       h1 {
         display: block;
-        font-family: Roboto, sans-serif;
         font-weight: 700;
         font-size: 40px;
         margin-left: 30px;
@@ -30,9 +29,14 @@ export const Container = styled.main`
       }
     }
   }
+
+  .container__filter-state {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-export const EventsContainer = styled.article`
+export const EventsContainer = styled.ul`
   margin: 0 auto;
   margin-top: 16px;
   display: flex;

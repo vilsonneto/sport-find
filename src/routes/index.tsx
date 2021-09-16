@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
@@ -9,11 +9,11 @@ import Event from "../pages/Event";
 import AboutUs from "../pages/AboutUs";
 import Register from "../pages/Register";
 import { Dashboard } from "../pages/Dashboard";
-
+import Route from "./routes";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/" exact>
+      <Route exact path="/">
         <Home />
       </Route>
       <Route path="/register">
@@ -22,19 +22,19 @@ const Routes = () => {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/dashboard">
+      <Route path="/dashboard" isPrivate>
         <Dashboard />
       </Route>
-      <Route path="/groups" exact>
+      <Route path="/groups" exact isPrivate>
         <Groups />
       </Route>
-      <Route path="/groups/:id">
+      <Route path="/groups/:id" isPrivate>
         <Group />
       </Route>
-      <Route path="/events" exact>
+      <Route path="/events" exact isPrivate>
         <Events />
       </Route>
-      <Route path="/events/:id">
+      <Route path="/events/:id" isPrivate>
         <Event />
       </Route>
       <Route path="/aboutus">

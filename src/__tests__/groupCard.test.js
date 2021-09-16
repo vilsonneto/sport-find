@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import GroupCard from "../components/GroupCard";
-import ArrowLeft from "../components/ArrowLeft";
 
 const groupMocked = {
   id: 1,
@@ -19,7 +18,7 @@ const groupMocked = {
 
 describe("Testando o component GroupCard", () => {
   test("Verificando se o componente é renderizado", () => {
-    render(<GroupCard group={groupMocked} />);
+    render(<GroupCard group={groupMocked} userId={1} />);
 
     const container = screen.getByTestId(/container/);
     const containerChild = screen.getByTestId(/child/);
@@ -30,7 +29,7 @@ describe("Testando o component GroupCard", () => {
   });
 
   test("verificando conteúdo do componente", () => {
-    render(<GroupCard group={groupMocked} />);
+    render(<GroupCard group={groupMocked} userId={1} />);
 
     const groupName = screen.queryByText(/Trilheiros/);
     const groupCategory = screen.queryByText(/Trilha/);
@@ -39,17 +38,5 @@ describe("Testando o component GroupCard", () => {
     expect(groupName).toBeInTheDocument();
     expect(groupCategory).toHaveClass("category");
     expect(groupState).toBeInTheDocument();
-  });
-});
-
-describe("Testando o component ArrowLeft", () => {
-  test("Verificando se o componente foi renderizado", () => {
-    render(<ArrowLeft />);
-
-    const container = screen.getByTestId(/container/);
-    const containerChild = screen.getByTestId(/child/);
-
-    expect(container).toContainElement(containerChild);
-    expect(containerChild).not.toContainElement(container);
   });
 });

@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect, useMemo } from "react";
 import { IProvidersProps, IEvents } from "../../types/IProviders";
 import api from "../../services/api";
 import { useAuth } from "../Auth";
+import { toast } from "react-toastify";
 
 interface IEventData {
   name: string;
@@ -44,11 +45,21 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
   const createEvent = (eventData: IEventData) => {
     if (eventData.creator === user.id) {
       api
-        .post("/events", eventData, {
-          headers: { Authorization: `Bearer ${token}` },
+        .post(
+          "/events",
+          { ...eventData, users: [eventData.creator] },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then((response) => {
+          setAllEvents([...allEvents, response.data]);
+          toast.success("Evento criado com sucesso!");
         })
-        .then((response) => setAllEvents([...allEvents, response.data]))
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          toast.error("Houve um erro na criação do evento!");
+        });
     }
   };
 
@@ -60,8 +71,14 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         .delete(`/events/${event.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then(() => setAllEvents(newListEvents))
-        .catch((err) => console.log(err));
+        .then(() => {
+          setAllEvents(newListEvents);
+          toast.success("Evento foi cancelado!");
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Não foi possível cancelar o evento, tente novamente!");
+        });
     }
   };
 
@@ -83,8 +100,12 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         })
         .then(() => {
           setAllEvents(newListEvents);
+          toast.success("Evento atualizado com sucesso!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          toast.error("Não foi possível atualizar o evento, tente novamente!");
+        });
     }
   };
 
@@ -106,8 +127,14 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
       )
       .then((response) => {
         setAllEvents(newListEvents);
+        toast.success("Confirmada sua participação!");
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => {
+        console.log(err);
+        toast.error(
+          "Não foi possível se inscrever no evento, tente novamente!"
+        );
+      });
   };
 
   const leaveEvent = (event: IEvents) => {
@@ -130,8 +157,12 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
       )
       .then(() => {
         setAllEvents(newListEvents);
+        toast.success("Você saiu do evento!");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("Não foi possível sair do evento, tente novamente!");
+      });
   };
 
   useEffect(() => {

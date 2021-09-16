@@ -24,6 +24,7 @@ import { useAuth } from "./../../providers/Auth";
 import { useGroups } from "./../../providers/Groups";
 import Header from "../../components/Header";
 import { useEvents } from "../../providers/Events";
+import Chat from "../../components/Chat";
 
 interface IParams {
   id: string;
@@ -160,14 +161,14 @@ const Group = () => {
             <section>
               <div>
                 {groupEvents.map((item, index) => (
-                  <CardEvent key={index} event={item} />
+                  <CardEvent key={index} event={item} userId={user.id} />
                 ))}
               </div>
             </section>
           </article>
         </ContainerMain>
         <ContainerChat>
-          <Button>Chat</Button>
+          <Chat />
         </ContainerChat>
         <Footer showMembers={showMembers}>
           <div>
@@ -177,7 +178,7 @@ const Group = () => {
             />
           </div>
           <div>
-            <Button>Chat</Button>
+            <Chat />
           </div>
         </Footer>
       </ContainerStyle>
