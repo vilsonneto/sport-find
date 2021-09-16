@@ -66,6 +66,10 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
   };
 
   const editUser = (username: string, state: string) => {
+    if (username.length === 0) {
+      toast.error("Usuário invalido");
+      return;
+    }
     api
       .patch(
         `/users/${user.id}`,
@@ -74,8 +78,14 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => setUser(response.data))
-      .catch((err) => console.log(err));
+      .then((response) => {
+        toast.success("Usuário editado com sucesso!");
+        setUser(response.data);
+      })
+      .catch((err) => {
+        toast.error("Algo deu errado!");
+        console.log(err);
+      });
   };
 
   useEffect(() => {

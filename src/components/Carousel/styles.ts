@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.article`
   width: 70%;
   max-width: 1280px;
   margin: 24px auto;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ItemsContainer = styled.div`
+export const ItemsContainer = styled.section`
   display: flex;
   overflow-y: hidden;
   overflow-x: auto;

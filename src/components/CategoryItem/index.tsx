@@ -9,14 +9,14 @@ const CategoryItem = ({ filterCategory }: ICategoryProps) => {
   return (
     <Carousel>
       {categoryArr.map((item, index) => (
-        <div
+        <li
           key={index}
           className="item"
           onClick={() => filterCategory(item.text)}
         >
           <img src={item.image} alt="imagem" />
           <p>{item.text} </p>
-        </div>
+        </li>
       ))}
     </Carousel>
   );
