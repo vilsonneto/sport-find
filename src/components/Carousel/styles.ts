@@ -29,10 +29,8 @@ export const ItemsContainer = styled.section`
   @media (min-width: 1024px) {
     justify-content: flex-start;
     height: 120px;
-    //align-items: center;
   }
 
-  // a classe item deve estar dentro da div que será passada como children.
   .item {
     flex: none;
     width: 29%;

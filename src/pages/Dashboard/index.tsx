@@ -81,7 +81,9 @@ export const Dashboard = () => {
                     </div>
                   ))
                 ) : (
-                  <p>Você não está inscrito em nenhum evento!</p>
+                  <p className="empy-text">
+                    Você não está inscrito em nenhum evento!
+                  </p>
                 )
               ) : (
                 <p>Carregando...</p>
@@ -101,7 +103,9 @@ export const Dashboard = () => {
                     </div>
                   ))
                 ) : (
-                  <p>Você não está inscrito em nenhum grupo!</p>
+                  <p className="empy-text">
+                    Você não está inscrito em nenhum grupo!
+                  </p>
                 )
               ) : (
                 <p>Carregando...</p>

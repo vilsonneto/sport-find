@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { keyframes } from "styled-components";
+
 export const Ul = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 5px 10px 0;
+  max-width: 1280px;
+  margin: 0 auto;
 
   li {
     list-style: none;
-    margin: 20px;
 
     img {
       width: 75px;

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+
   nav {
     background-color: var(--gray);
     position: fixed;
@@ -41,6 +44,10 @@ export const Container = styled.div`
       }
     }
 
+    .empy-text {
+      margin: 10px 0;
+    }
+
     .carousel {
       display: flex;
       overflow-y: hidden;
@@ -61,11 +68,24 @@ export const Container = styled.div`
           justify-content: center;
           max-width: 320px;
 
-          > div {
+          > li {
             width: 280px;
             height: 150px;
             margin: 16px 3px;
             padding-right: 10px;
+
+            h2,
+            h3 {
+              font-size: 20px;
+            }
+
+            .card-header p {
+              font-size: 17px;
+              margin-top: 3px;
+            }
+            .details-container p {
+              font-size: 17px;
+            }
           }
         }
       }
@@ -84,7 +104,7 @@ export const Container = styled.div`
             margin-left: auto;
             margin-right: auto;
 
-            > div {
+            > li {
               width: 300px;
               height: 150px;
               margin: 16px 3px;
@@ -112,7 +132,7 @@ export const Container = styled.div`
             margin-left: 0;
             margin-right: 0;
 
-            > div {
+            > li {
               width: 320px;
               height: 150px;
               margin: 16px 3px;
@@ -151,7 +171,7 @@ export const Container = styled.div`
         align-items: flex-start;
         padding-left: 30px;
         padding-right: 5px;
-        margin-top: 40px;
+        margin-top: 60px;
         height: 200px;
         width: 100%;
 
@@ -189,6 +209,7 @@ export const Container = styled.div`
 
     main {
       width: 100%;
+      margin-top: 20px;
 
       ul {
         width: 100%;

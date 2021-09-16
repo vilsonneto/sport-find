@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         history.push("/dashboard");
       })
       .catch((err) => {
+        console.log(err);
         toast.error("Algo deu errado!");
       });
   };
@@ -52,10 +53,10 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
       .post("/register", newData)
       .then(() => {
         toast.success("Cadastro realizado com sucesso!");
-
         history.push("/login");
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         toast.error("Algo deu errado!");
       });
   };
@@ -88,8 +89,8 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
         setUser(response.data);
       })
       .catch((err) => {
-        toast.error("Algo deu errado!");
         console.log(err);
+        toast.error("Algo deu errado!");
       });
   };
 
@@ -102,9 +103,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${auth}` },
         })
         .then((response) => setUser(response.data))
-        .catch((err) =>
-          console.log("Não foi possível pegar informações do usuário.", err)
-        );
+        .catch((err) => console.log(err));
     }
   }, [auth, decode]);
 

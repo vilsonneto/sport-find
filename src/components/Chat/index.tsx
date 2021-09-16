@@ -31,8 +31,8 @@ const Chat = () => {
               <div className="content">
                 <div className="title">
                   <div>
-                    <strong>Olá!</strong>
-                    <span>{user.username}, bem vindo ao nosso chat!</span>
+                    <strong>Olá {user.username},</strong>
+                    <span>Reporte aqui seu feedback!</span>
                   </div>
                 </div>
                 <div className="dialog">
@@ -51,7 +51,7 @@ const Chat = () => {
                     <Button variantGreen onClick={handleMessage}>
                       Enviar mensagem
                     </Button>
-                    {mensageEnviada && <span>Obrigada pelo Contato!</span>}
+                    {mensageEnviada && <span>Obrigado pelo Contato!</span>}
                   </div>
                 </div>
               </div>

@@ -91,6 +91,7 @@ export const Conteiner = styled.div`
     flex-flow: column-reverse;
     height: 173px;
     width: 212px;
+    margin: 0 auto;
   }
   .dialog label {
     transition: all 0.2s;
@@ -104,6 +105,7 @@ export const Conteiner = styled.div`
     border-radius: 5px;
     height: 124px;
     margin-bottom: 18px;
+    margin-top: 5px;
     padding: 5px 15px;
     position: relative;
   }

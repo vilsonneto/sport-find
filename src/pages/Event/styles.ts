@@ -45,11 +45,9 @@ export const ContainerMain = styled.main`
       margin-bottom: 10px;
       padding: 5px 0;
 
-      background-color: var(--blue);
+      color: var(--white);
 
-      h1 {
-        color: var(--white);
-      }
+      background-color: var(--blue);
 
       @media only screen and (min-width: 1024px) {
         width: 90%;

@@ -57,8 +57,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           toast.success("Evento criado com sucesso!");
         })
         .catch((err) => {
-          toast.error("Houve um erro na criação do evento!");
           console.log(err);
+          toast.error("Houve um erro na criação do evento!");
         });
     }
   };
@@ -76,8 +76,8 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
           toast.success("Evento foi cancelado!");
         })
         .catch((err) => {
-          toast.error("Não foi possível cancelar o evento, tente novamente!");
           console.log(err);
+          toast.error("Não foi possível cancelar o evento, tente novamente!");
         });
     }
   };
@@ -130,7 +130,7 @@ export const EventsProvider = ({ children }: IProvidersProps) => {
         toast.success("Confirmada sua participação!");
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
         toast.error(
           "Não foi possível se inscrever no evento, tente novamente!"
         );

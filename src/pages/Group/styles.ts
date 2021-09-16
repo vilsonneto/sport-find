@@ -47,12 +47,12 @@ export const ContainerMain = styled.main`
       margin-bottom: 10px;
       padding: 5px 0;
 
+      color: var(--white);
+
       background-color: var(--orange);
 
       h1 {
         margin-bottom: 5px;
-
-        color: var(--white);
       }
 
       @media only screen and (min-width: 1024px) {
@@ -117,7 +117,7 @@ export const ContainerMain = styled.main`
     }
 
     section {
-      height: calc(100vh - (65px + 128px + 138px + 27px + 70px + 109px));
+      height: calc(100vh - (65px + 128px + 138px + 27px + 70px));
 
       overflow-y: auto;
 
@@ -128,11 +128,12 @@ export const ContainerMain = styled.main`
         flex-direction: column;
         align-items: center;
 
-        > div {
+        > li {
           max-width: 360px;
           width: 100%;
           min-height: 100px;
           height: 100px;
+          margin-top: 5px;
 
           margin: 0;
 
@@ -141,7 +142,7 @@ export const ContainerMain = styled.main`
           }
         }
 
-        div + div {
+        li + li {
           margin-top: 5px;
         }
 
@@ -151,11 +152,30 @@ export const ContainerMain = styled.main`
           justify-content: space-between;
           align-items: flex-start;
 
-          div {
+          li {
             margin-bottom: 5px;
+
+            .card-header {
+              h3 {
+                font-size: 1.2rem;
+              }
+
+              p {
+                margin-top: 3px;
+                font-size: 1rem;
+              }
+            }
+            .card-details {
+              .container-category {
+                width: 63%;
+                p {
+                  font-size: 1rem;
+                }
+              }
+            }
           }
 
-          div + div {
+          li + li {
             margin-top: 0;
           }
         }

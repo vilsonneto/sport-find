@@ -9,7 +9,7 @@ interface IArrowLeftProps {
 const ArrowLeft = ({ path = "/dashboard" }: IArrowLeftProps) => {
   const history = useHistory();
   const handleClick = () => {
-    history.push(path);
+    history.goBack();
   };
 
   return (
