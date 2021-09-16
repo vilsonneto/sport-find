@@ -38,8 +38,6 @@ const Header = () => {
   useEffect(() => {
     setUserName(user.username);
     setState(user.state);
-  }, [user.username, user.state]);
-
   return (
     <header>
       <nav>
