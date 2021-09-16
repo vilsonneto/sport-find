@@ -170,8 +170,6 @@ export const Container = styled.div`
           div {
             width: 100%;
 
-            color: var(--black);
-
             display: flex;
             align-items: center;
           }
@@ -188,6 +186,7 @@ export const Container = styled.div`
         }
       }
     }
+
     main {
       width: 100%;
 
