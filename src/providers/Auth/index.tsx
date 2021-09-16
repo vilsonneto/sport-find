@@ -10,6 +10,7 @@ import {
   ILoginData,
   IRegisterData,
 } from "../../types/IProviders";
+import { AvatarFullConfig } from "react-nice-avatar";
 
 interface IAuthProviderData {
   token: string;
@@ -17,7 +18,7 @@ interface IAuthProviderData {
   loginUser: (userData: ILoginData, history: History) => void;
   registerUser: (userData: IRegisterData, history: History) => void;
   logoutUser: () => void;
-  editUser: (username: string, state: string) => void;
+  editUser: (username: string, state: string, avatar: AvatarFullConfig) => void;
 }
 
 const AuthContext = createContext<IAuthProviderData>({} as IAuthProviderData);
@@ -65,7 +66,11 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
     toast.success("Volte sempre!");
   };
 
-  const editUser = (username: string, state: string) => {
+  const editUser = (
+    username: string,
+    state: string,
+    avatar: AvatarFullConfig
+  ) => {
     if (username.length === 0) {
       toast.error("Usuário invalido");
       return;
@@ -73,7 +78,7 @@ export const AuthProvider = ({ children }: IProvidersProps) => {
     api
       .patch(
         `/users/${user.id}`,
-        { username: username, state: state },
+        { username: username, state: state, avatar: avatar },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
