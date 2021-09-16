@@ -45,12 +45,8 @@ const Home = () => {
         <ContainerAbout>
           <Typography>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              nunc enim, eleifend sed facilisis at, imperdiet vitae libero. Ut
-              dapibus consectetur lacus eu hendrerit. Aliquam ultricies nunc ac
-              consectetur consequat. Sed commodo, sapien nec vestibulum
-              volutpat, nisi elit egestas nisl, at hendrerit arcu mauris non
-              arcu. Nulla scelerisque ipsum sed.
+              Fazer esportes sozinho pode ser bom, porém com outras pessoas que
+              compartilham o mesmo amor pelo esporte pode ser muito melhor!
             </p>
             <Button variantGreen onClick={() => history.push("/register")}>
               Registre-se
@@ -65,31 +61,19 @@ const Home = () => {
           </Image>
         </ContainerAbout>
         <ContainerFeatures>
-          <h1>Features do Projeto</h1>
+          <h1>Descubra SPORTFIND</h1>
           <section>
             <Card>
-              <h3>Feature 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus nunc enim, eleifend sed facilisis at, imperdiet vitae
-                libero.
-              </p>
+              <h3>Faça amigos</h3>
+              <p>Conheça novas pessoas que compartilham seus interesses.</p>
             </Card>
             <Card>
-              <h3>Feature 2</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus nunc enim, eleifend sed facilisis at, imperdiet vitae
-                libero.
-              </p>
+              <h3>Encontre na sua região</h3>
+              <p>Descubra as atividades que estão acontecendo em sua região.</p>
             </Card>
             <Card>
-              <h3>Feature 3</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus nunc enim, eleifend sed facilisis at, imperdiet vitae
-                libero.
-              </p>
+              <h3>Faça parte de uma comunidade</h3>
+              <p>Encontre grupos e eventos do seu esporte favorito!</p>
             </Card>
           </section>
         </ContainerFeatures>

@@ -16,7 +16,7 @@ describe("testando component cardEvent", () => {
       creator: 1,
       id: 1,
     };
-    render(<CardEvent event={eventCategory} />);
+    render(<CardEvent event={eventCategory} userId={1} />);
 
     const cardEvent = screen.getByText(/Yoga/);
     expect(cardEvent).toBeInTheDocument();
