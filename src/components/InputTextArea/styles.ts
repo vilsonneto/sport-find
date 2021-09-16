@@ -36,15 +36,15 @@ export const InputContainer = styled.div<IInputStyledProps>`
 
     align-items: center;
     flex: 1;
+
+    ${(props) =>
+      props.isErrored &&
+      css`
+        border: 2px solid var(--red);
+
+        svg {
+          color: var(--red);
+        }
+      `}
   }
-
-  ${(props) =>
-    props.isErrored &&
-    css`
-      border: 2px solid var(--red);
-
-      svg {
-        color: var(--red);
-      }
-    `}
 `;

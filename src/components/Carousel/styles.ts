@@ -35,15 +35,19 @@ export const ItemsContainer = styled.section`
   // a classe item deve estar dentro da div que será passada como children.
   .item {
     flex: none;
-    width: 34%;
+    width: 29%;
     height: 100px;
     scroll-snap-align: start;
     pointer-events: none;
     text-align: center;
     cursor: pointer;
 
+    @media (min-width: 768px) {
+      width: 22%;
+    }
+
     @media (min-width: 1024px) {
-      width: 25%;
+      width: 15%;
       height: 13vh;
     }
 
