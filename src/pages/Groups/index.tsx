@@ -39,16 +39,6 @@ const Groups = () => {
           <ArrowLeft />
           <h1>Grupos</h1>
         </header>
-<<<<<<< HEAD
-        <CategoryItem filterCategory={categoryFilter} />
-        <article>
-          <GroupsContainer>
-            {groupList.map((group, index) => (
-              <GroupCard key={index} group={group} />
-            ))}
-          </GroupsContainer>
-        </article>
-=======
         <CategoryItem filterCategory={setFilterByCategory} />
         <div className="container__filter-state">
           <label htmlFor="states">
@@ -71,7 +61,6 @@ const Groups = () => {
             <GroupCard key={index} group={group} userId={user.id} />
           ))}
         </GroupsContainer>
->>>>>>> develop
       </Container>
     </>
   );

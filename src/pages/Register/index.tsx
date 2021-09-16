@@ -17,14 +17,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IoMdPerson } from "react-icons/io";
 import { AiOutlineMail, AiFillLock, AiFillFlag } from "react-icons/ai";
 import { Link, useHistory } from "react-router-dom";
-<<<<<<< HEAD
-import InputSelect from "../../components/InputSelect";
-import { StateArr } from "../../utils/StateArr";
-=======
 import { StateArr } from "../../utils/StateArr";
 import InputSelect from "../../components/InputSelect";
 
->>>>>>> develop
 interface IRegisterUserData {
   username: string;
   email: string;

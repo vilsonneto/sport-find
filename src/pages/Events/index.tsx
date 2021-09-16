@@ -36,26 +36,11 @@ const Events = () => {
     <>
       <Header />
       <Container>
-<<<<<<< HEAD
-        <header className="cabecalho">
-          <ArrowLeft />
-          <h1>Eventos</h1>
-        </header>
-        <CategoryItem filterCategory={categoryFilter} />
-        <article>
-          <section>
-            <EventsContainer>
-              {eventList.map((event, index) => (
-                <CardEvent key={index} event={event} />
-              ))}
-            </EventsContainer>
-          </section>
-        </article>
-=======
         <header>
           <ArrowLeft />
           <h1>Eventos</h1>
         </header>
+
         <CategoryItem filterCategory={setFilterByCategory} />
         <div className="container__filter-state">
           <label htmlFor="states">
@@ -78,7 +63,6 @@ const Events = () => {
             <CardEvent key={index} event={event} userId={user.id} />
           ))}
         </EventsContainer>
->>>>>>> develop
       </Container>
     </>
   );
