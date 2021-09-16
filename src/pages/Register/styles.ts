@@ -35,13 +35,13 @@ export const Header = styled.header`
   }
 
   @media only screen and (min-width: 1024px) {
-    left: 90%;
-    display: flex;
-    justify-self: flex-end;
-  }
-
-  @media only screen and (min-width: 1440px) {
     max-width: 1280px;
+    width: 100%;
+
+    padding: 0 50px;
+
+    display: flex;
+    justify-content: flex-end;
   }
 `;
 

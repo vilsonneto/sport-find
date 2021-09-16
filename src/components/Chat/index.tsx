@@ -32,7 +32,7 @@ const Chat = () => {
                 <div className="title">
                   <div>
                     <strong>Olá!</strong>
-                    <span> Bem vindo, {user.username} ao nosso chat!</span>
+                    <span>{user.username}, bem vindo ao nosso chat!</span>
                   </div>
                 </div>
                 <div className="dialog">
@@ -45,7 +45,7 @@ const Chat = () => {
                         id="mensage"
                         onChange={(e) => setMensage(e.target.value)}
                         placeholder="Escreva aqui!"
-                      ></textarea>
+                      />
                       <label>Mensagem</label>
                     </div>
                     <Button variantGreen onClick={handleMessage}>
