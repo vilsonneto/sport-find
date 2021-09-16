@@ -190,15 +190,9 @@ export const Footer = styled.footer<IStylesProps>`
   position: fixed;
   bottom: 0;
 
-  div {
+  > div {
     width: 75px;
     text-align: center;
-
-    button {
-      padding: 0 20px;
-
-      height: 30px;
-    }
 
     svg {
       transition: 0.3s;

@@ -1,20 +1,15 @@
 import styled from "styled-components";
 
 export const Conteiner = styled.div`
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
+  /* right: 15px;
+  bottom: 15px; */
 
   .container {
     position: relative;
   }
   .icon {
     width: 90px;
-    height: 39px;
     border-radius: 30px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -25,9 +20,13 @@ export const Conteiner = styled.div`
   }
 
   .svg {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     color: var(--orange);
+    @media (min-width: 1024px) {
+      height: 50px;
+      width: 50px;
+    }
   }
 
   .content {
@@ -40,6 +39,11 @@ export const Conteiner = styled.div`
     bottom: 75px;
     right: 0;
     background-color: var(--gray);
+    transform: translateX(10px);
+
+    @media (min-width: 1024px) {
+      transform: translateY(-10px);
+    }
   }
   .title {
     display: flex;

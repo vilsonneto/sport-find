@@ -32,7 +32,7 @@ const Chat = () => {
                 <div className="title">
                   <div>
                     <strong>Olá!</strong>
-                    <span>Bem vindo, {user.username} ao nosso chat!</span>
+                    <span> Bem vindo, {user.username} ao nosso chat!</span>
                   </div>
                 </div>
                 <div className="dialog">

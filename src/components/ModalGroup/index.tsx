@@ -92,7 +92,7 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
               maxLength={120}
             />
           </li>
-          <li buttom-create>
+          <li>
             <Button type="submit" variantGreen>
               Criar
             </Button>
