@@ -30,6 +30,11 @@ export const Container = styled.main`
       }
     }
   }
+
+  .container__filter-state {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const GroupsContainer = styled.ul`
