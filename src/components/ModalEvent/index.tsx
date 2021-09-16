@@ -117,7 +117,7 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
                 <Button type="submit" variantGreen>
                   Editar
                 </Button>
-                <Button onClick={handleDelet} variantRed>
+                <Button onClick={handleDelet} type="button" variantRed>
                   Deletar
                 </Button>
               </div>

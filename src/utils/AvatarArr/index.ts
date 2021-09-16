@@ -16,7 +16,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtStyle: "short",
     shirtColor: "red",
     noseStyle: "short",
-    id: "0",
   },
   {
     eyeBrowStyle: "up",
@@ -34,7 +33,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "black",
     noseStyle: "short",
     hairStyle: "womanLong",
-    id: "1",
   },
   {
     eyeBrowStyle: "up",
@@ -52,7 +50,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "green",
     noseStyle: "short",
     hairStyle: "thick",
-    id: "2",
   },
   {
     eyeBrowStyle: "up",
@@ -70,7 +67,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "green",
     noseStyle: "short",
     hairStyle: "normal",
-    id: "3",
   },
   {
     eyeBrowStyle: "up",
@@ -88,7 +84,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "yellow",
     noseStyle: "short",
     hairStyle: "mohawk",
-    id: "4",
   },
   {
     eyeBrowStyle: "up",
@@ -106,7 +101,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "white",
     noseStyle: "short",
     hairStyle: "womanShort",
-    id: "5",
   },
   {
     eyeBrowStyle: "up",
@@ -124,7 +118,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "red",
     noseStyle: "short",
     hairStyle: "womanShort",
-    id: "6",
   },
   {
     eyeBrowStyle: "up",
@@ -142,7 +135,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "purple",
     noseStyle: "short",
     hairStyle: "womanShort",
-    id: "7",
   },
   {
     eyeBrowStyle: "upWoman",
@@ -160,7 +152,6 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "purple",
     noseStyle: "short",
     hairStyle: "womanShort",
-    id: "8",
   },
   {
     eyeBrowStyle: "upWoman",
@@ -178,6 +169,5 @@ export const avatarArr: AvatarFullConfig[] = [
     shirtColor: "purple",
     noseStyle: "short",
     hairStyle: "thick",
-    id: "9",
   },
 ];

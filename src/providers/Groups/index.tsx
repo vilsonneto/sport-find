@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext, useMemo, useContext } from "react";
 import api from "../../services/api";
 import { useAuth } from "../Auth";
+import { toast } from "react-toastify";
 
 import {
   IProvidersProps,
@@ -43,8 +44,12 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
       })
       .then((response) => {
         setAllGroups([...allGroups, response.data]);
+        toast.success("Grupo criado com sucesso!");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("Houve um erro na criação do grupo!");
+      });
   };
 
   const subscribeGroup = (group: IGroup, user: IMembers) => {
@@ -65,8 +70,14 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then(() => setAllGroups(newGroupList))
-      .catch((err) => console.log(err));
+      .then(() => {
+        setAllGroups(newGroupList);
+        toast.success("Você agora faz parte do grupo!");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Não foi possível entrar no grupo, tente novamente!");
+      });
   };
 
   const exitGroup = (group: IGroup, user: IMembers) => {
@@ -89,8 +100,14 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => setAllGroups(newGroupList))
-      .catch((err) => console.log(err));
+      .then((response) => {
+        setAllGroups(newGroupList);
+        toast.success("Você saiu do grupo!");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Não foi possível sair do grupo, tente novamente!");
+      });
   };
 
   const banMember = (group: IGroup, bannedUser_id: IBanneds["id"]) => {
@@ -119,12 +136,11 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
             }
           )
           .then(() => setAllGroups(updatedGroupsList))
-          .catch((err) => console.log(err));
-      } else {
-        console.log("apenas o criador do grupo pode banir");
+          .catch((err) => {
+            console.log(err);
+            toast.error("Algo deu errado!");
+          });
       }
-    } else {
-      console.log("o criador do grupo não pode ser banido");
     }
   };
 
@@ -146,9 +162,10 @@ export const GroupsProvider = ({ children }: IProvidersProps) => {
           }
         )
         .then(() => setAllGroups(newGroupList))
-        .catch((err) => console.log(err));
-    } else {
-      console.log("apenas o criador do grupo pode alterar a descrição");
+        .catch((err) => {
+          console.log(err);
+          toast.error("Algo deu errado!");
+        });
     }
   };
 
