@@ -41,6 +41,10 @@ export const Container = styled.div`
       }
     }
 
+    .empy-text {
+      margin: 10px 0;
+    }
+
     .carousel {
       display: flex;
       overflow-y: hidden;
