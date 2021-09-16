@@ -117,7 +117,7 @@ export const ContainerMain = styled.main`
     }
 
     section {
-      height: calc(100vh - (65px + 128px + 138px + 27px + 70px + 109px));
+      height: calc(100vh - (65px + 128px + 138px + 27px + 70px));
 
       overflow-y: auto;
 
@@ -128,11 +128,12 @@ export const ContainerMain = styled.main`
         flex-direction: column;
         align-items: center;
 
-        > div {
+        > li {
           max-width: 360px;
           width: 100%;
           min-height: 100px;
           height: 100px;
+          margin-top: 5px;
 
           margin: 0;
 
@@ -141,7 +142,7 @@ export const ContainerMain = styled.main`
           }
         }
 
-        div + div {
+        li + li {
           margin-top: 5px;
         }
 
@@ -151,11 +152,11 @@ export const ContainerMain = styled.main`
           justify-content: space-between;
           align-items: flex-start;
 
-          div {
+          li {
             margin-bottom: 5px;
           }
 
-          div + div {
+          li + li {
             margin-top: 0;
           }
         }
