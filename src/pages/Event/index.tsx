@@ -34,7 +34,6 @@ const Event = () => {
   }, [params, allEvents]);
 
   if (!event) {
-    console.log("O evento não foi encontrado");
     history.push("/events");
   }
 
