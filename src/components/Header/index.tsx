@@ -1,6 +1,8 @@
+import { Container } from "./style";
+
 import logo from "../../assets/logo.jpeg";
 import perfilEditor from "../../assets/perfilEditor.jpg";
-import { Ul } from "./style";
+
 import { useHistory } from "react-router";
 
 interface IHeaderProps {
@@ -11,11 +13,10 @@ const Header = ({ avatarImg }: IHeaderProps) => {
   const history = useHistory();
 
   const handleClick = () => {};
-  // Se a váriavel for passsada ela coloca o avatar img no src
   return (
     <header>
       <nav>
-        <Ul>
+        <Container>
           <li>
             <img src={logo} alt="" onClick={() => history.push("/dashboard")} />
           </li>
@@ -29,7 +30,7 @@ const Header = ({ avatarImg }: IHeaderProps) => {
               <img src={avatarImg} alt="" onClick={handleClick} />
             </li>
           )}
-        </Ul>
+        </Container>
       </nav>
     </header>
   );
