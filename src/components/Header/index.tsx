@@ -6,39 +6,54 @@ import { useEffect, useState } from "react";
 import Button from "../Button";
 import { useAuth } from "../../providers/Auth";
 import { StateArr } from "../../utils/StateArr";
-import Avatar, { genConfig } from "react-nice-avatar";
+import Avatar, { genConfig, AvatarFullConfig } from "react-nice-avatar";
+import { avatarArr } from "../../utils/CategoryArr";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Header = () => {
   const history = useHistory();
 
   const [open, setOpening] = useState<boolean>(false);
-  const [modalAvatar, setModalAvatar] = useState<boolean>(false);
-
   const { user, logoutUser, editUser } = useAuth();
-
   const [username, setUserName] = useState<string>(user.username);
   const [state, setState] = useState<string>(user.state);
+  const [num, setNum] = useState<number>(0);
+  const [avatar, setAvatar] = useState<AvatarFullConfig>(user.avatar);
 
-  const config = genConfig({
-    eyeBrowStyle: "up",
-    sex: "woman",
-    hatStyle: "beanie",
-    hatColor: "red",
-    hairColor: "red",
-    bgColor: "#bffdeb",
-    earSize: "small",
-    eyeStyle: "oval",
-    faceColor: "#ac6651",
-    mouthStyle: "smile",
-    glassesStyle: "none",
-    shirtStyle: "short",
-    shirtColor: "red",
-    noseStyle: "short",
-  });
+  const verifyAvatar = () => {
+    if (avatar === undefined) {
+      return genConfig(avatarArr[num]);
+    } else {
+      return genConfig(avatar);
+    }
+  };
+
+  const config = verifyAvatar();
+
+  const handleClickNext = () => {
+    if (avatarArr[num + 1] === undefined) {
+      setNum(0);
+    } else {
+      setNum(num + 1);
+    }
+  };
+
+  const handleClickPrevious = () => {
+    if (num - 1 < 0) {
+      setNum(avatarArr.length - 1);
+    } else {
+      setNum(num - 1);
+    }
+  };
+
   useEffect(() => {
     setUserName(user.username);
     setState(user.state);
   }, [user.username, user.state]);
+
+  useEffect(() => {
+    setAvatar(avatarArr[num]);
+  }, [num]);
 
   return (
     <header>
@@ -47,30 +62,29 @@ const Header = () => {
           <li>
             <img src={logo} alt="" onClick={() => history.push("/dashboard")} />
           </li>
-
           <div>
             <li onClick={() => setOpening(true)}>
               <Avatar style={{ width: "5rem", height: "5rem" }} {...config} />
             </li>
-
             {open && (
               <aside>
                 <Modal inRight closeModal={setOpening}>
                   <Container>
                     <User>
-                      <div onClick={() => setModalAvatar(!modalAvatar)}>
+                      <div>
+                        <AiOutlineArrowLeft onClick={handleClickPrevious} />
                         <Avatar
                           style={{ width: "8rem", height: "8rem" }}
                           {...config}
                         />
+                        <AiOutlineArrowRight onClick={handleClickNext} />
                       </div>
-
                       <li>
                         <div>
                           <input
                             value={username}
                             onChange={(e) => setUserName(e.target.value)}
-                          ></input>
+                          />
                         </div>
                         <div>
                           <select
@@ -86,7 +100,7 @@ const Header = () => {
                       <li>
                         <Button
                           variantGreen
-                          onClick={() => editUser(username, state)}
+                          onClick={() => editUser(username, state, avatar)}
                         >
                           Salvar
                         </Button>

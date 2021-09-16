@@ -22,7 +22,16 @@ export const User = styled.ul`
   flex-direction: column;
   width: 100%;
   align-items: center;
-
+  > div {
+    display: flex;
+    align-items: center;
+    > svg:nth-child(1) {
+      margin-right: 10px;
+    }
+    > svg:nth-child(3) {
+      margin-left: 10px;
+    }
+  }
   li {
     margin-top: 20px;
   }
