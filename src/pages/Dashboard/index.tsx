@@ -25,7 +25,6 @@ export const Dashboard = () => {
   }, [subscribedEvents, subscribedGroups, user]);
 
   function eventScroll(event: React.WheelEvent<HTMLDivElement>) {
-    // conversão explicita de EventTarget para HTMLDivElement para acessar o scrollBy
     let target = event.target as HTMLDivElement;
 
     if (event.deltaY > 0) {
@@ -42,21 +41,23 @@ export const Dashboard = () => {
         <aside>
           <nav>
             <ul>
-              <Link to="/groups">
-                <li>
+              <li>
+                <Link to="/groups">
                   <MdGroup />
                   <span>Grupos</span>
-                </li>
-              </Link>
-              <Link to="/events">
-                <li>
+                </Link>
+              </li>
+              <li>
+                <Link to="/events">
                   <MdDirectionsBike />
                   <span>Eventos</span>
-                </li>
-              </Link>
-              <li onClick={() => setModal(true)}>
-                <MdGroupAdd />
-                <span>Criar Grupo</span>
+                </Link>
+              </li>
+              <li>
+                <div onClick={() => setModal(true)}>
+                  <MdGroupAdd />
+                  <span>Criar Grupo</span>
+                </div>
               </li>
             </ul>
           </nav>

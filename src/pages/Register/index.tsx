@@ -79,10 +79,9 @@ const Register = () => {
           <ContainerImage>
             <Player
               src="https://assets2.lottiefiles.com/packages/lf20_dqzlxqtl.json"
-              style={{ width: "400px", height: "400px" }}
               loop
               autoplay
-            ></Player>
+            />
           </ContainerImage>
           <ContainerForm>
             <form onSubmit={handleSubmit(handleForm)}>

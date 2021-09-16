@@ -38,9 +38,6 @@ export const Header = styled.header`
     width: 100%;
 
     padding: 0 50px;
-
-    display: flex;
-    justify-self: flex-start;
   }
 `;
 
