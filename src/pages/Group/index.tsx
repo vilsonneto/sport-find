@@ -160,7 +160,7 @@ const Group = () => {
             <section>
               <div>
                 {groupEvents.map((item, index) => (
-                  <CardEvent key={index} event={item} />
+                  <CardEvent key={index} event={item} userId={user.id} />
                 ))}
               </div>
             </section>

@@ -19,7 +19,7 @@ const groupMocked = {
 
 describe("Testando o component GroupCard", () => {
   test("Verificando se o componente é renderizado", () => {
-    render(<GroupCard group={groupMocked} />);
+    render(<GroupCard group={groupMocked} userId={1} />);
 
     const container = screen.getByTestId(/container/);
     const containerChild = screen.getByTestId(/child/);
@@ -30,7 +30,7 @@ describe("Testando o component GroupCard", () => {
   });
 
   test("verificando conteúdo do componente", () => {
-    render(<GroupCard group={groupMocked} />);
+    render(<GroupCard group={groupMocked} userId={1} />);
 
     const groupName = screen.queryByText(/Trilheiros/);
     const groupCategory = screen.queryByText(/Trilha/);
