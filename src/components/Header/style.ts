@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { keyframes } from "styled-components";
 export const Ul = styled.ul`
   display: flex;
   flex-direction: row;
@@ -16,22 +16,50 @@ export const Ul = styled.ul`
     }
   }
 `;
+const fade = keyframes` 
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+`;
+
 export const User = styled.ul`
   justify-content: center;
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
+
   > div {
     display: flex;
     align-items: center;
     > svg:nth-child(1) {
       margin-right: 10px;
+      :hover {
+        color: #aec242;
+      }
     }
+
+    > div {
+      div {
+        div {
+          svg {
+            animation: ${fade} 0.5s linear;
+          }
+        }
+      }
+    }
+
     > svg:nth-child(3) {
       margin-left: 10px;
+      :hover {
+        color: #aec242;
+      }
     }
   }
+
   li {
     margin-top: 20px;
   }

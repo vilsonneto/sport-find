@@ -7,7 +7,7 @@ import Button from "../Button";
 import { useAuth } from "../../providers/Auth";
 import { StateArr } from "../../utils/StateArr";
 import Avatar, { genConfig, AvatarFullConfig } from "react-nice-avatar";
-import { avatarArr } from "../../utils/CategoryArr";
+import { avatarArr } from "../../utils/AvatarArr";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Header = () => {
