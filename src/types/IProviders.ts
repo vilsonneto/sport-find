@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { AvatarFullConfig } from "react-nice-avatar";
 
 export interface IProvidersProps {
   children: ReactNode;
@@ -17,6 +18,7 @@ export interface IUser {
   email: string;
   password: string;
   state: string;
+  avatar: AvatarFullConfig;
 }
 
 export interface IGroupData {
