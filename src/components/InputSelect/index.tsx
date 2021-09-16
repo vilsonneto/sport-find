@@ -10,7 +10,7 @@ interface IInputSelectProps {
   name: string;
   options: string[];
   register: UseFormRegister<FieldValues>;
-  error: string;
+  error?: string;
 }
 
 const InputSelect = ({

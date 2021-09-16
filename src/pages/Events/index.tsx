@@ -8,8 +8,10 @@ import { useEffect, useState, useMemo } from "react";
 import { IEvents } from "../../types/IProviders";
 import { StateArr } from "../../utils/StateArr";
 import { TiFilter } from "react-icons/ti";
+import { useAuth } from "../../providers/Auth";
 
 const Events = () => {
+  const { user } = useAuth();
   const { allEvents } = useEvents();
   const [eventList, setEventList] = useState<IEvents[]>([]);
   const [filterByCategory, setFilterByCategory] = useState<string>("Todos");
@@ -34,25 +36,30 @@ const Events = () => {
     <>
       <Header />
       <Container>
-        <label htmlFor="states">
-          Filtrar <TiFilter />
-        </label>
-        <select id="states" onChange={(e) => setFilterByState(e.target.value)}>
-          <option value="Todos">Todos</option>
-          {StateArr.map((state, index) => (
-            <option key={index} value={state}>
-              {state}
-            </option>
-          ))}
-        </select>
         <header>
           <ArrowLeft />
           <h1>Eventos</h1>
         </header>
         <CategoryItem filterCategory={setFilterByCategory} />
+        <div className="container__filter-state">
+          <label htmlFor="states">
+            <TiFilter />
+          </label>
+          <select
+            id="states"
+            onChange={(e) => setFilterByState(e.target.value)}
+          >
+            <option value="Todos">Todos</option>
+            {StateArr.map((state, index) => (
+              <option key={index} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
+        </div>
         <EventsContainer>
           {eventFilterList.map((event, index) => (
-            <CardEvent key={index} event={event} />
+            <CardEvent key={index} event={event} userId={user.id} />
           ))}
         </EventsContainer>
       </Container>
