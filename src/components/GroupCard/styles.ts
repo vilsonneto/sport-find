@@ -24,11 +24,30 @@ export const Container = styled.div`
       font-size: 30px;
     }
 
-    p {
-      font-size: 20px;
-    }
-    .category {
-      font-style: italic;
+    .details-container {
+      display: flex;
+      width: 100%;
+      align-content: center;
+      flex-direction: column;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 8px;
+
+        svg {
+          font-size: 25px;
+        }
+
+        .category {
+          font-style: italic;
+        }
+      }
+
+      p {
+        font-size: 20px;
+      }
     }
   }
 

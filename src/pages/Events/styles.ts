@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-  .cabecalho {
+  header {
     margin: 16px auto;
     width: 90%;
     max-width: 1280px;
@@ -29,6 +29,11 @@ export const Container = styled.main`
         margin-left: 120px;
       }
     }
+  }
+
+  .container__filter-state {
+    display: flex;
+    justify-content: center;
   }
 `;
 
