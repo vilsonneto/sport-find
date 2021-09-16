@@ -47,20 +47,10 @@ const Header = () => {
           <li>
             <img src={logo} alt="" onClick={() => history.push("/dashboard")} />
           </li>
-<<<<<<< HEAD
-          {!avatarImg ? (
-            <li>
-              <img src={perfilEditor} alt="" onClick={handleClick} />
-            </li>
-          ) : (
-            <li>
-              <img src={avatarImg} alt="" onClick={handleClick} />
-=======
 
           <div>
             <li onClick={() => setOpening(true)}>
               <Avatar style={{ width: "5rem", height: "5rem" }} {...config} />
->>>>>>> develop
             </li>
 
             {open && (
