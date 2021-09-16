@@ -49,7 +49,8 @@ const Header = () => {
   useEffect(() => {
     setUserName(user.username);
     setState(user.state);
-  }, [user.username, user.state]);
+    setAvatar(user.avatar);
+  }, [user.username, user.state, user.avatar]);
 
   useEffect(() => {
     setAvatar(avatarArr[num]);

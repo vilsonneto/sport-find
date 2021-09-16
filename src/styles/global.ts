@@ -22,7 +22,9 @@ export default createGlobalStyle`
   }
 
   a {
+    color: var(--black);
     text-decoration: none;
+
     cursor: pointer;
   }
 

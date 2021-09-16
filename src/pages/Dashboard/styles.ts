@@ -121,7 +121,14 @@ export const Container = styled.div`
           }
         }
       }
+
+      @media only screen and (min-width: 1024px) {
+        div:nth-child(2) {
+          margin-bottom: 10px;
+        }
+      }
     }
+
     ul {
       display: flex;
       justify-content: center;
@@ -149,12 +156,23 @@ export const Container = styled.div`
         width: 100%;
 
         li {
+          width: 190px;
+
+          padding: 7px;
+
+          border: 1px var(--black) solid;
+          border-radius: 15px;
+
           display: flex;
           align-items: center;
-          border: 1px var(--black) solid;
-          padding: 7px;
-          width: 190px;
-          border-radius: 15px;
+
+          a,
+          div {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+          }
 
           svg {
             font-size: 30px;
@@ -168,6 +186,7 @@ export const Container = styled.div`
         }
       }
     }
+
     main {
       width: 100%;
 

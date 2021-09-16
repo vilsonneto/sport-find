@@ -66,6 +66,7 @@ export const ContainerAbout = styled.article`
   @media only screen and (min-width: 1024px) {
     max-width: 1280px;
     min-height: 490px;
+    max-height: 650px;
     height: 70vh;
 
     margin: 0 auto;
@@ -85,7 +86,8 @@ export const Typography = styled.section`
   align-items: center;
 
   p {
-    margin-top: 10px;
+    margin-top: 20px;
+
     text-align: center;
   }
 
@@ -98,7 +100,9 @@ export const Typography = styled.section`
 
     p {
       margin-top: 0;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+
+      font-size: 1.3rem;
     }
   }
 `;
@@ -123,11 +127,11 @@ export const ContainerFeatures = styled.article`
   align-items: center;
 
   h1 {
-    color: var(--orange);
-    text-shadow: 3px 3px 2px var(--blue);
     margin-bottom: 20px;
 
     font-size: 1.8rem;
+    text-align: center;
+    text-shadow: 0px 5px 6px rgba(150, 150, 150, 1);
   }
 
   section {
@@ -161,18 +165,25 @@ export const ContainerFeatures = styled.article`
 
 export const Card = styled.div`
   width: 180px;
+  min-height: 210px;
 
-  padding: 20px 40px;
+  padding: 20px 30px;
 
   text-align: center;
 
   background-color: var(--white);
   border-radius: 10px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.25));
 
   h3 {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+
+    font-size: 1.3rem;
   }
 `;
 
