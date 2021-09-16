@@ -5,17 +5,19 @@ interface IStylesProps {
 }
 
 export const Container = styled.div`
+  max-width: 1280px;
+
+  margin: 0 auto;
+
   .containerHeader {
     display: none;
+
     @media only screen and (min-width: 1024px) {
       display: block;
     }
   }
 
   .containerArrow {
-    max-width: 1280px;
-
-    margin: 0 auto;
     padding: 15px;
   }
 `;
@@ -56,6 +58,7 @@ export const ContainerMain = styled.main`
       @media only screen and (min-width: 1024px) {
         width: 75%;
 
+        margin-bottom: 0;
         padding: 10px;
 
         text-align: left;

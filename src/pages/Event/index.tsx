@@ -1,14 +1,17 @@
-import { useMemo } from "react";
+import { Container, ContainerMain } from "./styles";
+
+import Button from "././../../components/Button";
+import ArrowLeft from "./../../components/ArrowLeft";
+import Header from "./../../components/Header";
+import ModalEvent from "./../../components/ModalEvent";
+
+import { useState, useMemo } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { useEvents } from "../../providers/Events";
-import Header from "../../components/Header";
-import ArrowLeft from "../../components/ArrowLeft";
-import { useAuth } from "../../providers/Auth";
-import Button from "../../components/Button";
-import { categoryArr } from "../../utils/CategoryArr";
-import { Conteiner } from "./styles";
-import { useState } from "react";
-import ModalEvent from "../../components/ModalEvent";
+
+import { useAuth } from "./../../providers/Auth";
+import { useEvents } from "./../../providers/Events";
+
+import { categoryArr } from "./../../utils/CategoryArr";
 
 interface IParams {
   id: string;
@@ -16,10 +19,14 @@ interface IParams {
 
 const Event = () => {
   const params = useParams<IParams>();
+
   const history = useHistory();
-  const { allEvents, subscribeEvent, leaveEvent } = useEvents();
+
   const { user } = useAuth();
   const { id } = user;
+
+  const { allEvents, subscribeEvent, leaveEvent } = useEvents();
+
   const [showModal, setShowModal] = useState(false);
 
   const event = useMemo(() => {
@@ -48,13 +55,20 @@ const Event = () => {
   };
 
   return (
-    <>
-      <Header />
-      <Conteiner>
+    <Container>
+      <div className="containerHeader">
+        <Header />
+      </div>
+      <div className="containerArrow">
         <ArrowLeft path={"/events"} />
-        <main className="content">
-          <header className="title">
-            <h1>{event?.name}</h1>
+      </div>
+      <div className="containerStyle">
+        <ContainerMain>
+          <div>
+            <header className="title">
+              <h1>{event?.name}</h1>
+              <span>{event?.category}</span>
+            </header>
             {id === event?.creator ? (
               <Button variantGreen onClick={handleEdit}>
                 Editar
@@ -68,41 +82,50 @@ const Event = () => {
                 Participar
               </Button>
             )}
-          </header>
-          <article className="cart">
-            <section className="text">
-              <p>
-                Categoria: <span>{event?.category}</span>
-              </p>
-              {event?.data && (
-                <p>
-                  Data: <span>{dateAjustRender(event?.data)}</span>
-                </p>
-              )}
+          </div>
+          <article>
+            {event?.data && (
+              <section>
+                <h3>
+                  Data do evento: <span>{dateAjustRender(event?.data)}</span>
+                </h3>
+              </section>
+            )}
+            <section>
               <h3>Descrição:</h3>
-              <span>{event?.description}</span>
+              <p>{event?.description}</p>
+            </section>
+            <section>
               <h3>Localização:</h3>
-              <span>{event?.local}</span>
-              <p>Participarão do Evento:{event?.users.length}</p>
-              {id !== event?.creator && (
-                <p>
+              <p>{event?.local}</p>
+            </section>
+            <section>
+              <h3>
+                Participarão do Evento: <span>{event?.users.length}</span>
+              </h3>
+            </section>
+            {id !== event?.creator && (
+              <section>
+                <h3>
                   Deseja se inscrever no grupo?
                   <Link to={`/groups/${event?.group_Id}`}> Clique Aqui!</Link>
-                </p>
-              )}
-            </section>
-            <div>
-              {categoryArr.map((item, index) =>
-                item.text === event?.category ? (
-                  <img src={item.image} alt={item.text} key={index} />
-                ) : null
-              )}
-            </div>
+                </h3>
+              </section>
+            )}
           </article>
-        </main>
-        {showModal && <ModalEvent closeModal={setShowModal} edit={event} />}
-      </Conteiner>
-    </>
+          <article>
+            {categoryArr.map(
+              (item, index) =>
+                item.text === event?.category && (
+                  <img key={index} src={item.image} alt={item.text} />
+                )
+            )}
+          </article>
+        </ContainerMain>
+      </div>
+      {showModal && <ModalEvent closeModal={setShowModal} edit={event} />}
+    </Container>
   );
 };
+
 export default Event;
