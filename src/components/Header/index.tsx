@@ -27,7 +27,7 @@ const Header = ({ avatarImg }: IHeaderProps) => {
             <li>
               <img src={avatarImg} alt="" onClick={handleClick} />
             </li>
-          )}{" "}
+          )}
         </Ul>
       </nav>
     </header>
