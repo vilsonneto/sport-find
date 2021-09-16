@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+
   nav {
     background-color: var(--gray);
     position: fixed;
@@ -168,7 +171,7 @@ export const Container = styled.div`
         align-items: flex-start;
         padding-left: 30px;
         padding-right: 5px;
-        margin-top: 40px;
+        margin-top: 60px;
         height: 200px;
         width: 100%;
 
@@ -206,6 +209,7 @@ export const Container = styled.div`
 
     main {
       width: 100%;
+      margin-top: 20px;
 
       ul {
         width: 100%;

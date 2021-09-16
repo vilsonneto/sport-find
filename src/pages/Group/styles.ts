@@ -47,12 +47,12 @@ export const ContainerMain = styled.main`
       margin-bottom: 10px;
       padding: 5px 0;
 
+      color: var(--white);
+
       background-color: var(--orange);
 
       h1 {
         margin-bottom: 5px;
-
-        color: var(--white);
       }
 
       @media only screen and (min-width: 1024px) {
@@ -154,6 +154,25 @@ export const ContainerMain = styled.main`
 
           li {
             margin-bottom: 5px;
+
+            .card-header {
+              h3 {
+                font-size: 1.2rem;
+              }
+
+              p {
+                margin-top: 3px;
+                font-size: 1rem;
+              }
+            }
+            .card-details {
+              .container-category {
+                width: 63%;
+                p {
+                  font-size: 1rem;
+                }
+              }
+            }
           }
 
           li + li {

@@ -17,7 +17,6 @@ export const Container = styled.main`
 
       h1 {
         display: block;
-        font-family: Roboto, sans-serif;
         font-weight: 700;
         font-size: 40px;
         margin-left: 30px;

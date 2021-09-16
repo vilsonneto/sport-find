@@ -6,7 +6,6 @@ interface ICarouselProp {
 }
 
 function eventScroll(event: React.WheelEvent<HTMLDivElement>) {
-  // conversão explicita de EventTarget para HTMLDivElement para acessar o scrollBy
   let target = event.target as HTMLDivElement;
 
   if (event.deltaY > 0) {
