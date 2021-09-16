@@ -33,6 +33,95 @@ export const Container = styled.div`
 
   main {
     width: 100%;
+
+    .subtitle {
+      display: none;
+      @media (min-width: 769px) {
+        display: block;
+      }
+    }
+
+    .carousel {
+      display: flex;
+      overflow-y: hidden;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+
+      .item {
+        flex: none;
+        width: 90%;
+        scroll-snap-align: start;
+        pointer-events: none;
+
+        .card-container {
+          pointer-events: fill;
+          display: flex;
+          justify-content: center;
+          max-width: 320px;
+
+          > div {
+            width: 280px;
+            height: 150px;
+            margin: 16px 3px;
+            padding-right: 10px;
+          }
+        }
+      }
+
+      @media (min-width: 450px) {
+        .item {
+          flex: none;
+          width: 60%;
+          scroll-snap-align: start;
+          pointer-events: none;
+
+          .card-container {
+            display: flex;
+            justify-content: center;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+
+            > div {
+              width: 300px;
+              height: 150px;
+              margin: 16px 3px;
+              padding-right: 10px;
+            }
+          }
+        }
+      }
+
+      @media (min-width: 769px) {
+        flex-direction: column;
+        height: auto;
+        .item {
+          display: flex;
+          flex-wrap: wrap;
+          flex: none;
+          width: 100%;
+          scroll-snap-align: start;
+          pointer-events: none;
+          flex-direction: row;
+
+          .card-container {
+            display: inline-block;
+            max-width: 350px;
+            margin-left: 0;
+            margin-right: 0;
+
+            > div {
+              width: 320px;
+              height: 150px;
+              margin: 16px 3px;
+              padding-right: 10px;
+            }
+          }
+        }
+      }
+    }
     ul {
       display: flex;
       justify-content: center;

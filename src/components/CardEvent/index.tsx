@@ -1,17 +1,15 @@
-import { userInfo } from "os";
 import { useHistory } from "react-router";
-import { useAuth } from "../../providers/Auth";
 import { IEvents } from "../../types/IProviders";
 import { Container } from "./styles";
 import { GrUserAdmin } from "react-icons/gr";
 
 interface ICardEventProps {
   event: IEvents;
+  userId: number;
 }
 
-export const CardEvent = ({ event }: ICardEventProps) => {
+export const CardEvent = ({ event, userId }: ICardEventProps) => {
   const history = useHistory();
-  const { user } = useAuth();
 
   const dateAjustRender = (date: string) => {
     return date.split("-").reverse().join("/");
@@ -45,7 +43,7 @@ export const CardEvent = ({ event }: ICardEventProps) => {
           <p>{event.category}</p>
         </div>
         <div className="container-progress">
-          {user.id === event.creator && <GrUserAdmin />}
+          {userId === event.creator && <GrUserAdmin />}
           {wasClosed(event.data) && <p>Encerrado</p>}
         </div>
       </div>
