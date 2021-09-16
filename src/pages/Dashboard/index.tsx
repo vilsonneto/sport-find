@@ -71,7 +71,7 @@ export const Dashboard = () => {
               {!!userEvents ? (
                 userEvents.length > 0 ? (
                   userEvents.map((event) => (
-                    <div className="card-container">
+                    <div key={event.id} className="card-container">
                       <CardEvent
                         key={event.id}
                         event={event}
@@ -91,7 +91,7 @@ export const Dashboard = () => {
               {!!userGroups ? (
                 userGroups.length > 0 ? (
                   userGroups.map((group) => (
-                    <div className="card-container">
+                    <div key={group.id} className="card-container">
                       <GroupCard
                         key={group.id}
                         group={group}
