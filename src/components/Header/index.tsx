@@ -28,7 +28,6 @@ const Header = ({ avatarImg }: IHeaderProps) => {
               <img src={avatarImg} alt="" onClick={handleClick} />
             </li>
           )}
-          g{" "}
         </Ul>
       </nav>
     </header>
