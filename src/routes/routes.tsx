@@ -14,8 +14,9 @@ const Route = ({ isPrivate = false, children, ...rest }: IrouteParams) => {
   const [auth, setAuth] = useState<string>(token);
 
   useEffect(() => {
-    setAuth(localStorage.getItem("@token")!);
+    setAuth(localStorage.getItem("@sportfind: token")!);
   }, [token]);
+
   return (
     <ReactDOMRoute
       {...rest}

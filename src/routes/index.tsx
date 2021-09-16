@@ -22,19 +22,19 @@ const Routes = () => {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/dashboard">
+      <Route path="/dashboard" isPrivate>
         <Dashboard />
       </Route>
-      <Route path="/groups" exact>
+      <Route path="/groups" exact isPrivate>
         <Groups />
       </Route>
-      <Route path="/groups/:id">
+      <Route path="/groups/:id" isPrivate>
         <Group />
       </Route>
-      <Route path="/events" exact>
+      <Route path="/events" exact isPrivate>
         <Events />
       </Route>
-      <Route path="/events/:id">
+      <Route path="/events/:id" isPrivate>
         <Event />
       </Route>
       <Route path="/aboutus">
