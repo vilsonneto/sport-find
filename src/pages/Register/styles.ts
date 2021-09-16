@@ -47,6 +47,7 @@ export const Header = styled.header`
 
 export const Container = styled.main`
   height: 100vh;
+  min-height: 740px;
 
   padding: 0 20px;
 

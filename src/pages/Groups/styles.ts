@@ -30,9 +30,14 @@ export const Container = styled.main`
       }
     }
   }
+
+  .container__filter-state {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-export const GroupsContainer = styled.article`
+export const GroupsContainer = styled.ul`
   margin: 0 auto;
   margin-top: 16px;
   display: flex;

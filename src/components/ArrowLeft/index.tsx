@@ -13,8 +13,8 @@ const ArrowLeft = ({ path = "/dashboard" }: IArrowLeftProps) => {
   };
 
   return (
-    <ArrowSvg>
-      <HiArrowLeft onClick={handleClick} />
+    <ArrowSvg data-testid="container">
+      <HiArrowLeft data-testid="child" onClick={handleClick} />
     </ArrowSvg>
   );
 };
