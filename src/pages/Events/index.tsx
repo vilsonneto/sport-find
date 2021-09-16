@@ -40,6 +40,7 @@ const Events = () => {
           <ArrowLeft />
           <h1>Eventos</h1>
         </header>
+
         <CategoryItem filterCategory={setFilterByCategory} />
         <div className="container__filter-state">
           <label htmlFor="states">
