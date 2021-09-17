@@ -5,10 +5,6 @@ export const Container = styled.article`
   max-width: 1280px;
   margin: 24px auto;
 
-  ::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-  }
-
   @media (min-width: 1024px) {
     margin: 32px auto;
   }

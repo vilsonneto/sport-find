@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IEvents } from "../../types/IProviders";
 import InputTexteArea from "../InputTextArea";
+import { useHistory } from "react-router-dom";
 
 interface ICreateEvent {
   group_Id: number;
@@ -30,6 +31,8 @@ interface IEventForm {
 }
 
 const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
+  const history = useHistory();
+
   const { createEvent, cancelEvent, editEvent } = useEvents();
 
   const formSchema = yup.object().shape({
@@ -58,6 +61,7 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
   const handleDelet = () => {
     if (edit) {
       cancelEvent(edit);
+      history.goBack();
     }
   };
 
