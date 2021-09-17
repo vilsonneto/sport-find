@@ -21,6 +21,7 @@ export const InputContainer = styled.div<IInputStyledProps>`
 
   background-color: var(--white);
 
+  border: 2px solid var(--black);
   border-radius: 5px;
   display: flex;
   margin-bottom: 15px;
@@ -32,19 +33,19 @@ export const InputContainer = styled.div<IInputStyledProps>`
 
   textarea {
     background: transparent;
-    border: 2px solid var(--black);
+    border: none;
 
     align-items: center;
     flex: 1;
-
-    ${(props) =>
-      props.isErrored &&
-      css`
-        border: 2px solid var(--red);
-
-        svg {
-          color: var(--red);
-        }
-      `}
   }
+
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border: 2px solid var(--red);
+
+      svg {
+        color: var(--red);
+      }
+    `}
 `;

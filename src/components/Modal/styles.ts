@@ -15,6 +15,7 @@ export const Container = styled.div<IModalStyledProps>`
   align-items: center;
   justify-content: center;
   justify-content: ${(props) => props.inRight && `flex-end`};
+  z-index: 1;
 
   .modal {
     width: 100%;
