@@ -2,7 +2,7 @@ import logo from "../../assets/logo.jpeg";
 import { Ul, User, Container } from "./style";
 import { useHistory } from "react-router";
 import { Modal } from "../Modal";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Button from "../Button";
 import { useAuth } from "../../providers/Auth";
 import { StateArr } from "../../utils/StateArr";
@@ -12,7 +12,6 @@ import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 const Header = () => {
   const history = useHistory();
-
   const [open, setOpening] = useState<boolean>(false);
   const { user, logoutUser, editUser } = useAuth();
   const [username, setUserName] = useState<string>(user.username);
@@ -20,15 +19,30 @@ const Header = () => {
   const [num, setNum] = useState<number>(0);
   const [avatar, setAvatar] = useState<AvatarFullConfig>(user.avatar);
 
-  const verifyAvatar = () => {
+  const findIndexOfArray = (arr: any) => {
+    if (avatar) {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].shirtColor === avatar.shirtColor) {
+          return i;
+        }
+      }
+    }
+    return 0;
+  };
+
+  useEffect(() => {
+    const num = findIndexOfArray(avatarArr);
+    setNum(num);
+    // eslint-disable-next-line
+  }, [user, avatar]);
+
+  const config = useMemo(() => {
     if (avatar === undefined) {
       return genConfig(avatarArr[num]);
     } else {
       return genConfig(avatar);
     }
-  };
-
-  const config = verifyAvatar();
+  }, [num, avatar]);
 
   const handleClickNext = () => {
     if (avatarArr[num + 1] === undefined) {
@@ -50,11 +64,7 @@ const Header = () => {
     setUserName(user.username);
     setState(user.state);
     setAvatar(user.avatar);
-  }, [user.username, user.state, user.avatar]);
-
-  useEffect(() => {
-    setAvatar(avatarArr[num]);
-  }, [num]);
+  }, [user]);
 
   return (
     <header>
@@ -76,7 +86,7 @@ const Header = () => {
                         <AiOutlineArrowLeft onClick={handleClickPrevious} />
                         <Avatar
                           style={{ width: "8rem", height: "8rem" }}
-                          {...config}
+                          {...avatarArr[num]}
                         />
                         <AiOutlineArrowRight onClick={handleClickNext} />
                       </div>
@@ -92,8 +102,10 @@ const Header = () => {
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                           >
-                            {StateArr.map((item) => (
-                              <option value={item}>{item}</option>
+                            {StateArr.map((item, index) => (
+                              <option value={item} key={index}>
+                                {item}
+                              </option>
                             ))}
                           </select>
                         </div>
@@ -101,7 +113,9 @@ const Header = () => {
                       <li>
                         <Button
                           variantGreen
-                          onClick={() => editUser(username, state, avatar)}
+                          onClick={() => {
+                            editUser(username, state, avatarArr[num]);
+                          }}
                         >
                           Salvar
                         </Button>
@@ -120,5 +134,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
