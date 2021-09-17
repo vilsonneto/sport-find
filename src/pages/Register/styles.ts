@@ -93,6 +93,16 @@ export const ContainerForm = styled.section`
 
           margin: 20px 0 5px;
         }
+
+        span {
+          a {
+            color: #0000ff;
+
+            :visited {
+              color: #551a8b;
+            }
+          }
+        }
       }
     }
   }
