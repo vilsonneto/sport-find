@@ -45,7 +45,7 @@ $ git clone <https://gitlab.com/Miqueias_Carvalho/sport-find>
 $ cd sport-find/
 
 # instale as dependências
-yarn
+$ yarn
 
 # Execute a aplicação em modo de desenvolvimento.
 $ yarn start
