@@ -54,4 +54,4 @@ $ yarn start
 
 ```
 
-[url do site](https://sport-find.vercel.app/)
+[url do site](https://sport-find-tau.vercel.app/)
