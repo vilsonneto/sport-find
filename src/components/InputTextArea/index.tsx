@@ -1,10 +1,10 @@
 import { Container, InputContainer } from "./styles";
 
-import { UseFormRegister, FieldValues } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 
 interface IInputProps {
   label: string;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<any>;
   name: string;
   error?: string;
   rows: number;
