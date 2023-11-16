@@ -1,7 +1,7 @@
 import { useAuth } from "../../providers/Auth";
 import { Conteiner } from "./styles";
 import { useState } from "react";
-import { SiGooglehangoutschat } from "react-icons/si";
+// import { SiGooglehangoutschat } from "react-icons/si";
 import Button from "../Button";
 
 const Chat = () => {
@@ -25,7 +25,7 @@ const Chat = () => {
       <div className="container">
         <div>
           <div className="icon">
-            <SiGooglehangoutschat onClick={handleOpen} className="svg" />
+            {/* <SiGooglehangoutschat onClick={handleOpen} className="svg" /> */}
             <div />
             {openState && (
               <div className="content">
