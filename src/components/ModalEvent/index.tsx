@@ -48,7 +48,7 @@ const ModalEvent = ({ closeModal, edit, create }: IModalEventsProps) => {
     formState: { errors },
   } = useForm<IEventForm>({ resolver: yupResolver(formSchema) });
 
-  const handleEvent = (data: IEventForm) => {
+  const handleEvent = (data: any) => {
     if (create) {
       const eventCreate = { ...create, users: [], ...data };
       createEvent(eventCreate);

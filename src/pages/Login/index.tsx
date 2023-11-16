@@ -39,7 +39,7 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
-  const handleLogin = (data: ILoginData) => {
+  const handleLogin = (data: any) => {
     loginUser(data, history);
   };
 

@@ -6,7 +6,7 @@ interface IInputProps {
   label: string;
   register: UseFormRegister<any>;
   name: string;
-  error?: string;
+  error?: any;
   rows: number;
   cols: number;
   placeholder?: string;

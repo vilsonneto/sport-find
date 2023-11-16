@@ -61,7 +61,7 @@ const Register = () => {
     email,
     password,
     state,
-  }: IRegisterUserData) => {
+  }: any) => {
     const data = { username, email, password, state };
     registerUser(data, history);
   };

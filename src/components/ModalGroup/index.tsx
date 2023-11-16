@@ -45,7 +45,7 @@ const ModalGroup = ({ closeModal }: IModalGoupProps) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
-  const handleModalGroups = (data: IGroupData) => {
+  const handleModalGroups = (data: any) => {
     createGroup(username, data);
     closeModal(false);
   };
