@@ -54,7 +54,7 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IRegisterUserData>({ resolver: yupResolver(formSchema) });
+  } = useForm({ resolver: yupResolver(formSchema) });
 
   const handleForm = ({
     username,
