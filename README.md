@@ -39,16 +39,16 @@
 
 ```bash
 # Clone este repositório
-$ git clone <https://gitlab.com/Miqueias_Carvalho/sport-find>
+$ git clone https://github.com/vilsonneto/sport-find.git
 
 # entre na pasta
 $ cd sport-find/
 
 # instale as dependências
-$ yarn
+$ npm install
 
 # Execute a aplicação em modo de desenvolvimento.
-$ yarn start
+$ npm run dev
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 
